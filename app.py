@@ -103,11 +103,10 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Determine Current Language Pair Codes & Metadata
+# Determine Current Language Pair Codes
 src_code = config.SUPPORTED_LANGUAGES.get(st.session_state.src_lang, "en")
 tgt_code = config.SUPPORTED_LANGUAGES.get(st.session_state.tgt_lang, "hi")
 current_pair_key = f"{src_code}-{tgt_code}"
-meta = model_manager.get_metadata(current_pair_key) if current_pair_key in ["en-hi", "hi-en"] else None
 
 # Sidebar - Settings and Diagnostics
 with st.sidebar:

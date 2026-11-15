@@ -172,7 +172,7 @@ class ModelManager:
         logger.info(f"Successfully loaded and cached model for {pair_key} on {self.device}.")
         return model, tokenizer, metadata
 
-    def get_metadata(self, lang_pair: str, prefer_finetuned: bool = False) -> Dict[str, Any]:
+    def get_metadata(self, lang_pair: str, prefer_finetuned: bool = False, *args, **kwargs) -> Dict[str, Any]:
         """Returns metadata for the specified language pair."""
         pair_key = self.normalize_lang_pair(lang_pair)
         model_id, is_finetuned = self.get_model_identifier(pair_key, prefer_finetuned=prefer_finetuned)
