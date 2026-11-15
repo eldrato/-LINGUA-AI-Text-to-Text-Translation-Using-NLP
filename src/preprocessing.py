@@ -233,6 +233,66 @@ class TranslationDataset:
             "labels": labels,
         }
 
+def postprocess_translation(text: str, target_lang: str = "hi") -> str:
+    """
+    Applies production-grade linguistic post-processing and detokenization:
+    - Removes Moses tokenization artifacts (detached punctuation, subwords).
+    - Cleans punctuation spacing for English and Hindi (danda '।', double danda '॥', commas, quotes).
+    - Repairs English contractions (e.g. isn't, don't, I'm, we'll, it's).
+    - Capitalizes initial sentence letters in English outputs.
+    - Preserves Devanagari nuktas, matras, and compound ligatures.
+    """
+    if not text or not isinstance(text, str):
+        return ""
+
+    tgt = str(target_lang).lower().strip()
+    is_hindi = (tgt in ["hi", "hindi"])
+
+    # 1. Strip special token remnants and sentencepiece subword glues
+    text = re.sub(r"<unk>|<pad>|<s>|</s>", "", text)
+    text = text.replace(" ", " ")
+
+    # 2. Collapse consecutive whitespace
+    text = re.sub(r"[ \t]+", " ", text).strip()
+
+    # 3. Detokenize closing punctuation (remove whitespace before , . ! ? : ; % ) ] } । ॥)
+    text = re.sub(r"\s+([,.:;!?%)\]}।॥])", r"\1", text)
+
+    # 4. Detokenize opening punctuation (remove whitespace after ( [ {)
+    text = re.sub(r"([(\[{])\s+", r"\1", text)
+
+    # 5. Fix double quotes spacing: " word " -> "word"
+    text = re.sub(r'\"\s+([^"]+?)\s+\"', r'"\1"', text)
+    text = re.sub(r'“\s+([^”]+?)\s+”', r'“\1”', text)
+
+    # 6. Language-specific enhancements
+    if is_hindi:
+        # Ensure single space after Danda / double danda if followed by another word
+        text = re.sub(r"([।॥])([^\s\d\"'”’।॥])", r"\1 \2", text)
+        # Ensure single space after comma
+        text = re.sub(r",([^\s\d])", r", \1", text)
+        # Fix hyphens in reduplications: 'धीरे - धीरे' -> 'धीरे-धीरे'
+        text = re.sub(r"([\u0900-\u097F]+)\s*-\s*([\u0900-\u097F]+)", r"\1-\2", text)
+    else:
+        # English: repair contractions: don ' t -> don't, it ' s -> it's
+        text = re.sub(r"\b(\w+)\s*'\s*(s|m|d|ll|re|ve)\b", r"\1'\2", text, flags=re.I)
+        text = re.sub(r"\b(\w+)\s+n\s*'\s*t\b", r"\1n't", text, flags=re.I)
+        text = re.sub(r"\b(\w+)\s*'\s*t\b", r"\1't", text, flags=re.I)
+
+        # Capitalize the first letter of each sentence
+        sentences = re.split(r"(?<=[.!?\n])\s+", text)
+        cap_sentences = []
+        for s in sentences:
+            if s and len(s) > 0:
+                s = s[0].upper() + s[1:]
+            cap_sentences.append(s)
+        text = " ".join(cap_sentences)
+
+        # Capitalize standalone pronoun 'i' in English
+        text = re.sub(r"\b(i)\b", "I", text)
+
+    return text.strip()
+
 if __name__ == "__main__":
     from dataset_loader import DatasetLoader
     loader = DatasetLoader()

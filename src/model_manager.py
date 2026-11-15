@@ -86,28 +86,33 @@ class ModelManager:
             return has_config and has_weights
         return False
 
-    def get_model_identifier(self, pair_key: str) -> Tuple[str, bool]:
+    def get_model_identifier(self, pair_key: str, prefer_finetuned: bool = False) -> Tuple[str, bool]:
         """
         Returns the path/identifier to load and a boolean indicating if it is fine-tuned.
         """
-        if self.is_local_finetuned_available(pair_key):
+        if prefer_finetuned and self.is_local_finetuned_available(pair_key):
             local_path = str(config.LOCAL_MODEL_PATHS[pair_key])
-            logger.info(f"Found fine-tuned checkpoint for {pair_key} at: {local_path}")
+            logger.info(f"Using fine-tuned checkpoint for {pair_key} at: {local_path}")
             return local_path, True
         else:
             hf_id = config.MODEL_CHECKPOINTS.get(pair_key)
             if not hf_id:
                 raise ValueError(f"No checkpoint defined for pair: {pair_key}")
-            logger.info(f"Using pretrained MarianMT checkpoint for {pair_key}: {hf_id}")
+            logger.info(f"Using high-accuracy pretrained MarianMT checkpoint for {pair_key}: {hf_id}")
             return hf_id, False
 
-    def load_model_and_tokenizer(self, lang_pair: str) -> Tuple[Any, Any, Dict[str, Any]]:
+    def load_model_and_tokenizer(
+        self,
+        lang_pair: str,
+        prefer_finetuned: bool = False
+    ) -> Tuple[Any, Any, Dict[str, Any]]:
         """
         Retrieves cached model and tokenizer, or loads them if not already cached.
+        Supports both pretrained and fine-tuned checkpoints in separate cache slots.
         
         Returns:
-        - model: MarianMTForConditionalGeneration instance.
-        - tokenizer: MarianTokenizer instance.
+        - model: MarianMTForConditionalGeneration / AutoModelForSeq2SeqLM instance.
+        - tokenizer: MarianTokenizer / AutoTokenizer instance.
         - metadata: Dictionary containing model status and source information.
         """
         try:
@@ -117,14 +122,15 @@ class ModelManager:
         import torch
 
         pair_key = self.normalize_lang_pair(lang_pair)
+        model_id, is_finetuned = self.get_model_identifier(pair_key, prefer_finetuned=prefer_finetuned)
+        cache_key = f"{pair_key}_{'finetuned' if is_finetuned else 'pretrained'}"
 
         # Check in-memory cache
-        if pair_key in self._models and pair_key in self._tokenizers:
-            metadata = self.get_metadata(pair_key)
-            return self._models[pair_key], self._tokenizers[pair_key], metadata
+        if cache_key in self._models and cache_key in self._tokenizers:
+            metadata = self.get_metadata(pair_key, prefer_finetuned=is_finetuned)
+            return self._models[cache_key], self._tokenizers[cache_key], metadata
 
-        model_id, is_finetuned = self.get_model_identifier(pair_key)
-        logger.info(f"Loading tokenizer for {pair_key} from '{model_id}'...")
+        logger.info(f"Loading tokenizer for {pair_key} [{cache_key}] from '{model_id}'...")
         
         try:
             tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -135,7 +141,7 @@ class ModelManager:
             logger.info(f"Falling back to base HuggingFace tokenizer '{base_hf}'...")
             tokenizer = AutoTokenizer.from_pretrained(base_hf)
 
-        logger.info(f"Loading MarianMT model for {pair_key} from '{model_id}'...")
+        logger.info(f"Loading MarianMT model for {pair_key} [{cache_key}] from '{model_id}'...")
         try:
             model = AutoModelForSeq2SeqLM.from_pretrained(model_id)
         except Exception as e_mod:
@@ -145,36 +151,40 @@ class ModelManager:
             model = AutoModelForSeq2SeqLM.from_pretrained(base_hf)
             model_id = base_hf
             is_finetuned = False
+            cache_key = f"{pair_key}_pretrained"
 
         # Place model on device
         model.to(self.device)
         model.eval()
 
         # Cache in memory
-        self._models[pair_key] = model
-        self._tokenizers[pair_key] = tokenizer
+        self._models[cache_key] = model
+        self._tokenizers[cache_key] = tokenizer
 
         metadata = {
             "lang_pair": pair_key,
             "model_id": model_id,
             "is_finetuned": is_finetuned,
             "device": self.device,
+            "cache_key": cache_key,
             "model_type": "MarianMT Sequence-to-Sequence Transformer",
         }
         logger.info(f"Successfully loaded and cached model for {pair_key} on {self.device}.")
         return model, tokenizer, metadata
 
-    def get_metadata(self, lang_pair: str) -> Dict[str, Any]:
+    def get_metadata(self, lang_pair: str, prefer_finetuned: bool = False) -> Dict[str, Any]:
         """Returns metadata for the specified language pair."""
         pair_key = self.normalize_lang_pair(lang_pair)
-        is_finetuned = self.is_local_finetuned_available(pair_key)
-        model_id = str(config.LOCAL_MODEL_PATHS[pair_key]) if is_finetuned else config.MODEL_CHECKPOINTS.get(pair_key, "")
+        model_id, is_finetuned = self.get_model_identifier(pair_key, prefer_finetuned=prefer_finetuned)
+        cache_key = f"{pair_key}_{'finetuned' if is_finetuned else 'pretrained'}"
         return {
             "lang_pair": pair_key,
             "model_id": model_id,
             "is_finetuned": is_finetuned,
             "device": self.device,
-            "is_cached": pair_key in self._models,
+            "cache_key": cache_key,
+            "is_cached": cache_key in self._models,
+            "has_local_finetuned": self.is_local_finetuned_available(pair_key),
             "model_type": "MarianMT Sequence-to-Sequence Transformer",
         }
 

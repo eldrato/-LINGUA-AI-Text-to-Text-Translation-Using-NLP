@@ -70,12 +70,13 @@ TRAIN_CONFIG = {
     "save_total_limit": 2,
 }
 
-# Inference / Generation Settings
+# Inference / Generation Settings (Optimized for High Accuracy & Fluency)
 GENERATION_CONFIG = {
-    "num_beams": 4,
-    "max_length": 128,
+    "num_beams": 5,
+    "max_length": 160,
     "early_stopping": True,
     "length_penalty": 1.0,
+    "repetition_penalty": 1.12,
     "no_repeat_ngram_size": 3,
 }
 

@@ -18,7 +18,7 @@ import pytest  # type: ignore
 import pandas as pd  # type: ignore
 import numpy as np  # type: ignore
 
-from src.preprocessing import clean_text, preprocess_dataframe, split_dataset
+from src.preprocessing import clean_text, preprocess_dataframe, split_dataset, postprocess_translation
 
 def test_clean_text_english():
     raw = "   Hello   world!  \t This is a   test. \n  "
@@ -80,6 +80,25 @@ def test_split_dataset():
     test_indices = set(test_df["en"])
     assert len(train_indices.intersection(val_indices)) == 0
     assert len(train_indices.intersection(test_indices)) == 0
+
+def test_postprocess_hindi_danda_and_commas():
+    raw_hindi = "यह एक अच्छा दिन है । क्या आप तैयार हैं ? हाँ , मैं तैयार हूँ ।"
+    processed = postprocess_translation(raw_hindi, target_lang="hi")
+    assert "है ।" not in processed
+    assert "है।" in processed
+    assert "हैं ?" not in processed
+    assert "हैं?" in processed
+    assert "हाँ ," not in processed
+    assert "हाँ," in processed
+
+def test_postprocess_english_contractions_and_caps():
+    raw_english = "it ' s a sunny day , isn ' t it ? i love natural language processing ."
+    processed = postprocess_translation(raw_english, target_lang="en")
+    assert "it ' s" not in processed
+    assert "It's" in processed
+    assert "isn't" in processed
+    assert "I love" in processed
+    assert processed.endswith(".")
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

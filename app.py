@@ -111,21 +111,42 @@ meta = model_manager.get_metadata(current_pair_key) if current_pair_key in ["en-
 
 # Sidebar - Settings and Diagnostics
 with st.sidebar:
+    st.markdown("### 🧠 Model Engine Mode")
+    model_choice = st.radio(
+        "Select Model Architecture:",
+        options=[
+            "Pretrained MarianMT (Highest Open-Domain Accuracy)",
+            "Fine-Tuned Checkpoint (OPUS Corpus Domain)"
+        ],
+        index=0,
+        help="Pretrained MarianMT offers broad vocabulary and highest fluency for open-domain sentences. Fine-Tuned Checkpoint is domain-adapted on technical / localization parallel data."
+    )
+    prefer_finetuned = (model_choice == "Fine-Tuned Checkpoint (OPUS Corpus Domain)")
+
+    st.markdown("---")
     st.markdown("### ⚙️ Generation Parameters")
     num_beams = st.slider(
         "Beam Search Width",
         min_value=1,
         max_value=8,
-        value=4,
-        help="Number of beams for sequence search. Higher values improve translation quality at the expense of speed."
+        value=5,
+        help="Number of beams for sequence search. Higher values improve translation quality and grammatical structure."
     )
     max_length = st.slider(
         "Max Sequence Length",
         min_value=32,
         max_value=256,
-        value=128,
+        value=160,
         step=16,
-        help="Maximum number of tokens generated."
+        help="Maximum number of tokens generated per sentence."
+    )
+    repetition_penalty = st.slider(
+        "Repetition Penalty",
+        min_value=1.0,
+        max_value=1.5,
+        value=1.12,
+        step=0.02,
+        help="Penalizes repetitive n-grams for cleaner fluency without degrading natural reduplications."
     )
     length_penalty = st.slider(
         "Length Penalty",
@@ -141,9 +162,12 @@ with st.sidebar:
     st.write(f"**Compute Device:** `{model_manager.device.upper()}`")
     st.write(f"**PyTorch Version:** `{TORCH_VERSION}`")
 
+    # Update metadata based on selected engine mode
+    meta = model_manager.get_metadata(current_pair_key, prefer_finetuned=prefer_finetuned) if current_pair_key in ["en-hi", "hi-en"] else None
+
     if meta:
-        st.write(f"**Model ID:** `{meta['model_id']}`")
-        status_badge = "✅ Fine-Tuned Local Checkpoint" if meta["is_finetuned"] else "⚡ Pretrained MarianMT"
+        st.write(f"**Model ID:** `{Path(meta['model_id']).name}`")
+        status_badge = "✅ Fine-Tuned Checkpoint" if meta["is_finetuned"] else "⚡ Pretrained MarianMT (High-Accuracy)"
         st.write(f"**Model Status:** {status_badge}")
         st.write(f"**In-Memory Cached:** `{'Yes' if meta['is_cached'] else 'Pending first run'}`")
     else:
@@ -335,7 +359,9 @@ if translate_clicked:
                     target_lang=st.session_state.tgt_lang,
                     num_beams=num_beams,
                     max_length=max_length,
-                    length_penalty=length_penalty
+                    length_penalty=length_penalty,
+                    repetition_penalty=repetition_penalty,
+                    prefer_finetuned=prefer_finetuned
                 )
 
                 st.session_state.translated_output = res["translated_text"]

@@ -17,7 +17,7 @@ if str(ROOT_DIR) not in sys.path:
 
 import config
 from src.model_manager import get_model_manager
-from src.preprocessing import clean_text
+from src.preprocessing import clean_text, postprocess_translation
 
 logger = logging.getLogger(__name__)
 
@@ -71,12 +71,14 @@ class Translator:
         text: str,
         model: Any,
         tokenizer: Any,
-        num_beams: int = 4,
-        max_length: int = 128,
+        target_lang: str = "hi",
+        num_beams: int = 5,
+        max_length: int = 160,
         length_penalty: float = 1.0,
+        repetition_penalty: float = 1.12,
         no_repeat_ngram_size: int = 3,
     ) -> str:
-        """Translates an individual chunk of text using MarianMT model.generate()."""
+        """Translates an individual sentence or chunk using MarianMT model.generate()."""
         import torch
 
         # Tokenize chunk
@@ -91,7 +93,11 @@ class Translator:
         input_ids = inputs["input_ids"].to(self.model_manager.device)
         attention_mask = inputs["attention_mask"].to(self.model_manager.device)
 
-        # Generate translation with beam search
+        # For Hindi target, avoid harsh 3-gram restriction which breaks valid reduplications like धीरे-धीरे
+        is_hindi = (target_lang in ["hi", "hindi"])
+        ngram_size = 0 if is_hindi else no_repeat_ngram_size
+
+        # Generate translation with refined beam search
         with torch.no_grad():
             generated_tokens = model.generate(
                 input_ids=input_ids,
@@ -99,18 +105,19 @@ class Translator:
                 num_beams=num_beams,
                 max_length=max_length,
                 length_penalty=length_penalty,
-                no_repeat_ngram_size=no_repeat_ngram_size,
+                repetition_penalty=repetition_penalty,
+                no_repeat_ngram_size=ngram_size,
                 early_stopping=True
             )
 
         # Decode tokens to string
-        translated_text = tokenizer.decode(
+        raw_text = tokenizer.decode(
             generated_tokens[0],
             skip_special_tokens=True,
             clean_up_tokenization_spaces=True
         )
 
-        return translated_text.strip()
+        return raw_text.strip()
 
     def translate(
         self,
@@ -120,17 +127,22 @@ class Translator:
         num_beams: Optional[int] = None,
         max_length: Optional[int] = None,
         length_penalty: Optional[float] = None,
+        repetition_penalty: Optional[float] = None,
+        prefer_finetuned: bool = False,
     ) -> Dict[str, Any]:
         """
-        Translates text from source_lang to target_lang.
+        Translates text from source_lang to target_lang with intelligent sentence segmentation,
+        refined beam search, and production-grade detokenization.
 
         Parameters:
         - text: Input string to translate.
         - source_lang: Source language name or code ('en', 'hi', 'English', 'Hindi').
         - target_lang: Target language name or code ('en', 'hi', 'English', 'Hindi').
-        - num_beams: Beam search width (default from config: 4).
-        - max_length: Maximum generation length (default from config: 128).
-        - length_penalty: Generation length penalty (default from config: 1.0).
+        - num_beams: Beam search width (default: 5).
+        - max_length: Maximum generation length (default: 160).
+        - length_penalty: Generation length penalty (default: 1.0).
+        - repetition_penalty: Repetition penalty (default: 1.12).
+        - prefer_finetuned: If True, uses the local fine-tuned checkpoint if available.
 
         Returns:
         - Result dictionary containing translation, metadata, and execution time.
@@ -166,44 +178,61 @@ class Translator:
                 f"Currently supported: English ↔ Hindi."
             )
 
-        # 3. Clean input text
+        # 3. Clean and validate full input text
         is_hindi_input = (src_code == "hi")
         cleaned_input = clean_text(text, is_hindi=is_hindi_input)
         if not cleaned_input:
             raise ValueError("Input text contained only unprintable or invalid characters.")
 
-        # 4. Load or fetch cached model & tokenizer
-        model, tokenizer, metadata = self.model_manager.load_model_and_tokenizer(lang_pair)
+        # 4. Load or fetch cached model & tokenizer (pretrained vs fine-tuned)
+        model, tokenizer, metadata = self.model_manager.load_model_and_tokenizer(
+            lang_pair, prefer_finetuned=prefer_finetuned
+        )
 
-        # 5. Extract hyperparameters with defaults from config
-        beams = num_beams or config.GENERATION_CONFIG["num_beams"]
-        max_len = max_length or config.GENERATION_CONFIG["max_length"]
-        len_pen = length_penalty or config.GENERATION_CONFIG["length_penalty"]
+        # 5. Extract hyperparameters with defaults
+        beams = num_beams or 5
+        max_len = max_length or 160
+        len_pen = length_penalty if length_penalty is not None else 1.0
+        rep_pen = repetition_penalty if repetition_penalty is not None else 1.12
 
-        # 6. Execute translation (with chunking support for multi-paragraph text)
-        is_multiline = "\n" in text or len(cleaned_input) > 250
-        if is_multiline:
-            chunks = self._split_into_chunks(cleaned_input)
-            translated_chunks = []
-            for chunk in chunks:
-                if chunk.strip():
-                    chunk_trans = self.translate_chunk(
-                        chunk, model, tokenizer,
-                        num_beams=beams, max_length=max_len, length_penalty=len_pen
-                    )
-                    translated_chunks.append(chunk_trans)
-            translated_text = "\n".join(translated_chunks)
-        else:
-            translated_text = self.translate_chunk(
-                cleaned_input, model, tokenizer,
-                num_beams=beams, max_length=max_len, length_penalty=len_pen
-            )
+        # 6. Intelligent Paragraph and Sentence Segmentation
+        paragraphs = [p.strip() for p in text.split("\n") if p.strip()]
+        translated_paragraphs = []
 
+        for p in paragraphs:
+            # Segment paragraph into individual sentences
+            sentences = [s.strip() for s in re.split(r"(?<=[.!?।॥])\s+", p) if s.strip()]
+            if not sentences:
+                continue
+
+            translated_sentences = []
+            for sent in sentences:
+                cleaned_sent = clean_text(sent, is_hindi=is_hindi_input)
+                if not cleaned_sent:
+                    continue
+
+                raw_trans = self.translate_chunk(
+                    cleaned_sent,
+                    model=model,
+                    tokenizer=tokenizer,
+                    target_lang=tgt_code,
+                    num_beams=beams,
+                    max_length=max_len,
+                    length_penalty=len_pen,
+                    repetition_penalty=rep_pen
+                )
+                clean_trans = postprocess_translation(raw_trans, target_lang=tgt_code)
+                translated_sentences.append(clean_trans)
+
+            if translated_sentences:
+                translated_paragraphs.append(" ".join(translated_sentences))
+
+        final_translated_text = "\n\n".join(translated_paragraphs)
         elapsed = time.perf_counter() - start_time
 
         return {
             "source_text": text,
-            "translated_text": translated_text,
+            "translated_text": final_translated_text,
             "source_lang": src_code,
             "target_lang": tgt_code,
             "lang_pair": lang_pair,
@@ -221,13 +250,14 @@ def translate(
     source_lang: str,
     target_lang: str,
     num_beams: Optional[int] = None,
-    max_length: Optional[int] = None
+    max_length: Optional[int] = None,
+    prefer_finetuned: bool = False
 ) -> Dict[str, Any]:
     global _global_translator
     if _global_translator is None:
         _global_translator = Translator()
     return _global_translator.translate(
-        text, source_lang, target_lang, num_beams=num_beams, max_length=max_length
+        text, source_lang, target_lang, num_beams=num_beams, max_length=max_length, prefer_finetuned=prefer_finetuned
     )
 
 if __name__ == "__main__":
