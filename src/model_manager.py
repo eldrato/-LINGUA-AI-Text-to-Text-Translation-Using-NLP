@@ -38,18 +38,18 @@ class ModelManager:
         """Initializes computing device (CUDA if available, else CPU)."""
         import torch
         if torch.cuda.is_available():
-            self._device = "cuda"
+            ModelManager._device = "cuda"
             device_name = torch.cuda.get_device_name(0)
             logger.info(f"CUDA is available. Hardware acceleration enabled on: {device_name}")
         else:
-            self._device = "cpu"
+            ModelManager._device = "cpu"
             logger.info("CUDA not available. Running inference on CPU.")
 
     @property
     def device(self) -> str:
-        return self._device or "cpu"
+        return ModelManager._device or "cpu"
 
-    def normalize_lang_pair(self, lang_pair: str) -> str:
+    def normalize_lang_pair(self, lang_pair: str | tuple[str, ...] | list[str]) -> str:
         """
         Normalizes various language pair representations to standard format e.g. 'en-hi' or 'hi-en'.
         Accepts: 'en-hi', 'en_hi', 'English to Hindi', 'English → Hindi', ('en', 'hi').
@@ -153,7 +153,7 @@ class ModelManager:
             cache_key = f"{pair_key}_pretrained"
 
         # Place model on device
-        model.to(self.device)
+        getattr(model, "to")(self.device)
         model.eval()
 
         # Cache in memory

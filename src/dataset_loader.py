@@ -182,11 +182,13 @@ class DatasetLoader:
             rows = []
             if ds is not None:
                 for item in ds:
-                    trans = item.get("translation", {})
-                    en_text = trans.get("en", "")
-                    hi_text = trans.get("hi", "")
-                    if en_text and hi_text:
-                        rows.append({"en": en_text, "hi": hi_text})
+                    if isinstance(item, dict):
+                        trans = item.get("translation", {})
+                        if isinstance(trans, dict):
+                            en_text = trans.get("en", "")
+                            hi_text = trans.get("hi", "")
+                            if en_text and hi_text:
+                                rows.append({"en": en_text, "hi": hi_text})
                     if len(rows) >= max_samples:
                         break
 

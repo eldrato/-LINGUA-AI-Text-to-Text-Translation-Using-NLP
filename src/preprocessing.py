@@ -8,7 +8,7 @@ import re
 import sys
 import unicodedata
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import numpy as np
 import pandas as pd
@@ -104,9 +104,8 @@ def preprocess_dataframe(
 
     # 4. Drop untranslated copies where source == target
     prev_cnt = len(df_clean)
-    df_clean = df_clean[
-        df_clean[source_col].str.lower().str.strip() != df_clean[target_col].str.lower().str.strip()
-    ].reset_index(drop=True)
+    diff_mask = df_clean[source_col].astype(str).str.lower().str.strip() != df_clean[target_col].astype(str).str.lower().str.strip()
+    df_clean = cast(pd.DataFrame, df_clean[diff_mask]).reset_index(drop=True)
     logger.info(f"[Filter 3/7] After removing source==target copies: {len(df_clean)} (-{prev_cnt - len(df_clean)})")
 
     # 5. Script validation: verify Devanagari script in Hindi and Latin in English
@@ -114,41 +113,41 @@ def preprocess_dataframe(
     en_col = source_col if not is_hi_src else target_col
     hi_col = target_col if not is_hi_src else source_col
 
-    has_latin = df_clean[en_col].apply(lambda x: bool(LATIN_RE.search(x)))
-    has_deva = df_clean[hi_col].apply(lambda x: bool(DEVANAGARI_RE.search(x)))
-    df_clean = df_clean[has_latin & has_deva].reset_index(drop=True)
+    has_latin = df_clean[en_col].astype(str).apply(lambda x: bool(LATIN_RE.search(x)))
+    has_deva = df_clean[hi_col].astype(str).apply(lambda x: bool(DEVANAGARI_RE.search(x)))
+    df_clean = cast(pd.DataFrame, df_clean[has_latin & has_deva]).reset_index(drop=True)
     logger.info(f"[Filter 4/7] After script validation: {len(df_clean)} (-{prev_cnt - len(df_clean)})")
 
     # 6. Software formatting / markup filter
     prev_cnt = len(df_clean)
-    is_software_src = df_clean[source_col].apply(lambda x: bool(SOFTWARE_NOISE_RE.search(x)))
-    is_software_tgt = df_clean[target_col].apply(lambda x: bool(SOFTWARE_NOISE_RE.search(x)))
-    df_clean = df_clean[~(is_software_src | is_software_tgt)].reset_index(drop=True)
+    is_software_src = df_clean[source_col].astype(str).apply(lambda x: bool(SOFTWARE_NOISE_RE.search(x)))
+    is_software_tgt = df_clean[target_col].astype(str).apply(lambda x: bool(SOFTWARE_NOISE_RE.search(x)))
+    df_clean = cast(pd.DataFrame, df_clean[~(is_software_src | is_software_tgt)]).reset_index(drop=True)
     logger.info(f"[Filter 5/7] After software/markup filtering: {len(df_clean)} (-{prev_cnt - len(df_clean)})")
 
     # 7. Sentence length, word count, and length ratio filters
     prev_cnt = len(df_clean)
-    src_len = df_clean[source_col].str.len()
-    tgt_len = df_clean[target_col].str.len()
+    src_len = df_clean[source_col].astype(str).str.len()
+    tgt_len = df_clean[target_col].astype(str).str.len()
     ratio = src_len / (tgt_len + 1e-5)
 
     valid_len = (src_len >= min_chars) & (src_len <= max_chars) & (tgt_len >= min_chars) & (tgt_len <= max_chars)
     valid_words = (
-        df_clean[source_col].apply(lambda x: len(x.split()) >= min_words) &
-        df_clean[target_col].apply(lambda x: len(x.split()) >= min_words)
+        df_clean[source_col].astype(str).apply(lambda x: len(x.split()) >= min_words) &
+        df_clean[target_col].astype(str).apply(lambda x: len(x.split()) >= min_words)
     )
     valid_ratio = (ratio >= min_ratio) & (ratio <= max_ratio)
 
-    df_clean = df_clean[valid_len & valid_words & valid_ratio].reset_index(drop=True)
+    df_clean = cast(pd.DataFrame, df_clean[valid_len & valid_words & valid_ratio]).reset_index(drop=True)
     logger.info(f"[Filter 6/7] After length & ratio filtering: {len(df_clean)} (-{prev_cnt - len(df_clean)})")
 
     # 8. Strict disjoint deduplication on normalized source and target to eliminate all data leakage
     prev_cnt = len(df_clean)
     df_clean["_norm_src"] = df_clean[source_col].astype(str).str.strip().str.lower()
     df_clean["_norm_tgt"] = df_clean[target_col].astype(str).str.strip().str.lower()
-    df_clean = df_clean.drop_duplicates(subset=["_norm_src"]).reset_index(drop=True)
-    df_clean = df_clean.drop_duplicates(subset=["_norm_tgt"]).reset_index(drop=True)
-    df_clean = df_clean.drop(columns=["_norm_src", "_norm_tgt"])
+    df_clean = cast(pd.DataFrame, df_clean.drop_duplicates(subset=["_norm_src"])).reset_index(drop=True)
+    df_clean = cast(pd.DataFrame, df_clean.drop_duplicates(subset=["_norm_tgt"])).reset_index(drop=True)
+    df_clean = cast(pd.DataFrame, df_clean.drop(columns=["_norm_src", "_norm_tgt"]))
     logger.info(f"[Filter 7/7] After disjoint normalized sentence deduplication: {len(df_clean)} (-{prev_cnt - len(df_clean)})")
 
     logger.info(f"Preprocessing complete. Retained {len(df_clean)}/{initial_count} high-fidelity pairs ({len(df_clean)/initial_count*100:.1f}%).")
@@ -193,9 +192,9 @@ def split_dataset(
         shuffle=True
     )
 
-    train_df = train_df.reset_index(drop=True)
-    val_df = val_df.reset_index(drop=True)
-    test_df = test_df.reset_index(drop=True)
+    train_df = cast(pd.DataFrame, train_df).reset_index(drop=True)
+    val_df = cast(pd.DataFrame, val_df).reset_index(drop=True)
+    test_df = cast(pd.DataFrame, test_df).reset_index(drop=True)
 
     # Verify zero leakage across splits
     cols_to_check = [c for c in ["en", "hi", "source", "target"] if c in df.columns]

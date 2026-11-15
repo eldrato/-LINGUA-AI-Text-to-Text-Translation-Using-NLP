@@ -171,10 +171,10 @@ def train_model(
         model_inputs["labels"] = labels["input_ids"]
         return model_inputs
 
-    train_ds = Dataset.from_pandas(train_df[[src_col, tgt_col]]).map(
+    train_ds = Dataset.from_pandas(pd.DataFrame(train_df[[src_col, tgt_col]])).map(
         preprocess_function, batched=True, remove_columns=[src_col, tgt_col]
     )
-    val_ds = Dataset.from_pandas(val_df[[src_col, tgt_col]]).map(
+    val_ds = Dataset.from_pandas(pd.DataFrame(val_df[[src_col, tgt_col]])).map(
         preprocess_function, batched=True, remove_columns=[src_col, tgt_col]
     )
 

@@ -35,7 +35,7 @@ except ImportError as _import_err:
     raise _import_err
 
 # Enable seamless execution via `python app.py` by auto-forwarding to `streamlit run`
-if __name__ == "__main__" and hasattr(st, "runtime") and not st.runtime.exists():
+if __name__ == "__main__" and hasattr(st, "runtime") and not getattr(st, "runtime").exists():
     from streamlit.web import cli as stcli  # type: ignore
     sys.argv = ["streamlit", "run", str(Path(__file__).resolve())]
     sys.exit(stcli.main())

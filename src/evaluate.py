@@ -31,15 +31,10 @@ def compute_comet_score(sources: list[str], hypotheses: list[str], references: l
     """Computes COMET score if unbabel-comet and checkpoint are available."""
     try:
         import functools
-        class _HashedSeq(list):
-            __slots__ = ("hashvalue",)
-            def __init__(self, tup, hash=hash):
-                self[:] = tup
-                self.hashvalue = hash(tup)
-            def __hash__(self):
-                return self.hashvalue
         if not hasattr(functools, "_HashedSeq"):
-            functools._HashedSeq = _HashedSeq
+            class _HashedSeq(tuple):
+                pass
+            setattr(functools, "_HashedSeq", _HashedSeq)
 
         from comet import load_from_checkpoint
         cache_dir = Path.home() / ".cache" / "huggingface" / "hub"
@@ -59,8 +54,10 @@ def compute_neural_similarity(hypotheses: list[str], references: list[str], lang
     try:
         from bert_score import score
         # Use cached multilingual BERT for both languages to avoid multi-gigabyte downloads
-        _, _, F1 = score(hypotheses, references, model_type="bert-base-multilingual-cased", verbose=False)
-        return round(float(F1.mean().item()), 4)
+        res = score(hypotheses, references, model_type="bert-base-multilingual-cased", verbose=False)
+        F1 = res[2]
+        f1_mean = getattr(F1, "mean")()
+        return round(float(f1_mean.item()), 4)
     except Exception as e:
         logger.warning(f"Neural similarity evaluation skipped: {e}")
         return None
@@ -355,9 +352,11 @@ def generate_manual_review_and_error_analysis():
         review_df = df.sample(n=n_review, random_state=42).reset_index(drop=True)
 
         acceptable_count = 0
-        for i, row in review_df.iterrows():
-            bleu = float(row.get("sentence_bleu", 0.0))
-            chrf = float(row.get("sentence_chrf", 0.0))
+        for sample_idx, (_, row) in enumerate(review_df.iterrows(), start=1):
+            bleu_raw = row.get("sentence_bleu")
+            bleu = float(bleu_raw) if isinstance(bleu_raw, (int, float, str)) else 0.0
+            chrf_raw = row.get("sentence_chrf")
+            chrf = float(chrf_raw) if isinstance(chrf_raw, (int, float, str)) else 0.0
             src = str(row["source"]).strip()
             ref = str(row["reference"]).strip()
             hyp = str(row["hypothesis"]).strip()
@@ -404,7 +403,7 @@ def generate_manual_review_and_error_analysis():
 
             all_review_records.append({
                 "direction": direction,
-                "sample_id": i + 1,
+                "sample_id": sample_idx,
                 "source": src,
                 "reference": ref,
                 "hypothesis": hyp,

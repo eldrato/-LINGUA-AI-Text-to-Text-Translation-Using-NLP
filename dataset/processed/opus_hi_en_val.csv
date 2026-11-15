@@ -1,536 +1,632 @@
 hi,en
-आपने सफलतापूर्वक बाल्स लगा लिया है। आनंद लो,You 've successfully set up Balsa. Have fun! - - The Balsa development team
-कर्ता के विषयवस्तु का बाउंडिंग बक्से,The bounding box of the actor 's content
-अभी सक्रिय प्लगिन,Currently edited file name
-अतिरिक्त के लिए यह लक्ष्य.,Additional libraries for this target.
-सामग्री को दोहराने के बजाय उन्हें क्षैतिज स्केलिंग करें,Repeat the contents rather than scaling them horizontally
-क्या माउस सूचक को मुख्य स्टेज पर दिखाई देता है,Whether the mouse pointer is visible on the main stage
-स्वतः इनकमिंग कॉल का उत्तर दें (_ A),_ Automatically answer incoming calls
-जोड़ें पैकेज,Add _ Package
-साफ के साथ फ़ाइल,Clean module associated with current file
-Gir रिपो निर्देशिकाः,Gir repository 's directory:
-युक्ति प्रबंधक का ClutterBackend,The ClutterBackend of the device manager
-% s से सम्बन्धित नहीं कर पाया (% s),Could not construct URI from% s
-"वीडियो चैनल संख्या प्रयोग के लिये (कैमरा, tv या अन्य श्रोत के चयन के लिये)","The video channel number to use (to select camera, tv or other sources)"
-जवाब सभी को,Reply to all
-क्षैतिज संरेखण,Horizontal Alignment
-आसंधि (नोड) को ताजा करें (_ N),Refresh _ Node
-बदलें अंत पंक्ति अक्षर को सामान्य EOL पाया इंच फ़ाइल,Convert End Of Line characters to the most common EOL found in the file
-पूरा प्रोजेक्ट संस्थापित करें,Unable to update project
-"पथ परिभाषित करें जहाँ वीडियो जमा हैं. यदि रिक्त है, ""XDG _ VIDEO/Webcam"" को प्रयोग किया जाएग.","Defines the path where the videos are stored. If empty, ""XDG _ VIDEO / Webcam"" will be used."
-नई एम बाक्स तरह का मेलबाक्स जोड़ें,Add a new mbox style mailbox
-और ताश बांटें,Deal more cards
-वीडियो कैमरा के लिये प्रारूप चुनें (ज्यादातर USB कैमरा में लागू नहीं होता),Select the format for video cameras (does not apply to most USB cameras)
-निश्चित आईकन को लचीला बनाएँ,Make the selected text uppercase
-"अवैध नामस्थान '% s' पंक्ति% d, कॉलम% d पर","Invalid namespace '% s' at line% d, column% d"
-क्या फ़ाइलों को विंडोज संगत के रूप में पूर्ण रूप से फिर नाम दिया जाना चाहिए?,Should files be renamed to be fully Windows - compatible?
-कार्य (_ A),_ Actions
-हुकुम की बेगम,queen of spades
-रेपोसिटरी प्राधिकरण,Repository authorization
-प्रगति डायलाग प्रदर्शित करें,Display message
-वीडियो हार्डवेयर त्वरण निष्क्रिय करें,Disable video hardware acceleration
-पैकेज गुण,Package properties
-"माउस के अधीन जो एक्सेसेबल है, उसे जांचें",Inspect accessible under mouse
-"क्या हिंटिंग का उपयोग करने के लिए (से सक्षम, 0 से निष्क्रिय, और-1 से डिफ़ॉल्ट उपयोग करने के लिए)","Whether to use hinting (1 to enable, 0 to disable and - 1 to use the default)"
-wireframes दिखाएँ,Show wireframes
-जोड़ें समूह,Cannot add group
-पहुँच योग्य भूमिका,Accessible Role
-कम से कम एक फील्ड को निर्धारित करें मिलाने के लिए,You must specify the name of the user header to match on
-छाँटे गए मेलबाक्स को मिटाओ,Delete the selected mailbox
-फ़ाइलतंत्र जिसे आपने चुना अस्थायी छवियों को जमा करने के लिए वह 2 GiB से अधिक आकार की फ़ाइलों को रख नहीं सकता है,The filesystem you chose to store the temporary image on cannot hold files with a size over 2 GiB
-पता बचाओ....,_ Store Address...
-पथ को कमांड,"Path to ""cvs"" command"
-बाहर जानेवाले कॉल के लिए SIP आउटबाउंड प्रॉक्सी,The SIP Outbound Proxy to use for outgoing calls
-GL एक्सटेंशन का कौमा से पृथक सूची जिसे प्रीटेंड किया जाना है निष्क्रिय किया गया है,Comma - separated list of GL extensions to pretend are disabled
-उपकरण-पट्टी दिखाएँ या नहीं,Whether or not to show the toolbar
-प्रारंभ टर्मिनल के लिए.,Cannot start terminal for debugging.
-बेकर्स खेल,Bakers Game
-स्कैन फ़ोल्डर,Scan Folder
-ट्रस्ट सर्वर,Trust server
-गनोम गनू प्रोजेक्ट का भाग है,Show the status of a file / directory
-गिनती का प्रयोग करें,Use a countdown
-लाल पान की सत्ता के बगल में लाल पान के छक्का को रखें.,Place the seven of hearts next to the six of hearts.
-प्रदर्शक वर्णन का प्लगइन,Display description of the plugin
-% (rolename) s सूची% (num) d पंक्ति और स्तंभ से मेल नहीं खातेparent indexrow and column index,% (rolename) s index% (num) d does not match row and column
-कमिट करें अभी खोले गए मेलबाक्स के बदलावों को,Expunge messages marked as deleted in the current mailbox
-फाइल को नीचे डिस्क में लिखने के लिए खीचें या कॉपी करें,Drag or copy files below to write them to disc
-अंजुता के लिए टर्मिनल प्लगिन,Terminal Plugin for Anjuta.
-बहुल क्लिक का पता लगाने के लिए आवश्यक क्लिक के बीच की दूरी,The distance between clicks necessary to detect a multiple click
-खोज रहा है घटक के लिए,Component for searching
-वर्तमान सत्र संग्रहित करें,Current _ Username
-हुकुम का नहला,nine of spades
-बाह्य क्वेरी (एक प्रोग्राम),External query (a program)
-दस आरपार,Ten Across
-अनुवाद X,Translation X
-सामान्य नियंत्रण,Normal Control
-अंश को बचाओ,mixed parts
-सारे आयताकार ज्यामिति के लिए तार रूपरेखा जोड़ें,Add wire outlines for all rectangular geometry
-ट्रैक लंबाईः,Track length:
-मिटाएं... (_ R),_ Remove...
-रास्ते में नयी फाइल जोड़ो,Attach file at PATH
-बल्सा फिल्टर,Balsa Mail Client
-छवि की सीडी बर्निंग का सिमुलेशन,Simulation of image to CD burning
-नया फ़ाइल,New _ Folder
-छिपे प्रविष्टि में आगत वर्ण दिखाना कितना समय लेगा,How long to show the last input character in hidden entries
-संरचना स्लाइस की रचना को डीबग करें,debug the creation of texture slices
-लागू करें चयनित,Apply selected stash
-भराई का रंगः,Fill color:
-बांधने के लिए निर्देशांक,The coordinate to bind
-वेब कैम से लिए जाने वाले तस्वीर का चमकीलापन का स्तर समायोजित करें,Adjusts brightness level of the picture coming from the webcam
-छवि पूर्वावलोकन की चौड़ाई,Width for image preview
-सारणी कोष्ठ,table cell
-खोज निर्देशिका (_ S),_ Search Directory
-"फ़ॉन्ट परिवार का नाम जैसे सेन्स, हैलवेटिका, टाइम्स, मोनोस्पेस","Name of the font family, e. g. Sans, Helvetica, Times, Monospace"
-जावा मोड्यूल,Java Module
-कार्ड चालों में एनीमेशन उपयोग करें या नहीं.,Whether or not to animate card moves.
-भेजने के लिए कोई दस्तावेज नहीं,No Gtodo Client to save.
-~ a को एक लाल पान का बादशाह पर ले जाएँ,Move ~ a onto the king of hearts.
-"फिल्टर डायलाग खुला है, इसे बन्द करें इससे पहले की आप फिल्टर को किसी पत्र डालने के सन्दूक पर चला सकें,","The filters dialog is opened, close it before you can run filters on any mailbox"
-पिछला प्रभाव,P _ revious Effects
-स्तंभ स्पैन,Column Span
-क्या स्वाभाविक चौड़ाई गुण का उपयोग किया जाना है,Whether to use the natural - width property
-GTK अनुप्रयोग,GTK + (Application)
-Libisofs आरंभीकृत नहीं किया जा सका.,Libisofs could not be initialized.
-संरेखण का स्रोत,The source of the alignment
-उल्लेखित करता है कि क्या एटीके-हायपरलिंक वस्तु चयनित है,Specifies whether the AtkHyperlink object is selected
-प्राप्ति कर सकते हैं,Can Seek
-कृपया कोई डिस्क छवि चुनें.,Please select a disc image.
-बदलें सी शीर्ष टिप्पणी और श्रोत फ़ाइल,Swap C header and source files
-"""% s"" स्थान स्कैन नहीं कर सकता है","Cannot scan location ""% s"""
-निर्देशिका बिल्ड करेंः,Build Directory:
-अतिरिक्त फ्लैग्स के लिए यह लक्ष्य.,Additional linker flags for this target.
-नियमित ट्रैकस के रूप में सारे गाने को लिखने के लिए यहाँ क्लिक करें,Click here to burn all songs as regular tracks
-विन्यास सारः,Configuration summary:
-बहुत अधिक चयनीय शिशु हैं,Too many selectable children
-डैशर ट्यूटोरियल (_ T),Dasher _ Tutorial
-~ a को एक हुकुम का छक्का पर ले जाएँ,Move ~ a onto the six of spades.
-समयरेखा को प्रगति की गणना कैसे करना चाहिए,How the timeline should compute the progress
-अंतर्वस्तु लिखें (_ C)...,Burn _ Contents...
-फ़ोल्डर स्कैन करें...,Scan Folder...
-श्रोत फ़ाइल नहीं से फ़ाइल सिस्टम.,The source file will not be deleted from the file system.
-त्रुटि को a समूह!,Error: The snippet must belong to a group!
-एक्सेरसाइसर आपके डेस्कटोप में मौजूद अनुप्रयोग नहीं देख पाया। इस समस्या के समाधान के लिए आपको डेस्कटोप पहुंचनीयता को सक्रिय करना होगा। क्या आप इसे सक्रिय करना चाहते हैं?,Accerciser could not see the applications on your desktop. You must enable desktop accessibility to fix this problem. Do you want to enable it now?
-टर्मिनल संचालन,terminal operations
-विडियो इनपुट युक्ति% s जोड़ा,Added video input device% s
-फ़ाइल से. पर है अधिक को पुनःभारित करें?,"The file ""% s"" on the disk is more recent than the current buffer. Do you want to reload it?"
-हुकुम की पंजा के बगल में हुकुम के चव्वा को रखें.,Place the five of spades next to the four of spades.
-वाला कंपाइलर फ्लैग्सः,Vala compiler flags:
-एक अनजान त्रुटि हुई. यह संभव है कि बग बड्डी से जुड़ी समस्या हो. कृपया इस समस्या को bugzilla. gnome. org पर स्वयं रिपोर्ट करें,An unknown error occurred. This is most likely a problem with bug - buddy. Please report this problem manually at bugzilla. gnome. org
-एक मिलान/एक भी मिलान नहीं,One _ Matches / None Matches
-डिस्क इमेज़ एक सीडी या डीवीडी पर लिखें,Write disc image to a CD or DVD disc
-को प्लगइन पंजीयन फंक्शन से. इंच से.,Unable to find plugin registration function% s in module% s
-पंजीकृत% s% s,Registered% s
-पिक्सेल प्रारूप,Pixel Format
-पिछला संदेश,Go to previous help page
-आइकन के नीचे पाठ,Text below icons
-फोन पर हैं,On the phone
-एस्लेरियॉट के बारे में,About Aisleriot
-% s को नहीं हटा पाया% s,Could not remove% s:% s
-"""% s"" में डिस्क पर पर्याप्त स्थान उपलब्ध नहीं है.","Not enough space available on the disc in ""% s""."
-प्लगिन अंतरफलक लागू करें,Implement plugin interfaces
-नया भ्वाएस मेल ध्वनि,The new voice mail sound
-हटाएँ a फ़ाइल निर्देशिका से सबवर्सन ट्री,Remove a file / directory from Subversion tree
-स्क्रॉल पट्टी,scroll bar
-रिकार्डिंग रोकें (_ R),Stop _ Recording
-अस्थायी फ़ाइल के लिए स्थान (_ T),Location for _ Temporary Files
-अज्ञात मान,Unknown value
-फिर जाँचें (_ A),Check _ Again
-खाता फिर भरें,Recharge the account
-लोड हो रहा है,Loading Executable:
-संदेश सहेजें,Copy message
-क्या क्लिक करने योग्य दबा हुआ स्थिति में होना चाहिए,Whether the clickable should be in pressed state
-विषयवस्तु के आकार को बढ़ाने के समय इस्तेमाल किया गया फिल्टर,The filter used when increasing the size of the content
-offscreen समर्थन को ट्रेस करें,Trace offscreen support
-प्लगइन के लिए प्राथमिकता मान,The priority value for the plugin
-c/. h फाइलों को आपस में बदलें,Swap. h /. c
-एक% s को आप ढूंढ रहे हैं.,You are searching for a% s.
-कृपया एंटर लेखक से. नाम,Please enter the commit author 's name
-हुकुम का दहला,ten of spades
-आधार पर एक पत्ता ले जाएँ.,Play a card to foundation.
-लान्चर सूचना का सम्पादन करें,Enter the project name:
-एस्लेरियाट के लिये सहायता देखें,View help for Aisleriot
-~ a को एक सुरक्षित खाँचा पर ले जाएँ,Move ~ a onto an empty reserve slot.
-ईंट की तिक्की,three of diamonds
-प्रक्रिया को कोः,_ Process to attach to:
-डिस्क छवि चुनें,Select Disc Image
-छवियों को बर्न करने के लिए तलाश करने के दौरान ब्राउज किया गया पिछला फोल्डर,The last browsed folder while looking for images to burn
-इस बनावट के लिए पिक्समेप का चौड़ाई बाध्य हैं,The width of the pixmap bound to this texture
-तस्वीरें लेना (_ T) रोकें,Stop _ Taking Pictures
-हाइलाइट किए गए सीमांत का रंग और अपारदर्शिता।,The color and opacity of the highlight border.
-"फाइल चुनें जिसको आप पुनर्भंडारित करना चाहते हैं और ""Restore"" बटन पर क्लिक करें","Select the files you want to restore and click on the ""Restore"" button"
-मीडिया फ़ाइल,Media files
-सीडी के लिए आवरण डिजायन करें और छापें,Design and print covers for CDs
-क्या बच्चे को प्राथमिकता प्राप्त होना चाहिए जब संग्राहक क्षैतिज अक्ष पर अतिरिक्त स्थान का आवंटन है.,Whether the child should receive priority when the container is allocating spare space on the horizontal axis
-पाठ का आकार घटाएँ,Decrease the text size
-यह मान जलते ध्वजों का प्रतिनिधित्व करता है जो कि इस तरह के संदर्भ में पिछली बार प्रयुक्त थे.,This value represents the burning flags that were used in such a context the last time.
-0 फाइल्स,Diff files
-क्या अतिरिक्त अनुलंब स्थान कर्ता को निर्दिष्ट होना चाहिए.,Whether extra vertical space should be assigned to the actor
-क्या विस्तार विधि में आरंभ करना है,Whether to start in wide mode
-रीसेट डॉक ले-आउट,_ Reset Dock Layout
-चार्ट मॉडल,Chart model
-फाइल% s खोली नहीं जा सकी,Do not open last project and files on startup
-फोल्डर पाथ,_ Face Path
-मेलबाक्स फिर से खोल रहा है,Compressing mail folders...
-न्यूनतम मान,Minimum value
-समाचार सेवा,News Feeds
-यह समूह नाम संपादित करें,Please edit this group name
-"उपयोक्तानाम, उदाहरण के लिए jimUserAuthentication user","The user name, e. g. jim"
-फ़ाइल प्रबंधक,_ Show in File manager
-अनुपस्थित नाम,Missing name
-पुस्तक चिह्न संपादित करें (_ E)...,_ Edit Bookmarks...
-फोरवर्ड करते समय हस्ताछर शामिल करो,Include signature when for _ warding
-छवि को सीडी में लिख रहा है,Burning image to CD
-छुपाएँ process अनुच्छेद मीटर्स,Hide process para _ meters
-{0} से वार्तालाप,Conversations with {0}
-आपके तंत्र में GDB नहीं मिल सका. डिबगिंग सूचना प्राप्त नहीं की जा सकेगी.,GDB could not be found on your system. Debugging information will not be obtained.
-अल्फा मान,Alpha value
-संक्षिप्क स्थिति सूचना,The short status information
-घुमाव केंद्र का Z निर्देशांक,Z coordinate of the center of rotation
-समय रेखा स्वतः पुनः आरंभ करना चाहिए,Should the timeline automatically restart
-छद्मनाम जिसे आप कक्ष में रखेंगे,The pseudonym you 'll have in the room
-इसके आवंटन के भीतर Y अक्ष पर कर्ता की पंक्तिबद्धता,The alignment of the actor on the Y axis within its allocation
-ढूंढें (_ F)...,_ Find...
-बिंदु धुरी Z,Pivot Point Z
-नया लाइब्रेरी,New _ Library...
-निम्नलिखित को दस्ती रूप से अधिष्ठापित और फिर कोशिश करेंः,Please install the following manually and try again:
-जोड़ें a नया लक्ष्य को,Add a new target to the project
-स्थानीय कॉपी करें के साथ सीवीएस ट्री,Syncronize your local copy with the CVS tree
-चुनें यदि आप केवल पाठ दस्तावेज के बीच में खोजना चाहते हैं,Select if you want to search among your text documents only
-"IP टेलिफोनी, VoIP और वीडियो कॉन्फरेंसिंग","IP Telephony, VoIP and Video Conferencing"
-चालू चेकसमिंग संक्रिया,Ongoing checksuming operation
-व्यक्तिगत डाटा,Personal Data
-रिक्त पेज,Empty Page
-दिखाएँ छुपाएँ white,Show / Hide white spaces
-डेक में से पत्ता निकालें,Deal a card from the deck
-डीवीडी में छवि लिख रहा है,Burning image to DVD
-डीवीडी सफलतापूर्वक कॉपी किया गया,DVD successfully copied
-संपर्क संपादित करें,Edit contact
-आयात a नया श्रोत ट्री को सीवीएस,Import a new source tree to CVS
-प्रतिबन्ध किसी अक्ष के लिए ड्रैगिंग,Constraints the dragging to an axis
-सुरक्षा जाँच असफल,Security check failed
-छोडें या एंटर,Drop or enter revision here
-क्षमता जाँच% s के लिए युक्ति आरंभ करने में विफल,Failed to initialize device% s for capability probing
-सामान्य पाठ आकार उपयोग,Use the normal text size
-"सत्यापन के दौरान प्रयुक्त उपयोक्तानाम, यदि उपयोक्तानाम से अलग है; खाली छोड़ें यदि आपके पास कोई नहीं है","The user name used during authentication, if different than the user name; leave empty if you do not have one"
-फिर लिखने योग्य डिस्क में ऑडियो ट्रैक की रिकॉर्डिंग सलाहकारी नहीं है.,Recording audio tracks on a rewritable disc is not advised.
-क्या आप वाकई यह स्थान चुनना चाहते हैं?,Do you really want to choose this location?
-प्रारंभिक त्वरण कारक,Initial acceleration factor
-स्थान जिसे आप छवि को जमा करने के लिए चुनते हैं वह डिस्क छवि के लिए पर्याप्त खाली स्थान नहीं रखता है,The location you chose to store the image on does not have enough free space for the disc image
-छवि की डिस्क बर्निंग का सिमुलेशन,Simulation of image to disc burning
-कनेक्शन जो फार्स्ट स्टार्ट (फास्ट स्टार्ट) मोड में स्थापित किया जायेगा. फार्स्ट स्टार्ट एक नया तरीका है जो कॉल को तेजी से स्टार्ट करता है जो कि H. 323v2 में लाया गया था.,Connection will be established in Fast Connect mode. Fast Connect (Fast Start) is a new way to start calls faster that was introduced in H. 323v2.
-वर्तमान दस्तावेज का सूछ्म विवरण दीजिए,Add one more view of current document
-चुनी गई आसंधियों (नोड) के शिशुओं को ताजा करें,Refresh selected node 's children
-ऑडियो कोडेक सूची,The Audio Codecs List
-सबवर्सन उलटें पूर्ण.,Subversion: Revert complete.
-~ a को एक क्लब का दोनों पर ले जाएँ,Move ~ a onto the two of clubs.
-प्रारंभ a नया और नहीं खोलें फ़ाइल इंच,Start a new instance and do not open the file in an existing instance
-कार्यान्वित करें कमांड से. प्रयोग कर रहा है से. नहीं,Cannot execute command:% s (using shell% s)
-% s के साथ खोलें,Open with% s
-आगे (_ F),_ Forward
-"पता, उदाहरण के लिए sip: xyz @ekiga. net; यदि आप मेजबान अंश निर्दिष्ट करते हैं, उदाहरण के लिए sip: xyz, तो आप रोस्टर में संपर्क पर दाहिना क्लिक करके चुन सकते हैं","Address, e. g. sip: xyz @ ekiga. net; if you do not specify the host part, e. g. sip: xyz, then you can choose it by right - clicking on the contact in roster"
-डैशर फ़ॉन्ट चुनें,Select Dasher Font
-चुनें फ़ाइल को चिह्नित जैसे हलः,Select Files to Mark as Resolved:
-लिखें (_ B)...,_ Burn...
-फाइल स्थानीय रूप से जमा नहीं है,The file is not stored locally
-स्निपेट चर,Snippet Variables
-चुने गए एक्सेसेबलों को पुस्तक-चिह्नित करें,Bookmark selected accessible.
-स्वतः चालू रूकें,Auto On Stop
-अज्ञात त्रुटि.,Unknown error.
-LDAP पता पुस्तिका जोड़ें,Add an LDAP Address Book
-सूची बॉक्स,list box
-कर्ता के लिए दिखाई देने वाले क्षेत्र,The visible region of the actor
-कोई कैमरा नहीं मिला!,No camera found!
-संदेश का नक़ल लें,_ Copy All Messages
-बाहर निकालें (_ j),E _ ject
-क्या आप इस सत्र के लिए दूसरा स्थान निर्दिष्ट करना चाहते हैं या मौजूदा स्थान के साथ फिर कोशिश करना चाहते हैं?,Do you want to specify another location for this session or retry with the current location?
-आंकड़ा परियोजना खोलें जो कि URI को जोड़ते हुए दिए हुई कमांड लाइन पर,Open a data project adding the URIs given on the command line
-फाइल नहीं मिली,Widget not found:% s
-वीडियो पुनः प्रारंभ करें (_ V),Resume _ Video
-लिप्स मोड्यूल,Lisp Module
-Git संस्करण नियंत्रण,Git version control
-प्रदर्शक जोड़ें बटन,Display an Add button
-ऑडियो सीडी सफलतापूर्वक लिखा गया,Audio CD successfully burnt
-क्या न्यूनतम ऊँचाई गुण का उपयोग करना है,Whether to use the min - height property
-स्तंभ समरूप,Column Homogeneous
-% s नहीं बचाया जा सकाः% s,Could not get an HTML part:% s
-नया विंडो (_ N),New _ Window
-CD/DVD सर्जक फोल्डर,CD / DVD Creator Folder
-GLSL अक्षम,Disable GLSL
-एक नयी फाइल का निर्माण करें,Create new directories
-सभी वर्तमान काल के संदेश भेजने वालों को उत्तर दें,Display function arguments of the current frame
-युक्ति का नाम,The name of the device
-यू आर एल% s को बुलाया जा रहा है,Calling URL% s...
-या तो-- appname या-- package वितर्क जरूरी है.,Either - - appname or - - package arguments are required.
-पाठ को प्रयोक्ता को एंटर प्रविष्टि,Text to show the user what to enter into the entry
-चंदन कुमार (chandankumar. 093047 @gmail. com),translator _ credits
-खेल पुनः शुरू करें,_ Restart Program
-क्या आप किसी तरह से जारी रखना चाहते हैं?,Do you want to continue anyway?
-विषयवस्तु बॉक्स,Content Box
-जाल स्थल,Web site
-ध्वनि फार्मेट,Auto format
-काल ग्राफ,Call Graph
-यह वैध डिस्क छवि या वैध क्यू फ़ाइल प्रतीत नहीं होती है.,It doesn 't appear to be a valid disc image or a valid cue file.
-खाली अस्थायी खाँचा पर पत्ता ले जाएँ,Move a card to an empty temporary slot
-बर्स्ट मोड में जाएँ,Switch to Burst Mode
-"क्या ब्रैसेरो को परियोजना में लक्षित फाइलों के द्वारा सांकेतिक कड़ी से बदला जाना चाहिए. सही पर सेट करें, ब्रैसेरो सांकेतिक कड़ी को बदलेगा.","Should brasero replace symbolic links by their target files in the project. Set to true, brasero will replace symbolic links."
-ब्रैसेरो-सीडी लिख रहा है (% i%% संपन्न),Brasero - Burning CD (% i%% Done)
-संपादन कमांड जैसे स्क्रिप्ट इंच Anjuta पर बंद करें,Edit command as script in Anjuta on close
-सूचकांक और खोज फलक की चौड़ाई.,The width of the index and search pane.
-निर्धारित छेत्रों में से एक में है:,One of the specified fields contains:
-"लिखे, डीवीडी और बीडी रिक्त करें",Burns and blanks DVDs and BDs
-डिस्क रिकार्ड किए जाने के पहले फिर लोड किए जाने की जरूरत है,The disc needs to be reloaded before being recorded
-रोकें टिप्पणी,_ Block Comment / Uncomment
-% s संबंध के लिए अन्योन्य गायब है,Missing reciprocal for% s relation
-निर्दिष्ट घटक मौजूद नहीं है या फिर पुनर्नामकरण किया गया है. कृपया नवीनतम संस्करण में उन्नत करें.,The component specified doesn 't exist or has been renamed. Please upgrade to the latest version.
-प्रयोग के लिए अतिरिक्त प्लगइन की श्वेत सूची,White list of additional plugins to use
-SSL असफल:% s,signing and encryption failed
-कृपया सीडी/डीवीडी बर्नर में फिर डिस्क घुसाएँ.,Please re - insert the disc in the CD / DVD burner.
-हस्ताछरित संदेश,Unsigned decimal
-SIP जमावट,SIP Settings
-ब्रैसेरो-डीवीडी लिख रहा है (सिमुलेशन),Brasero - Burning DVD (Simulation)
-सिर्फ सब्सक्राईव्ड फोल्डर,Subscribed _ folders only
-इको निरस्तीकरण सक्रिय करें (_ c),Enable echo can _ celation
-बहिष्कृत URIs विभाजन,Excluded partitions URIs
-UI कानफिगर करें,Run C _ onfigure...
-स्वचालित उत्तर,Automatic answer
-आवाज का उपयोग करें,Use Sound...
-निचली तारीख ऊपरी तारीख से ज्यादा है,Low date is greater than high date
-सभी मिलानों को बदलें,Replace all matches
-फाइल कापी करें,_ Compile
-प्रथम पथः,First Path:
-चीज वेबसाइट,Cheese Website
-एकल पंक्ति मोड,Single Line Mode
-चयन पट्टी में फाइलों को दोहरा क्लिक करें,double click on files in the selection pane
-विजेट नहीं मिलाः% s,File not found
-सारणी स्तंभ शीर्षिका बदल चुका है यह बताने हेतु उपयोग में आता है,Is used to notify that the table column header has changed
-सभी को कोलैप्स करें,_ Collapse All
-Anjuta के लिए नमूना प्लगिन.,Symbol Database Plugin for Anjuta.
-~ a को एक हुकुम का नहला पर ले जाएँ,Move ~ a onto the nine of spades.
-"संसाधन, जैसे कि घर या काम, जो समान खाता में पंजीकृत कई टर्मिनल में अंतर करने में समर्थ है; खाली छोड़ें यदि आप नहीं जानते हैं कि यह क्या है","The resource, such as home or work, allowing to distinguish among several terminals registered to the same account; leave empty if you do not know what it is"
-स्ट्रिंग के एलिप्साइड के लिए पसंदीदा जगह,The preferred place to ellipsize the string
-सोर्स हटाएं,_ Remove Editor View
-क्या shader कम्पाइल किया गया और जुड़ा हुआ है,Whether the shader is compiled and linked
-क्षैतिज अक्ष में बच्चे के लिए अतिरिक्त स्थान आबंटित,Allocate extra space for the child in horizontal axis
-अंतर्क्रियात्मक% s कार्रवाई करने योग्य नहीं है,interactive% s is not actionable
-'% s-- help' को उपलब्ध कमांड लाइन विकल्पों की पूरी सूची के लिए चलाएँ.,Run '% s - - help' to see a full list of available command line options.
-कोई फिल्टर का नाम निर्धारित नहीं है,No file or Project opened.
-वर्तमान कॉल लें,Pick up the current call
-प्रकार बेमेल,Type mismatch
-"इस समय जिसे प्राप्त किया गया हो, उसकी विभिन्न विधियों (मेथड) में विचरण करें",Browse the various methods of the current accessible
-कमांड छोड़ा गया,Command aborted
-क्या क्लिक करने योग्य के पास ग्रैब है,Whether the clickable has a grab
-शिखर shader का स्रोत,Source of vertex shader
-नई पहचान,New Identity
-डाटा DVD लिख रहा है,Burning data DVD
-"चयनित ऑडियो डिवाइस सफलतापूर्वक खोला गया लेकिन यह असंभव है आंकड़ा को डिवाइस में लिखना. उस स्थिति में यदि यह एक प्लगेबल युक्ति है यह पर्याप्त होगा इसे फिर कनेक्ट करना. यदि नहीं, या यदि यह अभी भी पहुँच योग्य नहीं है, कृपया अपना ऑडियो सेटअप जाँचें.","The selected audio device was successfully opened but it is impossible to write data to this device. In case it is a pluggable device it may be sufficient to reconnect it. If not, or if it still is not accessible, please check your audio setup."
-घुमाव कोण Y,Rotation Angle Y
-चयनित फाइल चलाने योग्य नहीं है,Executable '% s' is not up - to - date.
-पत्र डालने का सन्दूक% s बल्सा द्वारा उपयोग किया जा रहा है मैं हटाने में असमर्थ हूँ अगर आप इसे हटाना ही चाहते हैं तो इसके फंक्शन को असाइन करें किसी दूसरे पत्र डालने के सन्दूक को,"Mailbox ""% s"" is used by Balsa and I cannot remove it. If you really want to remove it, assign its function to some other mailbox."
-स्रोत गुण,Source properties
-फ़ॉन्ट नाम,Property Name
-एक तिक्की को आप ढूंढ रहे हैं.,You are searching for a three.
-विशिष्ट पंक्ति संख्या पर जाएं,Go to a particular line in the editor
-परियोजना या अवैध,Project doesn 't exist or invalid path
-प्रभाव चयनक में जाएँ,Switch to the Effects Selector
-कर्ता के लिए क्लिप क्षेत्र,The clip region for the actor
-वर्तमान काल के हिस्से को संदेश में बचाएँ,Save currently displayed part of message
-% s फिल्टर को निर्यात करने में असफल त्रुटि हो गई है,"Unable to export filter% s, an error occurred."
-ब्रेकपाइंट को समायोजित करें,Add a breakpoint
-नहीं प्रयुक्त संसाधन पाया के साथ यूआरआई से.,"No recently used resource found with URI ""% s"""
-नये इंस्टेंट संदेश पर आवाज दें,Play sound for new instant messages
-एक सत्ता को आप ढूंढ रहे हैं.,You are searching for a seven.
-Timestamp नयी फाइल,Timestamp new files
-छैतिज पैमाना,Profile Plugins
-आँकड़ा डीवीडी बर्निंग का सिमुलेशन,Simulation of data DVD burning
-जाँचने के लिए प्रोग्रामः,Program to test:
-वीडियो इनपुट युक्ति एक ऐसी युक्ति है जो कि वीडियो लेने के लिए प्रयुक्त होता है कॉल के दौरान.,The video input device is the device that will be used to capture video during calls.
-जनक सेट पर दिखाएँ,Show on set parent
-"सुरक्षा कारणों से बीगल को रूट की तरह चला नही सकते, सामान्य प्रयोक्ता की तरह पुनः चालू करें","For security reasons, Beagle cannot be run as root. You should restart as a regular user."
-पंक्तियों की संख्या जो संतति तक फैला है,The number of rows that a child spans
-चार्ट रूट नोड,Chart root node
-मीडिया फ़ाइल के यूआरआइ,URI of a media file
-अस्थायी फाईल% s बनाने में असमर्थ,could not create new data object
-/ बुकमार्क संशोधन,_ First Bookmark
-एकल स्तर,Single Level
-फ़ाइल निर्देशिका कोः,File / Directory to patch:
-बग बड्डी,Bug Buddy
-इस सीडी या डीवीडी डिस्क पर आंकड़ा अखंडता को जाँचेंpicture,Check the data integrity on this CD or DVD disc
-दिये गये होस्ट पर हमेशा कॉल अग्रसारित करें (_ A),_ Always forward calls to the given host
+"फ़ॉन्ट का आकार, तयशुदा आकार की तुलना में","Size of font, relative to default size"
 कुत्ते के कान में कभी सीटी नहीं बजाएँ,Never blow in a dog 's ear
-चयनित फाइल का नाम बदलें,Rename the selected file
-संदेश हटाएँ,E _ xpunge Deleted Messages
-सुपुर्द करें a प्रश्न के लिए,Submit a question for FAQs
-पहला नामः,_ First Name:
-Z अक्ष पर घुमाव कोण,The rotation angle on the Z axis
-संक्रिया नहीं की जा सकती है.,The operation cannot be performed.
-इस प्रोग्राम के साथ आपको ग्नू-जनरल पब्लिक लाइसेंस की प्रतिलिपि मिलनी चाहिए. यदि नहीं तो देखें. slot type,"You should have received a copy of the GNU General Public License along with this program. If not, see."
-हस्ताछर शामिल करो,_ Hide paths
-सुझाव लेवल,Suggestion level
-इसमें संतति के बांये हिससे में जोड़ने के लिये कॉलम संख्या,The column number to attach the left side of the child to
-फोन्ट स्टाइल,Autoformat style
-सभी संग्रहित करें,Save A _ ll
-ईंट का दुक्का के बगल में ईंट का इक्का को रखें.,Place the two of diamonds next to the ace of diamonds.
-क्या यह टैग फ़ॉन्ट परिमाण को प्रभावित करेगा,Whether this tag affects the font weight
-कृपया एंटर a.,Please enter a revision.
-डिस्क पर कोई चेकसम फाइल नहीं मिली,No checksum file could be found on the disc
-अधिकतम jitter बफर (_ j) (ms में):,Maximum _ jitter buffer (in ms):
-क्या आप वाकई बाहर जाना चाहते हैं?,Are you sure you wish to quit?
-गनोम के लिए प्रयोग करने में एक सरल को सीडी/डीवीडी बर्निंग अनुप्रयोग,A simple to use CD / DVD burning application for GNOME
-कर्ता का X निर्देशांक,X coordinate of the actor
-सरह थ्रेडिंग अल्गारिथम,Simple threading algorithm
-जीएनयू डिबगर,GNU Debugger
-अगली चाल हेतु संकेत प्राप्त करें,Get a hint for your next move
-क्या आयत एक सीमा होनी चाहिए,Whether the rectangle should have a border
-वीडियो पूर्वावलोकन के लिए तयशुदा चौड़ाई.,Default width for video preview.
-तय निष्क्रिय करें,Disable fixed
-ब्रेसेरो डिस्क बर्नर,Brasero Disc Burner
-"तेज स्टार्टअप के लिए गहराई १ चुनें, यह कुछ फोल्डर की स्केनिंग से अलग है। अन्य ट्री को स्टार्टअप पर देखने के लिए अधिक गहराई चुनें","Choose depth 1 for fast startup; this defers scanning some folders. To see more of the tree at startup, choose a greater depth."
-डबल क्लिक समय,Double Click Time
-छवि चेकसम,Image Checksum
-दूरस्थ होस्ट ऑफ़लाइन है,Remote host is offline
-समर्थ करें (_ E),_ Enable
-सर्वर (_ S):,_ Server:
-कैमरा से लिया गया छवि की चौड़ाई विभेदन,The width resolution of the image captured from the camera
-चिड़ी की चौवा के बगल में चिड़ी के तिक्की को रखें.,Place the four of clubs next to the three of clubs.
-अवैध सर्वर त्रुटि,Invalid server data
-"जब मैं संदेश प्राप्त करूं एवं प्रेषक संदेश प्राप्ति का नोटिफिकेशन प्राप्त करना चाहें, तब इन निम्न कारणों पर भेजें","When I receive a message whose sender requested a Message Disposition Notification (MDN), send it if:"
-% s का खोलना असफल हो गया। गलती क्रमांक =% d,"Open of% s failed. Errno =% d,"
-वर्तमान काल के संदेश को जुड़े हुए (अटैचमेन्ट) की तरह आगे भेजें,Forward the current message as attachment
-गलत फिल्टर लगाने की कोशिश,Attempt to apply an invalid filter
-"यह एकिगा सामान्य विन्यास सहायक है. निम्न चरण को एकिगा को कुछ सामान्य प्रश्न पूछकर सेटअप करेगा. इन चरण के एकबार पूरा होने पर, संपादन मेनू में वरीयता में जाकर आप उसे हमेशा बदल सकते हैं.","This is the Ekiga general configuration assistant. The following steps will set up Ekiga by asking a few simple questions. Once you have completed these steps, you can always change them later by selecting Preferences in the Edit menu."
-कृपया कोई दूसरी छवि चुनें.,Please select another image.
-आपके कैमरा डिवाइस से चित्रों को दिखाता है,Display images from your camera device
-हुकुम का दहला हटाएँ.,Remove the ace of spades.
-कृपया एंटर लेखक से. e.,Please enter the commit author 's e - mail address.
-Clutter डिबगिंग फ्लैग जिसे अनियत करना है,Clutter debugging flags to unset
-ग्लेड योजना,Whole project
-"समय, मिलीसेकेंड में, तस्वीर की बर्स्ट शृंखला में हर तस्वीर लेने के लिए अंतराल.","The length of time, in milliseconds, to delay between taking each photo in a burst sequence of photos."
-बदलें (_ R),_ Replace
-चिड़ी का सत्ता,seven of clubs
-% s किसी समुच्चय का सदस्य नहीं है,% s does not belong to a set
-एकिगा वरीयता,Ekiga Preferences
-प्रोजेक्ट उपलब्ध नहीं है,Program '% s' does not exists
-कृपया निम्नलिखित क्षेत्र अद्यतन करें.,Please update the following fields.
-फाइल% s संग्रहित नहीं की जा सकी,Could not save intermediate file% s:% s.
-युक्ति हटायी गई,Device removed
-ठहराव की लंबाई दें जो ट्रैक का पालन करना चाहिए,Gives the length of the pause that should follow the track
-नया कार्ड डील करें,Deal a new card
-डिस्क की छवि को आपके हार्ड ड्राइव पर बनाया गया है. लिखना शुरू हो जाएगा जैसे ही कोई रिकार्ड करने योग्य डिस्क घुसाया जाता है.,An image of the disc has been created on your hard drive. Burning will begin as soon as a recordable disc is inserted.
-हाल में ही प्रयोग की गई फाइलें,Recent _ Files
-सिर्फ पाठ,Text only
-कोई सीडी/डीवीडी बनाएँ जो किसी प्रकार का आँकड़ा समाहित करता है जो किसी कंप्यूटर पर पढ़ा जा सके,Create a CD / DVD containing any type of data that can only be read on a computer
-यहां व्यस्त,Busy Here
-कर्ता के लिए स्थिर स्थान का इस्तेमाल करें,Whether to use fixed positioning for the actor
-ड्रैग थ्रेशोल्ड,Drag Threshold
-Libdvdcss ठीक से लोड नहीं की जा सकी,Libdvdcss could not be loaded properly
-प्लगइन के मौजूदा सेट में लिखना संभव नहीं है.,It is not possible to write with the current set of plugins.
-प्लगइन शीर्षकः,Plugin Title:
-मददगार तकनीक पँहुच हेतु प्रारूपित वस्तु उदाहरण नाम,Object instance 's name formatted for assistive technology access
-घुमाव केंद्र का X निर्देशांक,X coordinate of the center of rotation
-"ट्रैक सूचना संपादित करें (start, end, author,...)","Edit the track information (start, end, author,...)"
-आपने जो ईमेल पता दिया है वह वैध नहीं है.,The email address you provided is not valid.
-फ़ाइल के लिए और एकल फ़ाइल,File manager for project and single files
-अतिरिक्त सी फ्लैग्स के लिए यह लक्ष्य.,Additional C preprocessor flags for this target.
-नहीं दस्तावेज़ खोलें कमांड,No document currently open: command aborted
-कृपया एक पुस्तक इस निर्देशिका के लिए दें,Please provide a Book Name for this directory
-युक्ति का पथ,PATH TO DEVICE
-"""Add"" बटन को चयन संवाद दिखाने के लिए क्लिक करें","click the ""Add"" button to show a selection dialog"
-नयों को टागल करें,Toggle Guides
-आयत की बॉर्डर के रंग,The color of the border of the rectangle
-क्या यह टैग फ़ॉन्ट आकार को प्रभावित करेगा,Whether this tag affects the font size
-ईमेल या a लिंक को a पृष्ठ प्रयोक्ता report है.,An email address or a link to a web page where the user can report bug. It is optional.
-अनुवाद डोमेन,Translation Domain
-स्वतः पूर्ण घुसाएँ,_ Auto complete insert
-ऊपरी तारीख गलत है,High date is incorrect
-मेलबाक्स में ताला लगाने में असमर्थ,Unable to Open Mailbox!% s.
-पठन विकल्प नहीं बनाया जा सका,Read options could not be created
-आयत को खींचने में बाधित,Constrains the dragging to a rectangle
-Libburnia बर्निंग सूट,Libburnia burning suite
-अस्थायी फ़ाइल,Temporary files
-मिलाने करें जब तारीख इस (इन्टरवैल) के बाहर हो:,Match when date is outside the interval:
-विषय प्रकार,Content type
-प्लग-इन दृश्य,Plugin View
-बिना सहेजें बंद करें (_ o),Cl _ ose Without Saving
-लाल पान का दहला,ten of hearts
-डिबगिंग कोड सक्रिय करें,Enable debugging code
-बदलें को a शाखा टैग,Switch to a Branch / Tag...
-ईंट का पंजा,five of diamonds
-संदेश ठीक करना,Debug messages:
-दस्तावेज़ ईमेल,document email
-XML-RPC संदेश बनाने में अक्षम.,Unable to create XML - RPC message.
-Y अधिकतमः,Y maximum:
-क्रिया (_ A),_ Action
-अतिरिक्त वस्तु फ़ाइल के लिए यह लक्ष्य.,Additional object files for this target.
-क्रमबद्ध बायाँ,Align left
-खाली तस्वीर खाँचा पर पत्तों को ले जाएँ,Move a build of cards on to the empty Tableau slot
-रद्दी में भेजें (_ v),Mo _ ve to Trash
-क्या स्क्रीन रीडर चालू किया हुआ है,Whether typing break is enabled
-~ a को एक चिड़ी की तिक्की पर ले जाएँ,Move ~ a onto the three of clubs.
-ऑफलाइन संपर्क दिखाएँ,Show offline contacts
-GObject उपसर्ग और प्रकारः,GObject Prefix and Type:
-"निर्देशिका जहां ब्रैसेरो अस्थायी फ़ाइलों को भंडारित करता हैं के लिए पथ शामिल हैं. यदि वह मान रिक्त है, तो glib के लिए निर्धारित डिफ़ॉल्ट निर्देशिका का इस्तेमाल किया जाएगा.","Contains the path to the directory where brasero should store temporary files. If that value is empty, the default directory set for glib will be used."
-ईंट का पंजा के बगल में ईंट का छक्का को रखें.,Place the five of diamonds next to the four of diamonds.
-अंजूटा IDE,Anjuta IDE
-फाइल चयन करें,Select the items to save:
-दूरस्थ होस्ट से कनेक्ट नहीं हो पाया,Could not connect to remote host
-ध्वनि वर्यताएं,CVS command options
-खराब उपयोक्तानाम/कूटशब्द,Bad username / password
-पढ़ने में विफल '% s':% s,Failed to read file
-Gdb डिबगर,Gdb Debugger
-फाईल% s पहले से उपस्थित है क्या आप इसे पुनर्लेखित करना चाहते हैं,The file '% s' already exists. Do you want to replace it with the one you are saving?
-दिखाएँ दायाँ,Show right margin
-आपका ड्राइवर किसी रंग प्रारूप को समर्थन करता लगता नहीं है जो एकिगा द्वारा समर्थित है. अपना कर्नेल ड्राइवर दस्तावेज जांचे यह सुनिश्चत करने के लिये कि कौन सी रंगपट्टिका समर्थित है.,Your driver doesn 't seem to support any of the color formats supported by Ekiga. Please check your kernel driver documentation in order to determine which Palette is supported.
-एक से ज्यादा पतों से इस तरह व्यवहार करें,Treat multiple addresses as:
-उपशीर्षक URI,Subtitle URI
-Cogl Pango renderer को ट्रेस करें,Trace the Cogl Pango renderer
-जेनेरिक GNOME प्रोजेक्ट,A GNOME applet project
-छोडें a फ़ाइल को a फ़ाइल या,Whole project; Drop a file here to view a file or folder log
-चल छवि का प्रयोग करें,Use Animations
-क्या आप पूर्ण विंडोज़ सुसंगतता के निष्क्रिय रहने के साथ जारी रहना चाहते हैं?,Do you want to continue with full Windows compatibility disabled?
-% s तत्व को बनाया नहीं जा सकाgrafted,% s element could not be created
-"""CD/DVD Creator Folder"" में नॉटिलस में जोड़ा गया फ़ाइल लिखने की अनुमति देता है","Allows to burn files added to ""CD / DVD Creator Folder"" in Nautilus"
-toc फ़ाइल बदल रहा है,Converting toc file
-कर्ता के उद्गम की स्थिति,The position of the origin of the actor
-श्रीमान् टॉमी,Sir Tommy
-खेल स्तर नही मिला,No level found.
-चीज के लिए मदद फ़ाइल खोलने में असमर्थ,Unable to open help file for Cheese
-समूहः% s,Group:% s
-स्कैनिंग रोकें,Stop scanning
-डिस्क में लिखने के लिए कोई गीत नहीं है,There are no songs to write to disc
-ईंट का नहला के बगल में ईंट का अट्ठा को रखें.,Place the nine of diamonds next to the eight of diamonds.
-"यदि सही पर सेट किया गया है, चीज़ व्यापक विधि में आरंभ होगा दाहिने हिस्से में छवि संग्रह के साथ. छोटे स्क्रीन के साथ उपयोगी.","If set to true, Cheese will startup in a wide mode with the image collection placed on the right side. Useful with small screens."
-अवैध सर्वर URI,Invalid Server URI
-% s पहले से पता किताब में है,This mail address is already in this address book.
-डिस्क के उन्नत विकल्पों को छुपाओ,File manager popup actions
-प्रलेखन ब्राउज़र,Documentation Browser
-मद सक्रियकरण के बाद स्वतः स्कैनिंग फिर आरंभ करें,Automatically restart scanning after item activation
-कृपया टाइप करें% s-- सभी उपलब्ध विकल्प को दिखाने के लिए मदद करें,Please type% s - - help to see all available options
-अगला दस्तावेज़,Next Document
-गति जिसका उपयोग करना हैं,The speed to be used
-श्रव्य सीडी बर्निंग का सिमुलेशन,Simulation of audio CD burning
+फ़ाइल वैध. desktop फ़ाइल नहीं है,File is not a valid. desktop file
+ई-मेल @एड्रेस पर नयी चिट्ठी बनाओ,Compose a new email to EMAIL @ ADDRESS
+DVD + RW दोहरा स्तर,DVD + RW dual layer
+स्वतः सहेजें,Autosave
+प्रपत्र,form
+क्षेत्र से. रखता है अक्षर अनुसरण कर रहा है अक्षर या निर्देशिका अन्दर a डैश कृपया.,"Field ""% s"" must contains only letters, digits, the following characters ""# $:%% +,. = @ ^ _ `~"" or directory separators. In addition you cannot have a leading dash. Please fix it."
+क्या ब्रैसेरो को सूचित करना चाहिए जब फाइल फिल्टर की जाती है,Should brasero notify when files are filtered
+प्रोजेक्ट में सोर्स जोड़ें,Clean whole project
+क्या पाठ एकल पंक्ति मोड में है,Whether the text should be a single line
+संजाल जाँच निष्क्रिय करें (_ d),Disable network _ detection
+ईंट का अट्ठा,eight of diamonds
+अंत में,at the end
+नहींः,Do not use prefix:
+फ़ाइलनाम सेट,Filename Set
+मौज़ूदा विस्तार बनाए रखें (_ K),_ Keep Current Extension
 क्या आप निर्देशिका के भीतर वीडियो फाइल खोजना चाहते हैं?,Do you want to search for video files inside the directory?
-क्या गहराई cueing को सक्षम करें,Whether to enable depth cueing
-किसी नंबर को कॉल करें (_ l),Ca _ ll a Number
-आसान अवधि,Easing Duration
-एक अंतर्क्रियात्मक पाइथन पहुंचनीयता अन्वेषक,An interactive Python accessibility explorer
-जोड़ें (_ A)...,_ Add...
-खाली किए जाने के दौरान त्रुटि,Error while blanking.
-स्तंभों की संख्या जो संतति तक फैला है,The number of columns that a child spans
-उपयोग प्रसंग,Use theme font
+पासः,Pass:
+कृपया डिस्क बाहर करें और इसे पुनःभारित करें.,Please eject the disc and reload it.
+एक या अधिक gstreamer तत्व अनुपस्थित हैः,One or more needed gstreamer elements are missing:
+अपरिचित डेस्कटाप फाइल संस्करण `% s ',Unrecognized desktop file Version '% s'
+एकिगा के बारे में जानकारी देखें,View information about Ekiga
+पूर्ण स्क्रीन में प्रदर्शित करें,Display in full screen
+"यदि सही पर सेट किया जाता है, तब चीज फीचर रखेगा जो किसी फ़ाइल को तत्काल यथास्थान मिटाने की अनुमति देगा, इसे रद्दी में भेजने के बदले. यह फीचर खतरनाक हो सकता है इसलिए सावधानी बरतें.","If set to true, then Cheese will have a feature allowing you to delete a file immediately and in - place, instead of moving it to the trash. This feature can be dangerous, so use caution."
+प्रारंभिक H. 245 सक्षम करें (_ e),Enable _ early H. 245
+"गेटकीपर, उदाहरण के लिए ekiga. net","The gatekeeper, e. g. ekiga. net"
+मान बदल चुका है यह बताने हेतु उपयोग में आता है,Is used to notify that the value has changed
+ताश प्रसंग इंस्टाल करें...,Install card themes...
+~ a को एक लाल पान का गुलाम पर ले जाएँ,Move ~ a onto the jack of hearts.
+लाल पान की तिक्की,three of hearts
+कैमरा से लिया गया तस्वीर का संतृप्ति समायोजित करें,Adjusts the saturation of the image coming from the camera
+पहुंचाः,Accessed:
+चयनित मौन हटाएँ,Remove the selected slices
+वतनी,Native
+यात्रा जांच,Enable braces check
+% s से सम्बन्धित नहीं कर पाया (% s),Could not construct URI from% s
+चयनित फ़ाइल नाम इंच प्लगइन,Selected full file name in the project manager plugin
+ब्लेंडिंग का उपयोग अक्षम,Disable use of blending
+कर्ता के विषयवस्तु का बाउंडिंग बक्से,The bounding box of the actor 's content
+संकेतक स्थिति,The cursor position
+शैली,Patch - Style diff
+कोई गलती नहीं,No error
+सक्षम करें अक्षम लकीर,Enable / disable line wrapping
+एटी-एसपीआई रजिस्ट्री,AT - SPI Registry
+Y अक्ष पर आरंभिक स्केल,Initial scale on the Y axis
+उल्टा स्कैनिंग,Inverse scanning
+atk-ब्रिजः Dbus सर्वर पर सुनने नहीं जा सकाः% s,atk - bridge: Couldn 't listen on dbus server:% s
+मोड्यूल,Module
+वाला स्रोत फ़ाइल,Vala Source File
+वीडियो हार्डवेयर त्वरण निष्क्रिय करें,Disable video hardware acceleration
+कंट्रास्ट समायोजित करें,Adjust contrast
+~ a को एक लाल पान का इक्का पर ले जाएँ,Move ~ a onto the ace of hearts.
+मेलबाक्स स्टेटिक्स दिखाएँ,Show mailbox statistics in left pane
+तिथि-सम्पादक,dateeditor
+Y अक्ष पर फाइनल स्केल,Final scale on the Y axis
+~ a को एक सुरक्षित खाँचा पर ले जाएँ,Move ~ a onto an empty reserve slot.
+केटेलन,_ Catalan
+चौड़ाई विभेदन,Width resolution
+विस्तारित वीडियो भूमिकाः,Extended Video Roles:
+पासवर्ड चाहिए,Password needed
+एक वीवर (V),Run _ Autogenerate...
+अतिरिक्त में से एक ताश के पत्ते को खाली खाँचा पर ले जाएँ,Move a card from the reserve on to the empty tableau slot
+कोई कॉल विशेषता दें,Please provide a Call Attribute
+पीछे,Brace
+पंक्ति के बीच स्थान,The spacing between rows
+"लिखे, डीवीडी और बीडी रिक्त करें",Burns and blanks DVDs and BDs
+नाम के लिए ढूँढें,_ Search for Name:
+"""% s"" एक सांकेतिक कड़ी है जो दूसरे प्रोग्राम को इंगित करती है. बदले में लक्ष्य प्रोग्राम का प्रयोग करें","""% s"" is a symbolic link pointing to another program. Use the target program instead"
+दस्तावेज़ मौज़ूद नहीं है.,The document does not exist.
+सुझाव/त्रुटि विवरणः,Suggestion / Error description:
+पाँच मूलाधार,Five Foundations
+नहीं जनक समूह चयनित,No parent group selected
+बनाएँ a अतरफलक फ़ाइल,Create a template Gtk Builder interface file
+सन्देश,_ Message
+प्लगइन के लिए प्राथमिकता मान,The priority value for the plugin
+सापेक्ष स्थिति,Relative position
+युक्ति पथ,Device Path
+हुकुम का सत्ता,seven of spades
+एक स्ट्रिंग देनी ही होगी,You must provide a tool name!
+खोज स्ट्रिंग की अगली उपस्थिति ढूंढें,Find next occurrence of the search string
+% s नहीं बचाया जा सकाः% s,Could not get an HTML part:% s
+आवाज का उपयोग करें,Use Sound...
+एटी-एसपीआई रजिस्ट्री रैपर,AT SPI Registry Wrapper
+स्थान,Location
+नियंत्रण खीचें,Drag Handle
+"फोकस योग्य% s में सारणी अंतराफलक है, कोई चयनीय अंतराफलक नहीं हैbutton has focused state without focusable state","focusable% s has table interface, no selection interface"
+प्रारंभ,Start
+स्वाभाविक चौड़ाई सेट,Natural width set
+जोड़ें a नया को,Add a new library to the project
+रिफरेंस:% s,Prefere _ nces
+बर्स्ट मोड में जाएँ,Switch to Burst Mode
+फाइल छोड़ें (_ D),_ Discard File
+डिस्क छवि प्रकारः,Disc image type:
+दूरस्थ वीडियो बिंब,Remote video image
+चलाएँ प्रोग्राम,Run program without debugger
+प्रयोग के लिए रिंगिंग ध्वनि युक्ति चुनें,Select the ringing audio device to use
+घुमाव केंद्र का X निर्देशांक,X coordinate of the center of rotation
+टैब स्थिति,Tabs position:
+यह फ़ाइल रिक्त है.,The file is empty
+ध्वनि को दोहराएं,Repeat the last Find command
+स्केल सेंटर Y,Scale Center Y
+प्ले प्रगति पर,"Location:% s, line% d"
+विंडो स्थिति,Window state
+आँकड़ा सीडी बर्निंग का सिमुलेशन,Simulation of data CD burning
+दिखाएँ बीच में स्थानीय कॉपी करें और ट्री,Show differences between your local copy and the tree
+लागू करें पीछे ट्री और अनुक्रमणिका,Apply stashed changes back into the working tree and the index
+इक्का,ace
+GLSL का उपयोग अक्षम,Disable use of GLSL
+क्या फ़ाइल पूर्वालोकन को दिखाना है. इसे प्रयोग के लिए सही पर सेट करें.,Whether to display file preview. Set to true to use it.
+लाइन रैप मोड,Line wrap mode
+मौजूदा परियोजना सहेजें,Save current project
+छोटा आकार (_ o),Zoom _ out
+प्रक्रिया दोषसुधार करें,_ Debug Process...
+मेल करने का पता,_ Mailing address:
+सब्सक्राईब,_ Subscribe
+निम्न फाइल खराब दिखती हैः,The following files appear to be corrupted:
+पंक्ति,Row
+ब्रैसेरो बर्न लाइब्रेरी के लिए प्रदर्शक विकल्प,Display options for Brasero - burn library
+रिमोट पश्चात,Fetch remote branches after creation
+कक्ष नाम,Room name
+स्वाभाविक ऊँचाई सेट,Natural height set
+एंबेडेड घटक,embedded component
+भुगतान जरूरी,Payment required
+क्या आप इस सत्र के लिए दूसरा स्थान निर्दिष्ट करना चाहते हैं या मौजूदा स्थान के साथ फिर कोशिश करना चाहते हैं?,Do you want to specify another location for this session or retry with the current location?
+रेग्युलर एक्सप्रेशन के सिन्टेक्स में गलती है,Search for a string or regular expression in the editor
+प्रीव्यू पेन दिखाएं,Show preview pane
+सेकेंड में समय जिसके बाद खाता में पंजीयन स्वतः समाप्त हो जाता है,Time in seconds after which the account registration is automatically retried
+चिड़ी का इक्का,ace of clubs
+सत्यापित कर रहा है...,Authenticating...
+प्रयुक्त शेडर के प्रकार,The type of shader used
+लंबी प्रेस अवधि,Long Press Duration
+भिन्न प्रकार खेल खेलें,Play a different game
+कोई प्रभाव नहीं मिला,No effects found
+आरोह बिंदु,Mount Point
+एक और पत्ता बाँटें,Deal another card
+ईस्टहैवन,Easthaven
+फाइल नहीं मिली,Widget not found:% s
+कैरो सतह की ऊँचाई,The height of the Cairo surface
+LDAP त्रुटिः,LDAP Error:
+गहराई cueing के लिए सेटिंग्स,Settings for the depth cueing
+परिवर्तन,Uncommitted Changes. diff
+नाश्ता,Breakfast
+कुछ चयनित OpenGL कॉलस को ट्रेस करें,Traces some select OpenGL calls
+URI को जोड़ता हुआ ऑडियो परियोजना खोलें जो कि कमांड लाइन पर दी गई है,Open an audio project adding the URIs given on the command line
+ब्रैसेरो के लिए प्लगिन चुनें,Choose plugins for brasero
+अगला संदेश,Next mesg
+सताने वाला किला,Beleaguered Castle
+हुकुम के पत्ते,spades
+लिखने के पहले सिमुलेट करें (_ S),_ Simulate before burning
+GTK सरल,GTK + (simple)
+(आउटपुट) My tools (error),(output)
+सीकैम (फ्रांस),SECAM (France)
+लाॅगिन,_ Log
+चुने गए अनुप्रयोग,Selected application
+सक्रिय करें (_ c),A _ ctivate
+a टर्मिनल प्रयोग कर रहा है यदि मई नहीं,"Cannot find a terminal; using xterm, even if it may not work"
+काल पैनल संपर्क दिखाएँ,Show the call panel
+पाठ की दिशा,Direction of the text
+पिछला हिस्सा,Previous _ History
+X11 विंडो के लिए बाध्य किया जाना हैं,The X11 Window to be bound
+दस्तावेज़ स्प्रेडशीट,document spreadsheet
+नया (_ N) _ New Game,_ New
+ड्राइव में कोई फिर लिखने की क्षमता नहीं है,The drive has no rewriting capabilities
+प्रोग्राम का संस्करण,Continue the execution of the program
+स्वाभाविक ऊँचाई,Natural Height
+क्या यह टैग फ़ॉन्ट रूपांतर को प्रभावित करेगा,Whether this tag affects the font variant
+कम से कम एक फील्ड को निर्धारित करें मिलाने के लिए,You must specify the name of the user header to match on
+नया टैब (_ T),New _ Tab
+आईट्रैकर मोड,Eyetracker Mode
+सामान्य अतिरिक्त Yacc या फ्लैग्स के लिए सभी लक्ष्य इंच यह समूह.,Common additional Yacc or Bison parser generator flags for all targets in this group.
+डिस्क को कॉपी करने के लिए चुनें,Select disc to copy
+नया कार्ड डील करें,Deal a new card
+पसंदीदा संदेश,Custom Message
+संदेश ठीक करना,Debug messages:
+नोर्डिक,Nordic
+विधि,Method
+चयनित नोड श्रोत फ़ाइल.,The selected node cannot contain source files.
+"ट्रांसपोर्ट प्रोटोकॉल पोर्ट, यदि तयशुदा से अलग है","The transport protocol port, if different than the default"
+एकिगा विंडो बन्द करें,Close the Ekiga window
+ट्रैक लंबाईः,Track length:
+वर्णनः,Description:
+आंतरिक त्रुटि पैदा हुआ,An internal error occured
+प्रोजेक्ट से सोर्स हटाएं,Add a source file to project
+स्थिर चौड़ाई पाठ के लिए फ़ॉन्ट,Font for fixed width text
+घुमाव केंद्र का Y निर्देशांक,Y coordinate of the center of rotation
+चयनित पाठ रंग सेट,Selected Text Color Set
+चयन की अंतर्वस्तु लिखना आरंभ करें,Start to burn the contents of the selection
+सक्रियRegister Function,Activate
+सामान्य अतिरिक्त या फ्लैग्स के लिए सभी लक्ष्य इंच यह समूह.,Common additional Lex or Flex lexical analyser generator flags for all targets in this group.
+गानों की संख्या,Number of Songs
+प्रयुक्तः,used:
+जब डिस्क से छवियों को लोड करने के दौरान ब्लॉकिंग को कम करने के लिए थ्रेड के अंदर छवि डेटा फ़ाइलों को डिकोड करें,Decode image data files inside a thread to reduce blocking when loading images from disk
+युक्ति विधि,Device Mode
+सर्वर से हटाएँ,_ Remove from server
+संक्षिप्क स्थिति सूचना,The short status information
+चुनें परिवर्तन को उलटेंः,Select Changes to Revert:
+लिंक को पृष्ठ यदि.,An link to the project web page if provided.
+पिक्सेल प्रारूप,Pixel Format
+उपकरण,Device
+मेल विकल्प,Mail options
+पाश्व रंग,Back color:
+% s पत्र को भेजने वाले ने प्रार्थना की% s को सूचना की व्यवस्था की सूचना (एम डी एन भेजें) क्या आप ये सूचना भेजना चाहते हैं,"The sender of this mail,% s, requested a Message Disposition Notification (MDN) to be returned to `% s'. Do you want to send this notification?"
+ज़ूम अक्ष,Zoom Axis
+विशिष्ट पंक्ति संख्या पर जाएं,Go to a particular line in the editor
+चुनें a फ़ाइल,Select a pretty printer file
+Y आरंभ स्केल,Y Start Scale
+को प्रयोक्ता अतरफलक फ़ाइल से.,Unable to load user interface file:% s
+कंसोल में डिबग संदेश छापें (1 और 5 के बीच स्तर),Prints debug messages in the console (level between 1 and 5)
+एक आईकन चुनें,Menu icon:
+इस विंडो को बन्द करें,Close this window
+GNOME बग बड्डी,GNOME bug - buddy
+कॉल अग्रसारित,Call forwarded
+संपादक फ़ॉन्ट,Editor Font
+चिड़ी की अट्ठा के बगल में चिड़ी के सत्ता को रखें.,Place the eight of clubs next to the seven of clubs.
+ढूंढने के लिए फाइल का नाम दो,Enter the line number to jump and press enter
+क्षैतिज विभाजन,Horizontal split
+स्वतःपूर्णPurge items after% d days,Auto - purge completed items
+पास गिनती,Pass count
+सभी पुस्तकों,All Books
+% s फाइल को खोल नहीं सकता,Could not launch% s to query the public key% s.
+आपका ईमेल पता (_ e):,Your _ email address:
+Y न्यूनतमः,Y minimum:
+डिबगर प्रारंभ करें,Start Debugger
+डिस्क पर पर्याप्त स्थान उपलब्ध नहीं (% s% s के लिए उपलब्ध),Not enough space available on the disc (% s available for% s)
+विएतनामी,Vietnamese
+जी टी के रचना,Project manager actions
+प्रोग्राम चुनें,Select Program
+बंद करने के पहले मौजूदा परियोजना के बदलावों को सहेजें?,Save the changes of current project before closing?
+~ a को एक हुकुम का इक्का पर ले जाएँ,Move ~ a onto the ace of spades.
+गोल्फ,Golf
+पंक्ति समरूप,Row Homogeneous
+उपतरू,Subtree
+बिल्ड यह लक्ष्य कार्यशील स्वचालित.,Build this target only when running automatic tests.
+स्थिति को संरेखित करने के लिए अक्ष,The axis to align the position to
+"बाल्सा ""% s"" मेलबाक्स नहीं खोल सकता","Balsa cannot open your ""% s"" mailbox."
+पूरे टेक्स्ट को टेक्स्ट फील्ड में में चुनें,Select all text in the editor
+"""CD/DVD Creator Folder"" में नॉटिलस में जोड़ा गया फ़ाइल लिखने की अनुमति देता है","Allows to burn files added to ""CD / DVD Creator Folder"" in Nautilus"
+जेम्सटाउन,Jamestown
+नयी लाइब्रेरी (_ L),New _ Library
+नीचे के पैनल के लिए लेआउट,The layout for the bottom panel
+डिस्क नामः,Disc Name:
+नहीं फिर नाम दें लक्ष्य के साथ प्रयुक्त को सिस्टम प्रोग्राम,"Do not rename the target with an optional prefix, used to avoid overwritting system program."
+दुक्की मिटाएँ,Remove the twos
+कॉपीराइट © Canonical Ltd,Copyright © Canonical Ltd
+खास,Signals
+अन्तर्निहित Wayland सतह,The underlying wayland surface
+टेंपोरल स्पासियल ट्रैड ऑफ,Temporal Spatial Trade Off
+सभी फ़ाइल का चयन करे,Select Profiling Target
+क्या यह टैग फ़ॉन्ट आकार को प्रभावित करेगा,Whether this tag affects the font size
+बिंदु धुरी,Pivot Point
+फ्रेंच,_ French
+वीडियो डीवीडी नहीं खोली जा सकी,Video DVD could not be opened
+आरेखण-क्षेत्र,drawing area
+GL पिक्सेल उद्धरण अक्षम करें,Disable GL Pixel Buffers
+ईंट का दहला के बगल में ईंट का नहला को रखें.,Place the ten of diamonds next to the nine of diamonds.
+काला जोकर,black joker
+फिल्टर लोडिंग के दौरान गलती:% s% s,Error during filters loading:% s Filters may not be correct.
+शतरंज,Chessboard
+पाल (यूरोप),PAL (Europe)
+संस्करण नियंत्रण सिस्टम प्लगिन,A version control system plugin
+जारी,Release
+बग बड्डी अपना उपयोगकर्ता इंटरफेस फ़ाइल लोड नहीं कर पाया. कृपया सुनिश्चित हों कि बग बड्डी उचित प्रकार संस्थापित है.,Bug Buddy could not load its user interface file. Please make sure Bug Buddy was installed correctly.
+इस सूची में सभी नई उपलब्ध pluginviews शामिल हैं,This list contains all the new available pluginviews
+इनपुट विधि विंडो,input method window
+शेष ताशः ~ a,Cards remaining: ~ a
+कृपया निम्न आवश्यक अनुप्रयोगों और लायब्रेरीज़ को दस्ती रूप से अधिष्ठापित और फिर कोशिश करेंः,Please install the following required applications and libraries manually and try again:
+अभी ढूँढे,Find Now
+गोआ,Go
+घुमाव कोण Y,Rotation Angle Y
+दोनो वीडियो बिंब,Both video images
+यह कुंजी पहुँच समर्थन लोड करने के लिए GTK + मॉड्यूल निर्धारित करता है.,This key determines the GTK + modules to load for accessibility support.
+फाइल% s संग्रहित नहीं की जा सकी,Could not save intermediate file% s:% s.
+प्रोजेक्ट विन्यस्त करें,Configure file
+खोलें से. नहीं नहीं से.,"Cannot open ""% s"".% s"
+खोजने के लिए पद टाईप करें,Type in search terms
+दूरस्थ प्रयोक्ता ने कॉल को रास्ता दे दिया,Remote user cleared the call
+मैन दस्तावेज़ीकरण,View local Anjuta documentation
+पिछला ध्वनि पथ,Previous Help
+प्रत्यक्ष विधि,Direct Mode
+केस सेंसिटिव,Case sensitive
+चिड़ी का नहला,nine of clubs
+जाएँ घर की स्थिति पर,Goto symbol declaration
+सूचना,INFO
+फ़ॉन्ट परिवार,Font family
+CoglObject सन्दर्भ,CoglObject references
+पाठ द्वारा इस्तेमाल किया जा फ़ॉन्ट,The font to be used by the text
+प्रतीक पसंद,Icon choice
+डैशर ट्यूटोरियल (_ T),Dasher _ Tutorial
+क्रैश विवरण में संवेदनशील आंकड़ा भी मौजूद हो सकता है. कृपया सूचना की समीक्षा व संपादन करें यदि आप कूटशब्द या अन्य संवेदनशील आंकड़ा भेजे जाने की सोच रहे हैं.,Some sensitive data is likely present in the crash details. Please review and edit the information if you are concerned about transmitting passwords or other sensitive data.
+"चयनित ऑडियो युक्ति को रिकार्डिंग के लिए खोलने में असमर्थ. यदि यह एक प्लगेबल युक्ति है, इसे फिर कनेक्ट करना पर्याप्त होगा.. यदि नहीं, या यदि यह अभी भी पहुँच योग्य नहीं है, कृपया अपना ऑडियो सेटअप जाँचें, अनुमति, और देखें कि युक्ति व्यस्त तो नहीं है.","Unable to open the selected audio device for recording. In case it is a pluggable device it may be sufficient to reconnect it. If not, or if it still is not accessible, please check your audio setup, the permissions and that the device is not busy."
+युक्ति प्रकार,Device Type
+"फोकस योग्य% s में सारणी अंतराफलक है, लेकिन कोई चयनीय अंतराफलक नहीं हैbutton has focused state without focusable state","focusable% s has a table interface, but not a selection interface"
+लोकप्रिय ताश का खेल फ्रीसेल खेलें,Play the popular FreeCell card game
+हैडर (शीर्षक) क्लिक किए जाने योग्य,* Output Header File:
+कुछ न करें (h),Do not show tabs
+रिमोट URI:,Remote URI:
+बच्चों परिवर्तन मैट्रिक्स,Children transformation matrix
+चलाना आरंभ करें या रोकें,Start and stop playing
+नमूना फाइल आपरेशन,Shared library operations
+इनपुट युक्ति,Input Device
+क्या फ़ाइलों को विंडोज संगत के रूप में पूर्ण रूप से फिर नाम दिया जाना चाहिए?,Should files be renamed to be fully Windows - compatible?
+Devhelp — सहायक,Devhelp — Assistant
+वीडियो प्रदर्शक,Video Display
+बीसीसी,_ Bcc:
+पहुंचनीय,_ Accessible
+दृश्य फ़ाइल,View file history
+कचराः,_ Trash:
+स्तर,Layer
+सीडी-आरडब्ल्यू,CD - RW
+नहीं पढ़ा,No read
+समूह में संपर्क रखेंः,Put contact in groups:
+डेक में से पत्ता निकालें,Deal a card from the deck
+जेनेरिक GNOME प्रोजेक्ट,A GNOME applet project
+मददगार तकनीक पँहुच हेतु प्रारूपित वस्तु का वर्णन,"Description of an object, formatted for assistive technology access"
+प्रशिक्षण पाठ आयात करें (_ I),_ Import Training Text
+उठाएँ (_ P),_ Pick up
+एनटीएससी (अमरीका),NTSC (America)
+चुनें निर्देशिका को यदि नहीं है खोलें,Choose Directory to show if no project is open
+चुनें कि कार्ड खींचना है या गंतव्य के बजाय श्रोत पर क्लिक करना है.,Select whether to drag the cards or to click on the source then the destination.
+संपादन पट्टी,edit bar
+पिक्सेल में कर्सर की चौड़ाई,"The width of the cursor, in pixels"
+वर्तमान में प्रमुख केंद्रित कर्ता,The currently key focused actor
+~ a को एक लाल पान का बादशाह पर ले जाएँ,Move ~ a onto the king of hearts.
+रिकार्डिंग रोकें (_ R),Stop _ Recording
+मीडिया फ़ाइल के यूआरआइ,URI of a media file
+वर्तमान सत्र संग्रहित करें,Current _ Username
+आधार पर एक पत्ता ले जाएँ.,Play a card to foundation.
+रिंगिंग युक्ति,Ringing Device
+मिनट्स,minutes
+क्यू,_ Queue
+एक्सेर्साइसर,Accerciser
+डिस्क फ़ाइल,Disc file
+एलडीटीपी,LDTP
+भारी भरकम,Jumbo
+सफेदसिर (व्हाइटहेड),Whitehead
+लेखक/तारीख़ समय,Author / Date / Time
+"फाइल ""% s"" नहीं खोली जा सकी (% s)","File ""% s"" could not be opened (% s)"
+जेनेरिक Xlib प्रोजेक्ट,A generic Xlib project
+युक्ति व स्थान,Devices and locations
+यह फ़ाइल (छोटि) को बान्द करे,Reload current file
+छवि खोजें,Search _ Domains
+"""Remove"" बटन पर क्लिक करें इस क्षेत्र में चुने गए मद को हटाने के लिए","click on the ""Remove"" button to remove selected items in this area"
+कृपया लक्ष्य नाम,Please specify target name
+सभि फ़ाइल (_ A),All files
+मेकफाइल आधारित परियोजना,Makefile - based project
+GL पिक्सेल उद्धरण ऑब्जेक्ट के प्रयोग को अक्षम करें,Disable use of OpenGL pixel buffer objects
+श्रोत पथ जोड़ें...,Add source paths...
+मौजूदा परिवर्तित परियोजना को छोड़ें?,Discard the current modified project?
+सत्यापन उपयोक्ताः,Authentication User:
+कृपया फाइल को परियोजना में जोड़ें.,Please add files to the project.
+कार्ड चालों में एनीमेशन उपयोग करें या नहीं,Whether or not to animate card moves
+अंतर्वस्तु लिखें (_ C)...,Burn _ Contents...
+ईंट,diamonds
+मेल dir डायरेक्टरी (% s) को% s पर नहीं बना पाया,Could not create a MailDir directory at% s (% s)
+रूट निर्देशिका यदि नहीं है खोलेंः,Root directory if no project is open:
+कारक,Factor
+सत्र प्रबंधन विकल्प दिखाएं,Show session management options
+वीडियो प्रारूपः,Video format:
+लिखने के बजाय छवि फाइल बनाये,Create an image file instead of burning
+आग्रह विधि,Request Mode
+Z अक्ष पर स्थिति,Position on the Z axis
+प्लगइन वर्णनः,Plugin Description:
+घुमाव केंद्र का Z निर्देशांक,Z coordinate of the center of rotation
+दस्तावेज़ यूआरआई को 'Type = Link' डेस्कटॉप प्रविष्टि में पास नहीं कर सका,Can 't pass document URIs to a' Type = Link 'desktop entry
+~ a को एक हुकुम का नहला पर ले जाएँ,Move ~ a onto the nine of spades.
+ट्रेस प्रदर्शन मुद्दे,Trace performance concerns
+कृपया एंटर अंत.,Please enter the end revision.
+प्रारंभिक त्वरण कारक,Initial acceleration factor
+उपयोगी क्रैश रिपोर्ट पा रहा है,Getting useful crash reports
+सक्रिय चार्ट,Active Chart
+अंजुटा के लिए डेव वहेल्प प्लगिन,Devhelp Plugin for Anjuta.
+कोण आरंभ,Angle Begin
+वर्क स्पेस में विजेट चुनें,Select widgets in the workspace
+% s:% s मुक्त स्थान का,% s:% s of free space
+जाँच बाहर फ़ाइल,Check Out Files
+इंटरनेट पर लोगों से बात,Talk to people over the Internet
+"% s में% s स्थिति है, पर उसके साथ% s स्थिति नहीं है",% s has% s state without% s state
+विडियो डिस्क लिख रहा है,Burning video disc
+नक़ल फ़ाइल इंच,Copy files / folders in the repository
+समरूप,Homogeneous
+"यह प्रायः होता है जब आप एसलिरियोट के पुराने संस्करण को चलाते हैं जिसने खेल नहीं खेला है जो आप अंतिम में खेले हैं. मूलभूत खेल, Klondike, बदले में आरंभ हो रहा है.","This usually occurs when you run an older version of Aisleriot which does not have the game you last played. The default game, Klondike, is being started instead."
+पूर्ण श्रेय के लिए लेखक फाइल देखें,See AUTHORS file for full credits
+परिचय (_ A)...,_ About...
+पृष्ठभूमि गुण,Background Properties
+संग्रहित नहीं करें,Do _ n 't save
+आइकन के बाजू पाठ,Text beside icons
+Wx विजेट,Wx Widgets
+चाल वापस लें (_ U),_ Undo Move
+वस्तु जिसमें चल छवि लागू होती है,Object to which the animation applies
+% s दिखाने में त्रुटि:% s,Error showing% s:% s
+कमांड के साथ स्थिति d,Command exited with status% d
+पंजीकरण वापस नहीं कर सका,Could not unregister
+मैं एकिगा कॉल आउट सेवा के लिए साइन अप नहीं करना चाहता हूँ,I do not want to sign up for the Ekiga Call Out service
+ईंट का दुक्का के बगल में ईंट का इक्का को रखें.,Place the two of diamonds next to the ace of diamonds.
+उपयोग को जोड़ें समर्थन से अन्य संकुल,Use pkg - config to add library support from other packages
+एक खाली संस्थापन के ढेर,an empty foundation pile
+पृथक विंडो में तस्वीर में तस्वीर (_ W),Picture - in - Picture in Separate _ Window
+लिखने योग्य,Writable
+पर्ल,Personal
+जीनोम एडिटर से एडिट करें,_ Edit with Gnome - Editor
+जेब्राcard symbol,Zebra
+शब्दकूट संकेत समय,Password Hint Time
+विषयवस्तु बॉक्स,Content Box
+~ a को एक लाल पान का छक्का पर ले जाएँ,Move ~ a onto the six of hearts.
+डिस्क प्रयोग विश्लेषण नहीं कर सका.,Could not analyze disk usage.
+Anjuta के लिए नमूना प्लगिन.,Symbol Database Plugin for Anjuta.
+% (rolename) s सूची% (num) d पंक्ति और स्तंभ से मेल नहीं खातेparent indexrow and column index,% (rolename) s index% (num) d does not match row and column
+ऑडियो रिंगिंग युक्ति एक ऐसी युक्ति है जो कि रिंगिंग ध्वनि बजाने के लिए प्रयुक्त होता है आने वाले कॉल पर.,The audio ringing device is the device that will be used to play the ringing sound on incoming calls.
+DTMF भेज रहा है,DTMF sending
+डिस्क प्रयोग विश्लेषण के लिये एक आलेखीय औजार,A graphical tool to analyze disk usage.
+चुनें (_ S),_ Select
+X स्तरः,X label:
+कृपया समूह नाम,Please specify group name
+संदेश सहेजें,Copy message
+छक्का,six
+% s आँकड़ा% s में,Data% s in% s
+arbfp अक्षम,Disable arbfp
+हटाएँ,Remove
+वेब कैम से लिए जाने वाले तस्वीर का विरोध स्तर समायोजित करें,Adjusts contrast level of the picture coming from the webcam
+बायीँ डीलः ~ a,Deals left: ~ a
+ग्लेड फाइल,Header Files
+धीमा आरंभ,Slow startup
+दो बटन गतिशील मोड,Two Button Dynamic Mode
+एकिगा में स्वागत है,Welcome to Ekiga
+चयन सीमा,Selection background:
+पता-पुस्तिका,Addressbook
+कृपया निम्नलिखित क्षेत्र का अद्यतन करेंः,Please update the following fields:
+गलत फिल्टर:% s,Invalid filter:% s
+स्वचालित प्रकार से सहेजन रहा है फ़ाइल,Automatically update symbols without saving file
+H. 239 नियंत्रण सक्रिय करें,Enable H. 239 control
+वीडियो DVD की नक़ल कर रहा है,Copying Video DVD
+लाल पान का दहला,ten of hearts
+कोई प्रयोग करने योग्य ऑडियो प्लगिन जांचा नहीं गया,No usable audio plugin detected
+वर्तमान फ़ाइल एक भिन्न नाम से सहेजें,Skip the current conflicted commit and continue
+पॉपअप,SymbolDb popup actions
+प्लग-इन जिसमें हैं एक्सेसेबेलों को तेजी से चुनने के लिए कई विधियां,Plugin with various methods of selecting accessibles quickly.
+एकान्तरित प्रत्यक्ष विधि,Alternating Direct Mode
+संस्थापित,Install
+बाजू पटल दिखाएँ (_ S),_ Show Side Panel
+नहीं अनुप्रयोग फ़ाइल से.,"Could not write definition file ""% s"":% s"
+"फ़ाइलों को रद्दी पर नहीं खिसका सका, क्या आप इन्हें तत्काल ही मिटाना चाहेंगे?","Cannot move file to trash, do you want to delete immediately?"
+सूचना संपादित करें (_ E)...,_ Edit Information...
+यह H. 245 टनेलिंग विधि को सक्रिय करता है. H. 245 टनेलिंग विधि में H. 245 संदेश को H. 225 चैनल में समाहित किया जाता है (पोर्ट 1720). यह एक TCP कनेक्शन को कॉल के दौरान सहेजता है. H. 245 टनेलिंग को H. 323v2 में लाया गया था.,This enables H. 245 Tunneling mode. In H. 245 Tunneling mode H. 245 messages are encapsulated into the H. 225 channel (port 1720). This saves one TCP connection during calls. H. 245 Tunneling was introduced in H. 323v2.
+हमेशा इन बाक्स दिखाओ,Always show _ INBOX
+मेल सरवर,Mail servers
+स्ट्रिंग पैरामीटर,String parameters
+कनेक्ट कर रहा है...,Connecting...
+अनुप्रयोग खोजें,Service _ Options
+आपने जो ईमेल पता दिया है वह वैध नहीं है.,The email address you provided is not valid.
+वर्णन,Description
+स्तंभों की संख्या जिसमें विजेट स्पैन करना चाहिए,The number of columns the widget should span
 "कृपया अंग्रेजी में अपना रिपोर्ट लिखें, अगर संभव हो.","Please write your report in English, if possible."
-एक विडियो डीवीडी या एसवीसीडी बनाएँ जो कि टीवी रीडर पर पढ़ने योग्य हो,Create a video DVD or a SVCD that are readable on TV readers
-मौज़ूदा स्थान बनाए रखें (_ K),_ Keep Current Location
-ढूंढें प्रयोग कर रहा है नियमित,Search using regular expressions
-सामान्य जमावट,General Settings
-एक्सेस (पहुंचने) का तरीका: यो आर एल,Access type: URL
-काल वापस,Call retrieved
-जावा कंपाइलर फ्लैग्सः,Java compiler flags:
-cogl विशेषज्ञ,Cogl Specialist
-घुमाव केंद्र Z भूकेंद्र,Rotation Center Z Gravity
-अज्ञात वर्ण एन्कोडिंग,Unknown character encoding
-मुख्य विंडो के Y स्थिति,Y position of main window
-"क्या ""-immed"" फ्लैग को cdrecord के साथ प्रयोग करना है. सावधानी से प्रयोग करें (सही पर सेट करें) क्योंकि यह कुछ ड्राइव/सेटअप के लिए समाधान का कार्य करता है.","Whether to use ""- immed"" flag with cdrecord. Use with caution (set to true) as it 's only a workaround for some drives / setups."
-बहुत बड़ा,Very Large
-गलत आग्रह,Bad request
-कर्ता जिसें खींचा जा रहा है,The actor that is being dragged
-क्या टूलबार को मुख्य विंडो में दिखाई देना चाहिए.,Whether the toolbar should be visible in main window.
+कोई कैमरा नहीं मिला!,No camera found!
+क्या: फ़ाइल नाम गुण सेट है,Whether the: filename property is set
+ग्नोम खेल वेबसाइट,GNOME Games web site
+सरल GTK,Simple GTK + project
+इस फाइल में परिवर्तित किया गया है क्या आप इसे पुनः लोड करना चाहते हैं?,The file '% s' on the disk is more recent than the current buffer. Do you want to reload it?
+रेंडर्ड पाठ्य की ऊंचाई,Width of the rendered text
+ब्राउजर में लिंक खोलें,Open link in browser
+Y अक्ष पर अनुवाद,Translation along the Y axis
+सेण्टबाक्स,_ Sentbox:
+फाइल का नाम,File name:
+स्तर '% s' में '% s' मिला,Found level '% s' in:% s
+चल छवि का प्रयोग करें,Use Animations
+औजार बक्सा,Toolkit
+अभिलेखागार,Archives
+ऑडियो रिंगिंग युक्ति,Audio Ringing Device
+पाने की तिथि,Date Received:
+"समय अंतराल, मिलीसेकेंड में, तस्वीर की बर्स्ट शृंखला में हर तस्वीर लेने के लिए अंतराल. अगर फट विलंब उलटी गिनती अवधि की तुलना में कम है, बदले में उलटी गिनती की अवधि प्रयोग किया जाएगा.","The length of time, in milliseconds, to delay between taking each photo in a burst sequence of photos. If the burst delay is less than the countdown duration, the countdown duration will be used instead."
+"क्या हिंटिंग का उपयोग करने के लिए (से सक्षम, 0 से निष्क्रिय, और-1 से डिफ़ॉल्ट उपयोग करने के लिए)","Whether to use hinting (1 to enable, 0 to disable and - 1 to use the default)"
+बनाएँ अतरफलक फ़ाइल,Create Gtk Builder interface file
+मकड़ी,Spider
+बदलें विस्तार (_ E),Change _ Extension
+नहीं चयनित,No revision selected
+कृपया डिस्क को डिस्क धारण करने वाले आँकड़े से बदलें.,Please replace the disc with a disc holding data.
+कनेक्शन जो फार्स्ट स्टार्ट (फास्ट स्टार्ट) मोड में स्थापित किया जायेगा. फार्स्ट स्टार्ट एक नया तरीका है जो कॉल को तेजी से स्टार्ट करता है जो कि H. 323v2 में लाया गया था.,Connection will be established in Fast Connect mode. Fast Connect (Fast Start) is a new way to start calls faster that was introduced in H. 323v2.
+अपवाद,EXCEPT
+पुस्तक-चिह्नों को प्रबंधित करें।,Manage bookmarks.
+% s को क्रियान्वित करने में असफल% d (% s),Unable to execute:% s.
+अस्वीकार,Decline
+विडियो युक्ति% s की पहुँच के दौरान त्रुटि,Error while accessing video device% s
+पहुँच योग्य सारणी सारांश,Accessible Table Summary
+मौजूदा सीडी/डीवीडी छवि को डिस्क में लिखें,Burn an existing CD / DVD image to disc
+अंजुता के लिए टर्मिनल प्लगिन,Terminal Plugin for Anjuta.
+हटाएं (_ m),Re _ move
+अंश का प्रकार:% s,Content Type:% s
+खेल बदलें,Change Game
+मोड्यूल नामः,_ Module name:
+ओवरराइड संग्रहण विकल्प-- help-options,Override stored options
+आप नहीं को है जरूरी के लिए अधिष्ठापन गुम संकुल कृपया अधिष्ठापित करें पैकेज से वितरण या अधिष्ठापित करें गुम संकुल दस्ती रूप से.,"You do not seem to have PackageKit installed. PackageKit is required for installing missing packages. Please install ""packagekit - gnome"" package from your distribution, or install the missing packages manually."
+"क्या ""-- driver generic-mmc-raw"" फ्लैग को cdrdao के साथ प्रयोग करना है","Whether to use ""- - driver generic - mmc - raw"" flag with cdrdao"
+बिंदु जिसके जो चारों ओर स्केलिंग और घूर्णन होते हैं,The point around which the scaling and rotation occur
+% s खिसकाएँ% s पर.,Move% s onto% s.
+स्थिति-पट्टी (_ a),St _ atusbar
+एक जैसे पत्ते,Same suit
+स्थानीय प्रयोक्ता ने कॉल अस्वीकार कर दिया,Local user rejected the call
+सीधा ऊपर,Straight Up
+पूर्वनिर्धारित इनबाक्स को स्टार्टअप पर खोलो,Opens default Inbox on startup
+ट्रिगर घुसाएँ,_ Trigger insert
+फाइल कापी करें,_ Compile
+लिथानियान,_ Lithuanian
+अनुप्रयोग विंडो डॉक करें,Dock application window
+वृद्धि,Rise
+हटाएँ विन्यास,Remove Configuration
+कोई योजना नहीं,No schema
+पंजीकृत करें,Register
+नए सम्पर्क... (_ N),_ New Contact
+ड्रयूड विंडो के स्क्रीन पर स्थिति,Position on the screen of the druid window
+मौज़ूदा का,Current stack of profiles
+फ़ाइल या निर्देशिका नाम बदलें,Rename file or directory
+बिल्ड,JHBuild
+अद्यतनीकृत से.,Updated:% s
+क्या आयत एक सीमा होनी चाहिए,Whether the rectangle should have a border
+संदेश निर्माण,complete message
+डेवहेल्प,Devhelp
+GL संस्करण को अधिरोहित करें जो Cogl ड्राइवर के समर्थन को लेगा,Override the GL version that Cogl will assume the driver supports
+विभाजित करें,Split
+प्रत्यक्ष प्रविष्टि,Direct entry
+क्या आप श्रव्य फाइल के लिए निर्देशिका के अंदर खोजना चाहते हैं?,Do you want to search for audio files inside the directory?
+हुकुम का नहला,nine of spades
+मिटाएँ,Delete Tags
+वृश्चिक,Scorpion
+ऑडियो सीडी सफलतापूर्वक लिखा गया,Audio CD successfully burnt
+वर्ग जनक,Class Elements
+SSL असफल:% s,signing and encryption failed
+पाठ को प्रयोक्ता को एंटर प्रविष्टि,Text to show the user what to enter into the entry
+सारणी पंक्ति शीर्षिका बदल चुका है यह बताने हेतु उपयोग में आता है,Is used to notify that the table row header has changed
+मान नामः,Value Name:
+फाइल,do _ while
+फ़ाइल तंत्र प्रकार,File System Type
+समुचित न्यास पाइल,appropriate foundation pile
+कुछ परिवर्तन संग्रहित नहीं किए गए हैं क्या आप इसी अवस्था में बाहर निकलना चाहते हैं?,The program is attached. Do you still want to stop the debugger?
+कार्य के,Add internationalization:
+नियंत्रण शैली,Control Style
+सहायक विंडो की ऊंचाई,Height of assistant window
+मात्रा जांच माड्यूल,Spell check module
+लाल पान की बेगम के बगल में लाल पान के गुलाम को रखें.,Place the queen of hearts next to the jack of hearts.
+मनपसंद डिबगर कमांड,Custom debugger command
+सेवा अनुपलब्ध,Service unavailable
+प्रथम बच्चा,First Child
+अतिरिक्त के लिए यह लक्ष्य.,Additional libraries for this target.
+समूहबद्धता,grouping
+क्रिया,Manage associations
+ठहराव लंबाईः,Pause length:
+चयनित फाइल का नाम बदलें,Rename the selected file
+% s एक रेग्युलर फाइल नहीं है,not a regular file
+ट्रैक के लिए 2 सेकेंड का ठहराव दें,Add a 2 second pause after the track
+लिंक पता कॉपी करें (_ L),Copy _ Link Address
+"""% s"" का विश्लेषण कर रहा है","Analysing ""% s"""
+फिर नाम दें (_ e)...,R _ ename...
+प्रतिबन्ध,Constraints
+को कार्यान्वित करें कमांड,Unable to execute command
+समयरेखा कितनी बार दोहराना चाहिए,How many times the timeline should repeat
+प्रयोक्ता नहीं मिला,User not found
+खोजना आरंभ करने के लिए क्लिक करें,Click to start the search
+वीडियो सेटिंग विंडो का आकार,Size of the video settings window
+कतार स्पैन,Row Span
+Ekiga. net खाता,Ekiga. net Account
+गीतसूची का पथ,PATH TO PLAYLIST
+offscreen समर्थन को डिबग करें,Debug offscreen support
+ऑडियो सेटिंग विंडो का आकार,Size of the audio settings window
+ऑफसेट बाहरी (सेकेंड) बटन के लिए,Offset for outer (second) button
+खाली तस्वीर खाँचा पर पत्तों को ले जाएँ,Move a build of cards on to the empty Tableau slot
+परियोजना की अंतर्वस्तु बदली गई जबसे इसे सहेजा गया था.,The contents of the project changed since it was saved.
+सत्ता,seven
+परियोजना से सभी फाइल हटाएँ,Remove all files from the project
+चार्ट मॉडल,Chart model
+रानी,queen
+प्लगिन अंतरफलक लागू करें,Implement plugin interfaces
+जनक फ़ोल्डर में खिसकाएँ (_ M),_ Move to parent folder
+सिमुलेशन सफल था.,The simulation was successful.
+स्कैन,Scan
+ठहरें,Pause
+अनुपस्थित स्क्रिप्ट इंच से..,Cannot configure project: Missing configure script in% s.
+"क्या ब्रैसेरो को टूटी सांकेतिक कड़ी को फिल्टर करना चाहिए. सही पर सेट करें, ब्रैसेरो टूटी सांकेतिक कड़ी को फिल्टर करेगा.","Should brasero filter broken symbolic links. Set to true, brasero will filter broken symbolic links."
+कृपया एंटर पहला.,Please enter the first path.
+दूरस्थ वीडियो विंडो का आकार,Remote video window size
+प्रतिबन्ध के स्रोत,The source of the constraint
+टूल्स,_ Tools
+कोई पारंपरिक ऑडियो CD बनाएँ,Create a traditional audio CD
+याद रखें पासवर्ड,_ Remember your password:
+किनारा में,To Edge
+फाइल जोड़ें,_ Attach to Process...
+% s का संदेश सुधार दिया संदेश को ड्राफ्ट बाक्स में सेवकरें,The message to '% s' is modified. Save message to Draftbox?
+लेखन के बाद बाहर करें (_ E),_ Eject after burning
+बाडी,Body
+आगे सूचना के लिए मदद देखें.,Please refer to the help for further information.
+डिस्क में लिखने के लिए कोई फाइल नहीं है,There are no files to write to disc
+तिक्की मिटाएँ,Remove the threes
+स्तंभ,Columns
+फ़ॉन्ट परिवार और आकार,Font family and size
+रंग,Col
+भारी-भरकम,Hulk
+फ़ाइल को फ़ाइल,File loader to load different files
+गुम प्रोग्राम्स part का कुछ वितरण संकुल और के लिए इंच अनुप्रयोग प्रबंधक संकुल इंच विशेष संकुल वितरण जुटाता है को का पर अंत के साथ a या इंच पैकेज नाम और पाया द्वारा खोज रहा है इंच अनुप्रयोग प्रबंधक.,"The missing programs are usually part of some distribution packages and can be searched for in your Application Manager. Similarly, the development packages are contained in special packages that your distribution provides to allow development of projects based on them. They usually end with a ""- dev"" or ""- devel"" suffix in package names and can be found by searching in your Application Manager."
+कतार दूरी,Row Spacing
+पूर्णांक पैरामीटर,Integer parameters
+स्लाइस पूर्वावलोकन साफ करें,Clear the slices preview
+व्यक्तिगत डाटा,Personal Data
+xml-rpc अनुक्रिया के विश्लेषण में विफल. अनुक्रिया आती हैः% s,Failed to parse the xml - rpc response. Response follows:% s
+तीन पत्ते बांटें,Three card deals
+इनबाक्स चिन्हित करें,Mark as _ Inbox
+खाका प्रबंधक के अंदर कर्ता के लिए क्षैतिज संरेखण,Horizontal alignment for the actor inside the layout manager
+आँकड़ा आकार है काफी बड़ी है अलिलेखन विकल्प के साथ.,The data size is too large for the disc even with the overburn option.
+कॉल विंडो,Call Window
+सार्ट सूचक,Sorted in alphabetical order
+डायरेक्ट्री,Directory
+पहले से चलते उदाहरण में कनेक्ट मत करें,Don 't connect to an already - running instance
+पूर्ण विंडोज़ सुसंगतता निष्क्रिय करें (_ D),_ Disable Full Windows Compatibility
+% s अनुप्रयोग क्रैश हो चुका है. हम डेवलपर को भेजने के लिए समस्या को फिक्स करने के लिए क्रैश के बारे में सूचना जमा कर रहे हैं.,The% s application has crashed. We are collecting information about the crash to send to the developers in order to fix the problem.
+लंबवत भरण,Vertical Fill
+कैप्चर,Capture
+उच्च,High
+मैक्रो,Macro
+कुल आकार,Total Size
+मेलबाक्स% s असफल,Committing mailbox% s failed.
+अंदर आने वाले,Incoming
+कोई आँकड़ा सीडी/डीवीडी बनाएँ,Create a data CD / DVD
+केवल इनवाक्स जांचो,Check INBOX _ only
+TCP पोर्ट सीमा,TCP port range
+भेजे जाने वाले मेल,Outgoing mail servers
+एक नया खाली फोल्डर बनाएँ,Create a new empty folder
+ब्रैसेरो-डीवीडी कॉपी कर रहा है (% i%% संपन्न),Brasero - Copying DVD (% i%% Done)
+पाठ ऊंचाई,Text height
+अगला प्रभाव,Ne _ xt Effects
+न्यूनतम चौड़ाई सेट,Minimum width set
+कार्य (_ A),_ Actions
+फ़ॉन्ट परिमाण,Font weight
+तस्वीर के बीच में अंतराल (सेकेंड),Delay between photos (secs.)
+नहीं अधिष्ठापित करेंः,Do not install:
