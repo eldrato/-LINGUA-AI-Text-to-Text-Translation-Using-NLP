@@ -4,16 +4,16 @@ Computes SacreBLEU, chrF2++, and neural quality metrics (COMET / BERTScore)
 on held-out test splits. Supports baseline vs. fine-tuned comparison tables,
 visualizations, error analysis, and manual quality review exports.
 """
-import os
-import sys
-import json
-import time
 import argparse
+import json
 import logging
+import sys
+import time
 from pathlib import Path
-from typing import Dict, Any, Optional, List, Tuple
-import pandas as pd
+from typing import Any
+
 import numpy as np
+import pandas as pd
 
 # Ensure project root is in sys.path
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -21,19 +21,18 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 import config
-from src.dataset_loader import DatasetLoader
-from src.preprocessing import clean_text, postprocess_translation
 from src.model_manager import get_model_manager
+from src.preprocessing import postprocess_translation
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
-def compute_comet_score(sources: List[str], hypotheses: List[str], references: List[str]) -> Optional[float]:
+def compute_comet_score(sources: list[str], hypotheses: list[str], references: list[str]) -> float | None:
     """Computes COMET score if unbabel-comet and checkpoint are available."""
     try:
         import functools
         class _HashedSeq(list):
-            __slots__ = 'hashvalue'
+            __slots__ = ("hashvalue",)
             def __init__(self, tup, hash=hash):
                 self[:] = tup
                 self.hashvalue = hash(tup)
@@ -55,7 +54,7 @@ def compute_comet_score(sources: List[str], hypotheses: List[str], references: L
         logger.warning(f"COMET evaluation skipped or unavailable: {e}")
     return None
 
-def compute_neural_similarity(hypotheses: List[str], references: List[str], lang: str = "en") -> Optional[float]:
+def compute_neural_similarity(hypotheses: list[str], references: list[str], lang: str = "en") -> float | None:
     """Computes BERTScore F1 as neural embedding similarity metric using cached multilingual BERT."""
     try:
         from bert_score import score
@@ -68,19 +67,19 @@ def compute_neural_similarity(hypotheses: List[str], references: List[str], lang
 
 def evaluate_model(
     lang_pair: str = "en-hi",
-    test_path: Optional[str] = None,
+    test_path: str | None = None,
     model_source: str = "auto",
-    max_eval_samples: Optional[int] = None,
+    max_eval_samples: int | None = None,
     num_beams: int = 5,
     max_length: int = 128,
     batch_size: int = 16
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """
     Evaluates translation model on the held-out clean test split.
     Computes corpus SacreBLEU, chrF2++, and neural metrics.
     """
-    import torch
     import sacrebleu
+    import torch
     from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
     pair_key = "en-hi" if "en" in lang_pair and "hi" in lang_pair and lang_pair.startswith("en") else "hi-en"
@@ -123,12 +122,10 @@ def evaluate_model(
         raise FileNotFoundError(f"Clean test split not found at {test_file}. Please run data preprocessing first.")
 
     test_df = pd.read_csv(test_file, encoding="utf-8")
-    if src_col not in test_df.columns and "en" in test_df.columns:
-        # Invert columns if needed
-        if pair_key == "hi-en":
-            test_df = test_df.rename(columns={"en": "target_temp", "hi": "source_temp"})
-            test_df["hi"] = test_df["source_temp"]
-            test_df["en"] = test_df["target_temp"]
+    if src_col not in test_df.columns and "en" in test_df.columns and pair_key == "hi-en":
+        test_df = test_df.rename(columns={"en": "target_temp", "hi": "source_temp"})
+        test_df["hi"] = test_df["source_temp"]
+        test_df["en"] = test_df["target_temp"]
 
     if max_eval_samples and len(test_df) > max_eval_samples:
         test_df = test_df.head(max_eval_samples)
@@ -294,7 +291,7 @@ def generate_comparison_table_and_chart(baseline_df: pd.DataFrame, finetuned_df:
     # Generate Bar Chart
     try:
         import matplotlib.pyplot as plt
-        fig, axes = plt.subplots(1, 2, figsize=(12, 5), dpi=150)
+        _fig, axes = plt.subplots(1, 2, figsize=(12, 5), dpi=150)
         
         directions = ["en→hi", "hi→en"]
         for i, dir_name in enumerate(directions):
@@ -338,7 +335,6 @@ def generate_manual_review_and_error_analysis():
     }
 
     all_review_records = []
-    error_analysis_sections = []
 
     for direction, path in sample_files.items():
         if not path.exists():
@@ -368,7 +364,6 @@ def generate_manual_review_and_error_analysis():
 
             # Linguistic evaluation heuristics incorporating ground-truth semantic accuracy
             # even when OPUS reference text contains domain noise or misalignments
-            is_accurate_meaning = False
             notes = ""
             category = "None (Accurate & Fluent)"
 
@@ -431,7 +426,7 @@ def generate_manual_review_and_error_analysis():
     # Generate error_analysis.md with 30 samples per direction
     generate_markdown_error_analysis(all_review_records)
 
-def generate_markdown_error_analysis(review_records: List[Dict[str, Any]]):
+def generate_markdown_error_analysis(review_records: list[dict[str, Any]]):
     """Writes detailed error analysis report with 30 sample outputs per direction."""
     report_path = config.EVALUATION_DIR / "error_analysis.md"
     

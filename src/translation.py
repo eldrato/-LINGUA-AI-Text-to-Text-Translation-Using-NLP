@@ -3,12 +3,12 @@ Inference engine and translation pipeline for Lingua AI.
 Handles single sentences, multi-sentence paragraphs, model caching,
 and input validation for English-Hindi and Hindi-English translation.
 """
-import time
+import logging
 import re
 import sys
-import logging
+import time
 from pathlib import Path
-from typing import Dict, Any, Optional, List
+from typing import Any
 
 # Add project root to path if running directly
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -33,7 +33,7 @@ class Translator:
     def __init__(self):
         self.model_manager = get_model_manager()
 
-    def _split_into_chunks(self, text: str, max_chunk_len: int = 250) -> List[str]:
+    def _split_into_chunks(self, text: str, max_chunk_len: int = 250) -> list[str]:
         """
         Splits large text into manageable chunks respecting paragraphs and sentence boundaries.
         """
@@ -124,12 +124,12 @@ class Translator:
         text: str,
         source_lang: str,
         target_lang: str,
-        num_beams: Optional[int] = None,
-        max_length: Optional[int] = None,
-        length_penalty: Optional[float] = None,
-        repetition_penalty: Optional[float] = None,
+        num_beams: int | None = None,
+        max_length: int | None = None,
+        length_penalty: float | None = None,
+        repetition_penalty: float | None = None,
         prefer_finetuned: bool = False,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Translates text from source_lang to target_lang with intelligent sentence segmentation,
         refined beam search, and production-grade detokenization.
@@ -249,10 +249,10 @@ def translate(
     text: str,
     source_lang: str,
     target_lang: str,
-    num_beams: Optional[int] = None,
-    max_length: Optional[int] = None,
+    num_beams: int | None = None,
+    max_length: int | None = None,
     prefer_finetuned: bool = False
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     global _global_translator
     if _global_translator is None:
         _global_translator = Translator()

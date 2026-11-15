@@ -3,11 +3,11 @@ Dataset loading and acquisition module for Lingua AI.
 Downloads OPUS / Tatoeba parallel corpora, supports custom CSV datasets,
 validates dataset structure, and integrates with the preprocessing pipeline.
 """
+import logging
 import os
 import sys
-import logging
 from pathlib import Path
-from typing import Optional, Tuple, Dict, Any
+
 import pandas as pd
 
 # Add project root to path if running directly
@@ -77,13 +77,13 @@ CURATED_BENCHMARK_PAIRS = [
 class DatasetLoader:
     """Handles downloading, loading, and validating parallel translation datasets."""
 
-    def __init__(self, raw_dir: Optional[Path] = None, processed_dir: Optional[Path] = None):
+    def __init__(self, raw_dir: Path | None = None, processed_dir: Path | None = None):
         self.raw_dir = Path(raw_dir or config.RAW_DATASET_DIR)
         self.processed_dir = Path(processed_dir or config.PROCESSED_DATASET_DIR)
         self.raw_dir.mkdir(parents=True, exist_ok=True)
         self.processed_dir.mkdir(parents=True, exist_ok=True)
 
-    def validate_dataframe(self, df: pd.DataFrame, source_col: str = "en", target_col: str = "hi") -> Tuple[bool, str]:
+    def validate_dataframe(self, df: pd.DataFrame, source_col: str = "en", target_col: str = "hi") -> tuple[bool, str]:
         """
         Validates the structure and content of a parallel translation DataFrame.
         """
@@ -103,7 +103,7 @@ class DatasetLoader:
 
         return True, f"Dataset validated successfully. Total rows: {len(df)}, Valid non-null pairs: {len(valid_rows)}."
 
-    def load_from_csv(self, file_path: str, source_col: Optional[str] = None, target_col: Optional[str] = None) -> pd.DataFrame:
+    def load_from_csv(self, file_path: str, source_col: str | None = None, target_col: str | None = None) -> pd.DataFrame:
         """
         Loads a parallel translation dataset from a CSV file.
         Attempts auto-detection of column headers if not explicitly specified.
@@ -208,7 +208,7 @@ class DatasetLoader:
         logger.info(f"Created fallback benchmark dataset with {len(fallback_df)} parallel pairs at {fallback_path}")
         return fallback_df
 
-    def get_or_create_dataset(self, custom_path: Optional[str] = None, max_samples: int = 50000) -> pd.DataFrame:
+    def get_or_create_dataset(self, custom_path: str | None = None, max_samples: int = 50000) -> pd.DataFrame:
         """
         Main entry point for getting a validated raw dataset.
         Checks for custom path, existing downloaded file, or fetches from OPUS.

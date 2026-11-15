@@ -3,11 +3,10 @@ Model manager and caching system for Lingua AI.
 Manages loading, device assignment (CUDA/CPU), caching, and checkpoint detection
 for MarianMT Sequence-to-Sequence models and tokenizers.
 """
-import os
-import sys
 import logging
+import sys
 from pathlib import Path
-from typing import Tuple, Dict, Any, Optional
+from typing import Any, ClassVar
 
 # Add project root to path if running directly
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -25,13 +24,13 @@ class ModelManager:
     between fine-tuned checkpoints and pretrained Hugging Face models.
     """
     _instance = None
-    _models: Dict[str, Any] = {}
-    _tokenizers: Dict[str, Any] = {}
-    _device: Optional[str] = None
+    _models: ClassVar[dict[str, Any]] = {}
+    _tokenizers: ClassVar[dict[str, Any]] = {}
+    _device: ClassVar[str | None] = None
 
     def __new__(cls):
         if cls._instance is None:
-            cls._instance = super(ModelManager, cls).__new__(cls)
+            cls._instance = super().__new__(cls)
             cls._instance._init_device()
         return cls._instance
 
@@ -86,7 +85,7 @@ class ModelManager:
             return has_config and has_weights
         return False
 
-    def get_model_identifier(self, pair_key: str, prefer_finetuned: bool = False) -> Tuple[str, bool]:
+    def get_model_identifier(self, pair_key: str, prefer_finetuned: bool = False) -> tuple[str, bool]:
         """
         Returns the path/identifier to load and a boolean indicating if it is fine-tuned.
         """
@@ -105,7 +104,7 @@ class ModelManager:
         self,
         lang_pair: str,
         prefer_finetuned: bool = False
-    ) -> Tuple[Any, Any, Dict[str, Any]]:
+    ) -> tuple[Any, Any, dict[str, Any]]:
         """
         Retrieves cached model and tokenizer, or loads them if not already cached.
         Supports both pretrained and fine-tuned checkpoints in separate cache slots.
@@ -118,8 +117,8 @@ class ModelManager:
         try:
             from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
         except ImportError:
-            from transformers import MarianMTModel as AutoModelForSeq2SeqLM, MarianTokenizer as AutoTokenizer
-        import torch
+            from transformers import MarianMTModel as AutoModelForSeq2SeqLM
+            from transformers import MarianTokenizer as AutoTokenizer
 
         pair_key = self.normalize_lang_pair(lang_pair)
         model_id, is_finetuned = self.get_model_identifier(pair_key, prefer_finetuned=prefer_finetuned)
@@ -172,7 +171,7 @@ class ModelManager:
         logger.info(f"Successfully loaded and cached model for {pair_key} on {self.device}.")
         return model, tokenizer, metadata
 
-    def get_metadata(self, lang_pair: str, prefer_finetuned: bool = False, *args, **kwargs) -> Dict[str, Any]:
+    def get_metadata(self, lang_pair: str, prefer_finetuned: bool = False, *args, **kwargs) -> dict[str, Any]:
         """Returns metadata for the specified language pair."""
         pair_key = self.normalize_lang_pair(lang_pair)
         model_id, is_finetuned = self.get_model_identifier(pair_key, prefer_finetuned=prefer_finetuned)

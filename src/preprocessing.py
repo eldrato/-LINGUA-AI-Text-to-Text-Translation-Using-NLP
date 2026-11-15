@@ -3,14 +3,15 @@ Preprocessing and tokenization pipeline for Lingua AI.
 Performs text cleaning, Unicode normalization (preserving Hindi Devanagari script),
 whitespace formatting, length filtering, dataset splitting, and PyTorch Dataset creation.
 """
+import logging
 import re
 import sys
 import unicodedata
-import logging
 from pathlib import Path
-from typing import Tuple, Optional, Dict, Any, List
-import pandas as pd
+from typing import Any
+
 import numpy as np
+import pandas as pd
 
 # Add project root to path if running directly
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -160,9 +161,9 @@ def split_dataset(
     test_ratio: float = 0.10,
     random_seed: int = 42,
     save_splits: bool = True,
-    processed_dir: Optional[Path] = None,
+    processed_dir: Path | None = None,
     prefix: str = "opus_en_hi"
-) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """
     Splits the cleaned dataset into Train (80%), Validation (10%), and Test (10%) splits
     using a reproducible random seed.
@@ -261,8 +262,7 @@ class TranslationDataset:
     def __len__(self) -> int:
         return len(self.df)
 
-    def __getitem__(self, idx: int) -> Dict[str, Any]:
-        import torch
+    def __getitem__(self, idx: int) -> dict[str, Any]:
 
         row = self.df.iloc[idx]
         src_text = str(row[self.source_col])
@@ -339,9 +339,9 @@ def postprocess_translation(text: str, target_lang: str = "hi") -> str:
         text = re.sub(r"([\u0900-\u097F]+)\s*-\s*([\u0900-\u097F]+)", r"\1-\2", text)
     else:
         # English: repair contractions: don ' t -> don't, it ' s -> it's
-        text = re.sub(r"\b(\w+)\s*'\s*(s|m|d|ll|re|ve)\b", r"\1'\2", text, flags=re.I)
-        text = re.sub(r"\b(\w+)\s+n\s*'\s*t\b", r"\1n't", text, flags=re.I)
-        text = re.sub(r"\b(\w+)\s*'\s*t\b", r"\1't", text, flags=re.I)
+        text = re.sub(r"\b(\w+)\s*'\s*(s|m|d|ll|re|ve)\b", r"\1'\2", text, flags=re.IGNORECASE)
+        text = re.sub(r"\b(\w+)\s+n\s*'\s*t\b", r"\1n't", text, flags=re.IGNORECASE)
+        text = re.sub(r"\b(\w+)\s*'\s*t\b", r"\1't", text, flags=re.IGNORECASE)
 
         # Capitalize the first letter of each sentence
         sentences = re.split(r"(?<=[.!?\n])\s+", text)
@@ -358,7 +358,10 @@ def postprocess_translation(text: str, target_lang: str = "hi") -> str:
     return text.strip()
 
 if __name__ == "__main__":
-    from dataset_loader import DatasetLoader
+    try:
+        from src.dataset_loader import DatasetLoader
+    except ImportError:
+        from dataset_loader import DatasetLoader
     loader = DatasetLoader()
     raw_df = loader.get_or_create_dataset()
     clean_df = preprocess_dataframe(raw_df)

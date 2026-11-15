@@ -8,16 +8,16 @@ Implements Hugging Face Seq2SeqTrainer with:
 - Best checkpoint selection by validation BLEU and EarlyStoppingCallback
 - Configurable learning rate sweeps, loss tracking, and visualization
 """
-import os
-import sys
-import json
-import time
 import argparse
+import json
 import logging
+import sys
+import time
 from pathlib import Path
-from typing import Dict, Any, Optional, List, Tuple
-import pandas as pd
+from typing import Any
+
 import numpy as np
+import pandas as pd
 
 # Ensure project root is in sys.path
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -25,13 +25,12 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 import config
-from src.dataset_loader import DatasetLoader
-from src.preprocessing import clean_text, postprocess_translation
+from src.preprocessing import postprocess_translation
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
-def plot_and_save_loss_curve(history: Dict[str, List[float]], output_path: Path, lang_pair: str):
+def plot_and_save_loss_curve(history: dict[str, list[float]], output_path: Path, lang_pair: str):
     """Generates and saves a publication-quality training and validation loss plot."""
     try:
         import matplotlib.pyplot as plt
@@ -68,7 +67,7 @@ def plot_and_save_loss_curve(history: Dict[str, List[float]], output_path: Path,
     except Exception as e:
         logger.warning(f"Could not generate loss curve: {e}")
 
-def load_clean_data(pair_key: str, data_path: Optional[str] = None, max_samples: Optional[int] = None) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def load_clean_data(pair_key: str, data_path: str | None = None, max_samples: int | None = None) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Loads clean train, val, and test splits for the language pair."""
     src_col, tgt_col = ("en", "hi") if pair_key == "en-hi" else ("hi", "en")
     
@@ -109,34 +108,34 @@ def load_clean_data(pair_key: str, data_path: Optional[str] = None, max_samples:
 
 def train_model(
     lang_pair: str = "en-hi",
-    base_model: Optional[str] = None,
-    data_path: Optional[str] = None,
+    base_model: str | None = None,
+    data_path: str | None = None,
     epochs: int = 3,
-    batch_size: Optional[int] = None,
+    batch_size: int | None = None,
     learning_rate: float = 3e-5,
     weight_decay: float = 0.01,
     warmup_ratio: float = 0.1,
     label_smoothing: float = 0.1,
     num_beams: int = 4,
     max_length: int = 128,
-    max_samples: Optional[int] = None,
-    output_dir: Optional[str] = None,
-    gradient_accumulation_steps: Optional[int] = None,
+    max_samples: int | None = None,
+    output_dir: str | None = None,
+    gradient_accumulation_steps: int | None = None,
     early_stopping_patience: int = 2
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """
     Fine-tunes a Sequence-to-Sequence translation model using Hugging Face Seq2SeqTrainer.
     """
-    import torch
     import sacrebleu
+    import torch
     from datasets import Dataset
     from transformers import (
         AutoModelForSeq2SeqLM,
         AutoTokenizer,
         DataCollatorForSeq2Seq,
+        EarlyStoppingCallback,
         Seq2SeqTrainer,
         Seq2SeqTrainingArguments,
-        EarlyStoppingCallback,
     )
 
     pair_key = "en-hi" if "en" in lang_pair and "hi" in lang_pair and lang_pair.startswith("en") else "hi-en"
@@ -157,7 +156,7 @@ def train_model(
         gradient_accumulation_steps = 1 if is_cuda else 2
 
     # 1. Load Data
-    train_df, val_df, test_df = load_clean_data(pair_key, data_path=data_path, max_samples=max_samples)
+    train_df, val_df, _test_df = load_clean_data(pair_key, data_path=data_path, max_samples=max_samples)
 
     # 2. Load Tokenizer & Model
     tokenizer = AutoTokenizer.from_pretrained(model_identifier)
@@ -339,7 +338,7 @@ def train_model(
     logger.info(f"Fine-tuning complete for {pair_key}! Best Val BLEU: {best_bleu} | Time: {total_train_time}s")
     return metadata
 
-def run_sweep(lang_pair: str = "en-hi", max_samples: Optional[int] = 200):
+def run_sweep(lang_pair: str = "en-hi", max_samples: int | None = 200):
     """
     Runs a hyperparameter sweep over learning rate × epochs
     and saves the best-performing model.
