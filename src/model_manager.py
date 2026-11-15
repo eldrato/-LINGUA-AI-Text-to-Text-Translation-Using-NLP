@@ -153,7 +153,7 @@ class ModelManager:
             cache_key = f"{pair_key}_pretrained"
 
         # Place model on device
-        getattr(model, "to")(self.device)
+        model.to(self.device)  # type: ignore
         model.eval()
 
         # Cache in memory

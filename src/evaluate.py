@@ -34,7 +34,7 @@ def compute_comet_score(sources: list[str], hypotheses: list[str], references: l
         if not hasattr(functools, "_HashedSeq"):
             class _HashedSeq(tuple):
                 pass
-            setattr(functools, "_HashedSeq", _HashedSeq)
+            functools._HashedSeq = _HashedSeq  # type: ignore
 
         from comet import load_from_checkpoint
         cache_dir = Path.home() / ".cache" / "huggingface" / "hub"
@@ -56,7 +56,7 @@ def compute_neural_similarity(hypotheses: list[str], references: list[str], lang
         # Use cached multilingual BERT for both languages to avoid multi-gigabyte downloads
         res = score(hypotheses, references, model_type="bert-base-multilingual-cased", verbose=False)
         F1 = res[2]
-        f1_mean = getattr(F1, "mean")()
+        f1_mean = F1.mean()  # type: ignore
         return round(float(f1_mean.item()), 4)
     except Exception as e:
         logger.warning(f"Neural similarity evaluation skipped: {e}")

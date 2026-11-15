@@ -1,8 +1,8 @@
 """
 Unit tests for translation inference, validation, and language selection.
 """
-import sys
 import site
+import sys
 from pathlib import Path
 
 # Ensure User Site-Packages and Project Root are in sys.path
@@ -18,6 +18,7 @@ import pytest  # type: ignore
 
 from src.model_manager import get_model_manager
 from src.translation import Translator
+
 
 def test_normalize_lang_pair():
     mgr = get_model_manager()

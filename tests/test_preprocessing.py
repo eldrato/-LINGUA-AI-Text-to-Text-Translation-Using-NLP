@@ -1,8 +1,8 @@
 """
 Unit tests for preprocessing and Unicode normalization.
 """
-import sys
 import site
+import sys
 from pathlib import Path
 
 # Ensure User Site-Packages and Project Root are in sys.path
@@ -14,11 +14,16 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-import pytest  # type: ignore
 import pandas as pd  # type: ignore
-import numpy as np  # type: ignore
+import pytest  # type: ignore
 
-from src.preprocessing import clean_text, preprocess_dataframe, split_dataset, postprocess_translation
+from src.preprocessing import (
+    clean_text,
+    postprocess_translation,
+    preprocess_dataframe,
+    split_dataset,
+)
+
 
 def test_clean_text_english():
     raw = "   Hello   world!  \t This is a   test. \n  "

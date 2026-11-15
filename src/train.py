@@ -199,16 +199,16 @@ def train_model(
 
         # Apply postprocessing
         clean_preds = [postprocess_translation(p.strip(), target_lang=tgt_col) for p in decoded_preds]
-        clean_labels = [postprocess_translation(l.strip(), target_lang=tgt_col) for l in decoded_labels]
+        clean_labels = [postprocess_translation(lbl.strip(), target_lang=tgt_col) for lbl in decoded_labels]
 
         try:
-            bleu = sacrebleu.corpus_bleu(clean_preds, [[l] for l in clean_labels], tokenize=tok_method)
+            bleu = sacrebleu.corpus_bleu(clean_preds, [[lbl] for lbl in clean_labels], tokenize=tok_method)
             bleu_score = round(float(bleu.score), 2)
         except Exception:
             bleu_score = 0.0
 
         try:
-            chrf = sacrebleu.corpus_chrf(clean_preds, [[l] for l in clean_labels])
+            chrf = sacrebleu.corpus_chrf(clean_preds, [[lbl] for lbl in clean_labels])
             chrf_score = round(float(chrf.score), 2)
         except Exception:
             chrf_score = 0.0

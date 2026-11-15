@@ -2,9 +2,8 @@
 LINGUA AI - Intelligent Text-to-Text Translation Application.
 Professional Streamlit interface integrated with MarianMT Transformer models.
 """
-import os
-import sys
 import site
+import sys
 import time
 from pathlib import Path
 
@@ -27,22 +26,22 @@ except Exception:
 
 try:
     import streamlit as st  # type: ignore
-except ImportError as _import_err:
+except ImportError:
     sys.stderr.write(
         f"\n[ERROR] Streamlit is not installed in the active environment: {sys.executable}\n"
         "Please install requirements using: pip install -r requirements.txt\n\n"
     )
-    raise _import_err
+    raise
 
 # Enable seamless execution via `python app.py` by auto-forwarding to `streamlit run`
-if __name__ == "__main__" and hasattr(st, "runtime") and not getattr(st, "runtime").exists():
+if __name__ == "__main__" and hasattr(st, "runtime") and not st.runtime.exists():  # type: ignore
     from streamlit.web import cli as stcli  # type: ignore
     sys.argv = ["streamlit", "run", str(Path(__file__).resolve())]
     sys.exit(stcli.main())
 
 import config
-from src.translation import Translator
 from src.model_manager import get_model_manager
+from src.translation import Translator
 
 # Page Configuration
 st.set_page_config(
@@ -388,7 +387,7 @@ if translate_clicked:
                 st.rerun()
 
             except Exception as e:
-                st.error(f"❌ Translation Error: {str(e)}")
+                st.error(f"❌ Translation Error: {e!s}")
 
 # Bottom Tabs: Translation History, Model Insights, Dataset Overview
 tab_history, tab_eval, tab_dataset = st.tabs(["📜 Translation History", "📊 Model Evaluation & Benchmarks", "📁 Dataset Architecture"])

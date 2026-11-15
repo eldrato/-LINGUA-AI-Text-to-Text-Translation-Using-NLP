@@ -2,7 +2,6 @@
 Configuration settings for Lingua AI Translation Application.
 Centralized path definitions, model parameters, and training hyperparameters.
 """
-import os
 from pathlib import Path
 
 # Base Paths

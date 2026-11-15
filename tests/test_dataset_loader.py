@@ -1,8 +1,8 @@
 """
 Unit tests for dataset loading, CSV parsing, and validation.
 """
-import sys
 import site
+import sys
 import tempfile
 from pathlib import Path
 
@@ -15,15 +15,16 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-import pytest  # type: ignore
 import pandas as pd  # type: ignore
+import pytest  # type: ignore
 
 from src.dataset_loader import DatasetLoader
+
 
 def test_validate_dataframe_valid():
     loader = DatasetLoader()
     df = pd.DataFrame({"en": ["Hello"], "hi": ["नमस्ते"]})
-    is_valid, msg = loader.validate_dataframe(df, "en", "hi")
+    is_valid, _ = loader.validate_dataframe(df, "en", "hi")
     assert is_valid is True
 
 def test_validate_dataframe_missing_col():
