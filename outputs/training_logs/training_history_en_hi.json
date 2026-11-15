@@ -1,30 +1,40 @@
 {
   "lang_pair": "en-hi",
   "base_model": "Helsinki-NLP/opus-mt-en-hi",
+  "is_finetuned": true,
+  "best_val_bleu": 22.75,
+  "best_val_chrf": 69.14,
   "epochs": 2,
-  "batch_size": 2,
-  "learning_rate": 5e-05,
-  "total_training_time_sec": 10.43,
-  "train_samples": 12,
-  "val_samples": 2,
-  "test_samples": 2,
-  "final_train_loss": 0.3166770276923974,
-  "final_val_loss": 0.22262762486934662,
-  "best_val_loss": 0.22262762486934662,
+  "learning_rate": 3e-05,
+  "batch_size": 8,
+  "num_train_samples": 800,
+  "total_train_time_sec": 170.47,
+  "train_date": "2026-11-15 16:19:41",
+  "device": "cpu",
   "history": {
     "train_loss": [
-      0.6173920904596647,
-      0.3166770276923974
+      2.2886,
+      2.0503,
+      1.8996,
+      2.0313,
+      2.0197,
+      1.8068,
+      1.8547,
+      1.7907,
+      1.8366,
+      1.9207
     ],
     "val_loss": [
-      0.2269894927740097,
-      0.22262762486934662
+      1.8684,
+      1.8597
     ],
-    "epoch_times": [
-      4.876376628875732,
-      4.721254825592041
+    "eval_bleu": [
+      22.75,
+      22.75
+    ],
+    "eval_chrf": [
+      69.14,
+      69.14
     ]
-  },
-  "saved_model_path": "C:\\Users\\mskun\\OneDrive\\Desktop\\nlp project 1\\models\\en_hi",
-  "device": "cpu"
+  }
 }

@@ -1,0 +1,18 @@
+{
+  "lang_pair": "en-hi",
+  "direction": "en-hi",
+  "source_lang": "en",
+  "target_lang": "hi",
+  "model_identifier": "Helsinki-NLP/opus-mt-en-hi",
+  "model_type": "pretrained",
+  "is_finetuned": false,
+  "sacrebleu_corpus_score": 88.25,
+  "chrf_score": 91.38,
+  "comet_score": "0.9676 (BERTScore F1)",
+  "average_sentence_bleu": 84.79,
+  "average_sentence_chrf": 89.98,
+  "num_test_examples": 100,
+  "total_eval_time_sec": 16.32,
+  "avg_inference_time_per_sentence_sec": 0.1632,
+  "device": "cpu"
+}

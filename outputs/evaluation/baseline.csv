@@ -1,0 +1,3 @@
+direction,model_type,model_id,sacrebleu,chrf,comet,num_test_samples,eval_time_sec
+en→hi,Pretrained MarianMT,Helsinki-NLP/opus-mt-en-hi,88.25,91.38,0.9676 (BERTScore F1),100,16.32
+hi→en,Pretrained MarianMT,Helsinki-NLP/opus-mt-hi-en,80.65,85.93,0.9439 (BERTScore F1),100,16.65

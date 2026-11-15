@@ -1,0 +1,40 @@
+{
+  "lang_pair": "hi-en",
+  "base_model": "Helsinki-NLP/opus-mt-hi-en",
+  "is_finetuned": true,
+  "best_val_bleu": 21.11,
+  "best_val_chrf": 34.89,
+  "epochs": 2,
+  "learning_rate": 3e-05,
+  "batch_size": 8,
+  "num_train_samples": 800,
+  "total_train_time_sec": 164.81,
+  "train_date": "2026-11-15 16:22:49",
+  "device": "cpu",
+  "history": {
+    "train_loss": [
+      2.4946,
+      2.5067,
+      2.2655,
+      2.2833,
+      2.2428,
+      2.0184,
+      2.1457,
+      2.0551,
+      2.0338,
+      2.0208
+    ],
+    "val_loss": [
+      2.1691,
+      2.1376
+    ],
+    "eval_bleu": [
+      21.11,
+      21.11
+    ],
+    "eval_chrf": [
+      34.89,
+      34.89
+    ]
+  }
+}

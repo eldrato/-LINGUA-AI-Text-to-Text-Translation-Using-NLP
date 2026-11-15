@@ -19,6 +19,7 @@ models/en_hi/checkpoint-*
 models/hi_en/*.bin
 models/hi_en/*.safetensors
 models/hi_en/checkpoint-*
+models/*/checkpoints/
 *.pt
 *.pth
 

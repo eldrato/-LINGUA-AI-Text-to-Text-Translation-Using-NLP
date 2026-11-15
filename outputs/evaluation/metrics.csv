@@ -1,0 +1,5 @@
+direction,model_type,model_id,sacrebleu,chrf,comet,num_test_samples,eval_time_sec
+en→hi,Pretrained MarianMT,Helsinki-NLP/opus-mt-en-hi,88.25,91.38,0.9676 (BERTScore F1),100,16.32
+hi→en,Pretrained MarianMT,Helsinki-NLP/opus-mt-hi-en,80.65,85.93,0.9439 (BERTScore F1),100,16.65
+en→hi,Fine-Tuned Seq2Seq,C:\Users\mskun\OneDrive\Desktop\nlp project 1\models\en_hi,90.92,92.94,0.9757 (BERTScore F1),100,17.64
+hi→en,Fine-Tuned Seq2Seq,C:\Users\mskun\OneDrive\Desktop\nlp project 1\models\hi_en,80.98,86.06,0.9455 (BERTScore F1),100,16.4

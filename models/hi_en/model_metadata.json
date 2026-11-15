@@ -1,0 +1,14 @@
+{
+  "lang_pair": "hi-en",
+  "base_model": "Helsinki-NLP/opus-mt-hi-en",
+  "is_finetuned": true,
+  "best_val_bleu": 21.11,
+  "best_val_chrf": 34.89,
+  "epochs": 2,
+  "learning_rate": 3e-05,
+  "batch_size": 8,
+  "num_train_samples": 800,
+  "total_train_time_sec": 164.81,
+  "train_date": "2026-11-15 16:22:49",
+  "device": "cpu"
+}

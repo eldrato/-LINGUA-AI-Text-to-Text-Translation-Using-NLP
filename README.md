@@ -212,18 +212,30 @@ To use on Colab:
 
 ## 9. Evaluation Results & Benchmarks
 
-The project calculates standardized **SacreBLEU** metrics on held-out test splits:
+The project calculates standardized **SacreBLEU**, **chrF2++**, and neural semantic similarity (**BERTScore F1**) metrics on the strictly leakage-free, held-out test split (100 samples per direction):
 
-| Metric | English → Hindi (`en-hi`) | Hindi → English (`hi-en`) |
-| :--- | :--- | :--- |
-| **Model Type** | Fine-Tuned Checkpoint (`models/en_hi`) | Pretrained MarianMT (`Helsinki-NLP/opus-mt-hi-en`) |
-| **SacreBLEU Corpus Score** | **87.30** | **88.94** |
-| **Average Sentence BLEU** | **88.98** | **70.50** |
-| **Tokenizer Method** | `intl` (Devanagari international) | `13a` (Standard Moses) |
-| **Training Loss (Final)** | **0.3167** | N/A (Pretrained base) |
-| **Validation Loss (Final)**| **0.2226** | N/A (Pretrained base) |
+### Baseline vs. Fine-Tuned Benchmark Comparison
 
-*Full evaluation outputs and side-by-side comparison CSVs are available in `outputs/evaluation/`.*
+| Direction | Model Architecture | Checkpoint / ID | SacreBLEU | chrF2++ | Neural Similarity (BERTScore F1) | Evaluation Time (100 sentences) |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: |
+| **English → Hindi (`en→hi`)** | Pretrained MarianMT | `Helsinki-NLP/opus-mt-en-hi` | 88.25 | 91.38 | 0.9676 | 16.32s |
+| **English → Hindi (`en→hi`)** | **Fine-Tuned Seq2Seq** | `models/en_hi` | **90.92** (+2.67) | **92.94** (+1.56) | **0.9757** (+0.0081) | 17.64s |
+| **Hindi → English (`hi→en`)** | Pretrained MarianMT | `Helsinki-NLP/opus-mt-hi-en` | 80.65 | 85.93 | 0.9439 | 16.65s |
+| **Hindi → English (`hi→en`)** | **Fine-Tuned Seq2Seq** | `models/hi_en` | **80.98** (+0.33) | **86.06** (+0.13) | **0.9455** (+0.0016) | 16.40s |
+
+### Human Manual Quality Review (50 Random Held-Out Pairs / Direction)
+
+| Direction | Sample Size | Acceptable Count | Acceptance Rate | Primary Divergence Source |
+| :--- | :---: | :---: | :---: | :--- |
+| **English → Hindi (`en→hi`)** | 50 | **49 / 50** | **98.0%** | Minor synonym variation (e.g. आँकड़े vs सांख्यिकी) |
+| **Hindi → English (`hi→en`)** | 50 | **48 / 50** | **96.0%** | OPUS web-mining reference misalignment (e.g. 'सबको कमिट करें' -> 'Commit all') |
+
+*Comprehensive evaluation artifacts, comparison charts, and linguistic error breakdowns are available in:*
+- Metrics Comparison Table: [`outputs/evaluation/metrics.csv`](outputs/evaluation/metrics.csv)
+- Comparison Visualization: [`outputs/evaluation/metrics_comparison.png`](outputs/evaluation/metrics_comparison.png)
+- Human Quality Audit: [`outputs/evaluation/manual_review.csv`](outputs/evaluation/manual_review.csv)
+- Linguistic Error Taxonomy & Samples: [`outputs/evaluation/error_analysis.md`](outputs/evaluation/error_analysis.md)
+- Dataset Audit & Leakage Analysis: [`outputs/evaluation/audit.md`](outputs/evaluation/audit.md)
 
 ---
 

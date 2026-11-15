@@ -49,6 +49,6 @@
   "static_position_embeddings": true,
   "tie_word_embeddings": true,
   "transformers_version": "5.23.0",
-  "use_cache": true,
+  "use_cache": false,
   "vocab_size": 61950
 }

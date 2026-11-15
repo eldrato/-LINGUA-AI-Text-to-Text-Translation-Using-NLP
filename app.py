@@ -77,6 +77,10 @@ if "src_lang" not in st.session_state:
     st.session_state.src_lang = "English"
 if "tgt_lang" not in st.session_state:
     st.session_state.tgt_lang = "Hindi"
+if "src_select_box" not in st.session_state:
+    st.session_state.src_select_box = "English"
+if "tgt_select_box" not in st.session_state:
+    st.session_state.tgt_select_box = "Hindi"
 if "last_latency" not in st.session_state:
     st.session_state.last_latency = 0.0
 if "success_msg" not in st.session_state:
@@ -248,6 +252,8 @@ with col_swap:
         old_tgt = st.session_state.tgt_lang
         st.session_state.src_lang = old_tgt
         st.session_state.tgt_lang = old_src
+        st.session_state.src_select_box = old_tgt
+        st.session_state.tgt_select_box = old_src
         # Swap input and output texts
         old_in = st.session_state.source_text_input
         old_out = st.session_state.translated_output

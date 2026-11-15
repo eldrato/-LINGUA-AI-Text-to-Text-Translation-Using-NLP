@@ -21,13 +21,18 @@ import config
 
 logger = logging.getLogger(__name__)
 
-# Regular expressions for cleaning
+# Regular expressions for cleaning and validation
 WHITESPACE_RE = re.compile(r"\s+")
 CONTROL_CHARS_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]")
+LATIN_RE = re.compile(r"[a-zA-Z]")
+DEVANAGARI_RE = re.compile(r"[\u0900-\u097F]")
+SOFTWARE_NOISE_RE = re.compile(
+    r"(%[0-9]*[sd]|<[^>]+>|http[s]?://|^\s*_[A-Za-z]|\bCtrl\b|\bAlt\b|\bF[0-9]{1,2}\b|\.desktop|\.png|\.xml|\.exe)"
+)
 
 def clean_text(text: str, is_hindi: bool = False) -> str:
     """
-    Cleans and normalizes text for NLP translation.
+    Cleans and normalizes text for NLP translation using NFKC normalization.
     
     Parameters:
     - text: Input sentence or paragraph.
@@ -42,15 +47,13 @@ def clean_text(text: str, is_hindi: bool = False) -> str:
             return ""
         text = str(text)
 
-    # 1. Unicode normalization (NFC ensures combined glyphs are properly maintained)
-    # Using NFC maintains Hindi character + matra combinations without decomposing them.
-    text = unicodedata.normalize("NFC", text)
+    # 1. Unicode normalization (NFKC normalizes compatibility characters and composite glyphs)
+    text = unicodedata.normalize("NFKC", text)
 
     # 2. Strip non-printable / control characters
     text = CONTROL_CHARS_RE.sub("", text)
 
     # 3. Handle zero-width characters (ZWJ, ZWNJ often used in Indic scripts - keep only if needed, clean others)
-    # \u200b is zero-width space, remove it
     text = text.replace("\u200b", "").replace("\ufeff", "").replace("\u00a0", " ")
 
     # 4. Collapse consecutive whitespace, tabs, and newlines into single spaces
@@ -63,51 +66,91 @@ def preprocess_dataframe(
     source_col: str = "en",
     target_col: str = "hi",
     min_chars: int = 1,
-    max_chars: int = 500
+    max_chars: int = 500,
+    min_words: int = 1,
+    min_ratio: float = 0.20,
+    max_ratio: float = 4.5,
 ) -> pd.DataFrame:
     """
-    Cleans a parallel DataFrame by:
-    - Dropping nulls/NaNs
-    - Cleaning source and target texts
-    - Removing empty sentences
-    - Removing duplicate sentence pairs
-    - Filtering sentences outside [min_chars, max_chars]
+    Thoroughly cleans and validates parallel translation corpora:
+    1. NFKC normalization and null removal.
+    2. Deduplication of identical parallel pairs.
+    3. Removal of untranslated copies (source == target).
+    4. Script validation (Latin letters in English, Devanagari in Hindi).
+    5. Removal of software boilerplate, code formatting (%s, <tags>, URLs).
+    6. Length constraints and extreme length ratio filtering.
+    7. Disjoint deduplication to guarantee 0% train/val/test data leakage.
     
-    Returns:
-    - Cleaned DataFrame.
+    Logs counts before and after every filter step.
     """
     initial_count = len(df)
+    logger.info(f"[Filter 0/7] Initial raw input rows: {initial_count}")
     
     # 1. Drop missing rows
     df_clean = df.dropna(subset=[source_col, target_col]).copy()
-    null_dropped = initial_count - len(df_clean)
+    logger.info(f"[Filter 1/7] After dropping nulls: {len(df_clean)} (-{initial_count - len(df_clean)})")
 
-    # 2. Apply text cleaning
-    df_clean[source_col] = df_clean[source_col].apply(lambda x: clean_text(x, is_hindi=False))
-    df_clean[target_col] = df_clean[target_col].apply(lambda x: clean_text(x, is_hindi=True))
+    # 2. Apply NFKC Unicode cleaning
+    is_hi_src = (source_col.lower() in ["hi", "hindi"])
+    is_hi_tgt = (target_col.lower() in ["hi", "hindi"])
+    df_clean[source_col] = df_clean[source_col].astype(str).apply(lambda x: clean_text(x, is_hindi=is_hi_src))
+    df_clean[target_col] = df_clean[target_col].astype(str).apply(lambda x: clean_text(x, is_hindi=is_hi_tgt))
 
-    # 3. Drop empty sentences
-    df_clean = df_clean[(df_clean[source_col].str.len() > 0) & (df_clean[target_col].str.len() > 0)]
+    # 3. Drop exact duplicate parallel pairs
+    prev_cnt = len(df_clean)
+    df_clean = df_clean.drop_duplicates(subset=[source_col, target_col]).reset_index(drop=True)
+    logger.info(f"[Filter 2/7] After pair deduplication: {len(df_clean)} (-{prev_cnt - len(df_clean)} duplicates)")
 
-    # 4. Drop duplicate pairs
-    before_dedup = len(df_clean)
-    df_clean = df_clean.drop_duplicates(subset=[source_col, target_col])
-    duplicates_dropped = before_dedup - len(df_clean)
-
-    # 5. Length filtering
+    # 4. Drop untranslated copies where source == target
+    prev_cnt = len(df_clean)
     df_clean = df_clean[
-        (df_clean[source_col].str.len() >= min_chars) &
-        (df_clean[source_col].str.len() <= max_chars) &
-        (df_clean[target_col].str.len() >= min_chars) &
-        (df_clean[target_col].str.len() <= max_chars)
-    ]
-    
-    df_clean = df_clean.reset_index(drop=True)
-    logger.info(
-        f"Preprocessing complete. Initial: {initial_count}, "
-        f"Nulls dropped: {null_dropped}, Duplicates dropped: {duplicates_dropped}, "
-        f"Final clean pairs: {len(df_clean)}"
+        df_clean[source_col].str.lower().str.strip() != df_clean[target_col].str.lower().str.strip()
+    ].reset_index(drop=True)
+    logger.info(f"[Filter 3/7] After removing source==target copies: {len(df_clean)} (-{prev_cnt - len(df_clean)})")
+
+    # 5. Script validation: verify Devanagari script in Hindi and Latin in English
+    prev_cnt = len(df_clean)
+    en_col = source_col if not is_hi_src else target_col
+    hi_col = target_col if not is_hi_src else source_col
+
+    has_latin = df_clean[en_col].apply(lambda x: bool(LATIN_RE.search(x)))
+    has_deva = df_clean[hi_col].apply(lambda x: bool(DEVANAGARI_RE.search(x)))
+    df_clean = df_clean[has_latin & has_deva].reset_index(drop=True)
+    logger.info(f"[Filter 4/7] After script validation: {len(df_clean)} (-{prev_cnt - len(df_clean)})")
+
+    # 6. Software formatting / markup filter
+    prev_cnt = len(df_clean)
+    is_software_src = df_clean[source_col].apply(lambda x: bool(SOFTWARE_NOISE_RE.search(x)))
+    is_software_tgt = df_clean[target_col].apply(lambda x: bool(SOFTWARE_NOISE_RE.search(x)))
+    df_clean = df_clean[~(is_software_src | is_software_tgt)].reset_index(drop=True)
+    logger.info(f"[Filter 5/7] After software/markup filtering: {len(df_clean)} (-{prev_cnt - len(df_clean)})")
+
+    # 7. Sentence length, word count, and length ratio filters
+    prev_cnt = len(df_clean)
+    src_len = df_clean[source_col].str.len()
+    tgt_len = df_clean[target_col].str.len()
+    ratio = src_len / (tgt_len + 1e-5)
+
+    valid_len = (src_len >= min_chars) & (src_len <= max_chars) & (tgt_len >= min_chars) & (tgt_len <= max_chars)
+    valid_words = (
+        df_clean[source_col].apply(lambda x: len(x.split()) >= min_words) &
+        df_clean[target_col].apply(lambda x: len(x.split()) >= min_words)
     )
+    valid_ratio = (ratio >= min_ratio) & (ratio <= max_ratio)
+
+    df_clean = df_clean[valid_len & valid_words & valid_ratio].reset_index(drop=True)
+    logger.info(f"[Filter 6/7] After length & ratio filtering: {len(df_clean)} (-{prev_cnt - len(df_clean)})")
+
+    # 8. Strict disjoint deduplication on normalized source and target to eliminate all data leakage
+    prev_cnt = len(df_clean)
+    df_clean["_norm_src"] = df_clean[source_col].astype(str).str.strip().str.lower()
+    df_clean["_norm_tgt"] = df_clean[target_col].astype(str).str.strip().str.lower()
+    df_clean = df_clean.drop_duplicates(subset=["_norm_src"]).reset_index(drop=True)
+    df_clean = df_clean.drop_duplicates(subset=["_norm_tgt"]).reset_index(drop=True)
+    df_clean = df_clean.drop(columns=["_norm_src", "_norm_tgt"])
+    logger.info(f"[Filter 7/7] After disjoint normalized sentence deduplication: {len(df_clean)} (-{prev_cnt - len(df_clean)})")
+
+    logger.info(f"Preprocessing complete. Retained {len(df_clean)}/{initial_count} high-fidelity pairs ({len(df_clean)/initial_count*100:.1f}%).")
     return df_clean
 
 def split_dataset(
@@ -153,6 +196,17 @@ def split_dataset(
     val_df = val_df.reset_index(drop=True)
     test_df = test_df.reset_index(drop=True)
 
+    # Verify zero leakage across splits
+    cols_to_check = [c for c in ["en", "hi", "source", "target"] if c in df.columns]
+    for c in cols_to_check:
+        train_set = set(train_df[c].astype(str).str.strip().str.lower())
+        val_set = set(val_df[c].astype(str).str.strip().str.lower())
+        test_set = set(test_df[c].astype(str).str.strip().str.lower())
+        assert len(train_set.intersection(val_set)) == 0, f"Data leakage between train and val on column {c}"
+        assert len(train_set.intersection(test_set)) == 0, f"Data leakage between train and test on column {c}"
+        assert len(val_set.intersection(test_set)) == 0, f"Data leakage between val and test on column {c}"
+    logger.info("Leakage verification passed: 0.0% overlap across train, val, and test splits.")
+
     logger.info(
         f"Dataset split: Train={len(train_df)} ({len(train_df)/len(df):.1%}), "
         f"Val={len(val_df)} ({len(val_df)/len(df):.1%}), "
@@ -170,6 +224,16 @@ def split_dataset(
         val_df.to_csv(val_path, index=False, encoding="utf-8")
         test_df.to_csv(test_path, index=False, encoding="utf-8")
         logger.info(f"Saved processed splits to:\n - {train_path}\n - {val_path}\n - {test_path}")
+
+        # Also save corresponding reverse direction splits
+        if prefix == "opus_en_hi" and "en" in df.columns and "hi" in df.columns:
+            train_rev = train_df[["hi", "en"]]
+            val_rev = val_df[["hi", "en"]]
+            test_rev = test_df[["hi", "en"]]
+            train_rev.to_csv(target_dir / "opus_hi_en_train.csv", index=False, encoding="utf-8")
+            val_rev.to_csv(target_dir / "opus_hi_en_val.csv", index=False, encoding="utf-8")
+            test_rev.to_csv(target_dir / "opus_hi_en_test.csv", index=False, encoding="utf-8")
+            logger.info("Saved corresponding reverse direction splits (opus_hi_en_*.csv)")
 
     return train_df, val_df, test_df
 

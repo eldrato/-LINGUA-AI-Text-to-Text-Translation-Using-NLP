@@ -1,0 +1,101 @@
+index,direction,source,reference,hypothesis,sentence_bleu,sentence_chrf
+1,hi-en,खेल सांख्यिकी दिखायें,Show gameplay statistics,Show game statistics,34.67,68.42
+2,hi-en,एकल आयामी मोड,One Dimensional Mode,One _my Mode,19.0,18.26
+3,hi-en,देख रहा है% s,Goto symbol,Looking% s,0.0,5.1
+4,hi-en,एक नया आई मैप फोल्डर जोड़ें,Add a new IMAP folder,Add a new IMAP folder,100.0,100.0
+5,hi-en,सभी आवृत्ति आलोकित करें,Highlight all occurrences,Highlight all occurrences,100.0,100.0
+6,hi-en,सताने वाला किला,Beleaguered Castle,Invasive Extinction,0.0,4.9
+7,hi-en,दायाँ स्थिति इंच अक्षर,Right margin position in characters,Right margin position in characters,100.0,100.0
+8,hi-en,Wx विजेट,Wx Widgets,Wx Widgets,100.0,100.0
+9,hi-en,स्थानीय मेल परेशानी% s,Local Mail Problem% s,Local mail problem% s,23.64,55.55
+10,hi-en,F-Spot में भेजें (_ S),Export to F - _ Spot,_ Send to F-Spot,11.52,27.02
+11,hi-en,घटना रेकोर्डिंग शुरू करो/रोको,Start / stop event recording,Start decoding/ Corco,14.79,26.59
+12,hi-en,आपके होम फोल्डर की सामग्री बदल गई है. डिस्क प्रयोग विवरण को अद्यतन करने के लिए फिर स्कैन करें चुनें.,The content of your home folder has changed. Select rescan to update the disk usage details.,The contents of your home folder have changed. Choose again to update the disk usage details.,50.82,74.76
+13,hi-en,"चयन पट्टी में फाइल चुनें और ""Add"" बटन पर क्लिक करें","select files in the selection pane and click the ""Add"" button","Select files in the selection pane and click on the ""Add"" button",69.98,91.89
+14,hi-en,Libburn ट्रैक बनाई नहीं जा सकी,Libburn track could not be created,Libburn track could not be created,100.0,100.0
+15,hi-en,डिस्क जाँचें (_ C)...,_ Check Disc...,_ Check Disc...,100.0,100.0
+16,hi-en,जारी रखें a के साथ परस्पर विरोध,Continue a rebase with resolved conflicts,Continue a rebase with resolved conflicts,100.0,100.0
+17,hi-en,सबको कमिट करें,Complie file,Commit all,0.0,14.84
+18,hi-en,ताजा करना ट्री,Refreshing symbol tree...,Refreshing symbol tree...,100.0,100.0
+19,hi-en,आने वाले कनेक्शन से सुनने के लिये पोर्ट. एकिगा को नए मान के प्रभाव में आने के लिये फिर आरंभ किया जाना है.,The port to listen to for incoming connections. Ekiga needs to be restarted for the new value to take effect,The port to listen to for incoming connections. Ekiga needs to be restarted for the new value to take effect,100.0,100.0
+20,hi-en,मुख्य विंडो के X स्थिति,X position of main window,X position of main window,100.0,100.0
+21,hi-en,एक नया आई मैप मेलबाक्स जोड़ें,Add a new IMAP mailbox,Add a new IMAP mailbox,100.0,100.0
+22,hi-en,परियोजना चयन पृष्ठ दिखाने के लिए ब्रैसेरो को बाध्य करें,Force brasero to display the project selection page,Force Brasero to display the project selection page,70.71,91.38
+23,hi-en,कर्ता का Y निर्देशांक,Y coordinate of the actor,Y coordinate of the actor,100.0,100.0
+24,hi-en,कृपया संगीत जोड़ें.,Please add songs.,Please add songs.,100.0,100.0
+25,hi-en,निर्यात स्निपेट,Export Snippets,Export snippets,50.0,66.57
+26,hi-en,तस्वीर छोड़ें (_ D),_ Discard photo,_Discard photo,100.0,100.0
+27,hi-en,एकिगा को दिए URI को कॉल करने के लिए कहता है,Makes Ekiga call the given URI,Makes Ekiga call the given URI,100.0,100.0
+28,hi-en,"""-immed"" फ्लैग सक्रिय करें (देखें cdrecord manual)","Enable ""- immed"" flag (see cdrecord manual)","Enable the ""-immed"" flag (see cdrecord manual)",60.77,93.32
+29,hi-en,कोई लाइसेंस नहीं,No License,No License,100.0,100.0
+30,hi-en,प्लग-इन त्रुटियां,Plugin Errors,Plug-in errors,0.0,42.57
+31,hi-en,विल औ द विस्प,Will O The Wisp,Will O The Wisp,100.0,100.0
+32,hi-en,सूचना दिखाने वाली लकीर,Confim the following information:,The line to show in notification,0.0,22.8
+33,hi-en,आधार पर एक पत्ता ले जाएँ,Move a card to the Foundation,Move a card to the foundation,75.98,82.98
+34,hi-en,क्या सतह का आवंटन से मेल चाहिए,Whether the surface should match the allocation,Whether the surface should match the allocation,100.0,100.0
+35,hi-en,रूकें लागू कर रहा है और लौटाएँ ट्री को state,Stop applying the patch series and return the tree to its previous state,Stop applying the patch series and return the tree to its previous state,100.0,100.0
+36,hi-en,पाठ की दिशा,Direction of the text,Direction for the text,35.36,70.33
+37,hi-en,नहीं चयनित.,No stash selected.,No tags selected.,35.36,55.53
+38,hi-en,रिक्त डिस्क (% s),Blank disc (% s),Blank disc (% s),100.0,100.0
+39,hi-en,डीटीएस (_ D) ट्रैक्स बनाएँ,Create _ DTS Tracks,Create _ DTS Tracks,100.0,100.0
+40,hi-en,कैमरा से लिया गया छवि की ऊंचाई विभेदन,The height resolution of the image captured from the camera,The height resolution of the image captured from the camera,100.0,100.0
+41,hi-en,कोई पारंपरिक ऑडियो CD बनाएँ,Create a traditional audio CD,Create a traditional audio CD,100.0,100.0
+42,hi-en,पंजा मिटाएँ,Remove the fives,Remove the fives,100.0,100.0
+43,hi-en,कोई चाल संभव नहीं. वापस लें या फिर शुरू करें,No moves are possible. Undo or start again.,No moves are possible. Undo or start again.,100.0,100.0
+44,hi-en,"DTMF के भेजने के लिए विधि चुनें. मान हो सकता है 0 (""String"" के लिए), 1 (""Tone"" के लिए), 2 (""RFC2833"" के लिए), or 3 (""Q. 931"" के लिए) (तयशुदा है ""String""). ""String"" के बजाय अन्य मान चुनना टेक्स्ट चैट को निष्क्रिय करता है.","Select the mode for sending DTMFs. The values can be 0 (for ""String""), 1 (for ""Tone""), 2 (for ""RFC2833""), or 3 (for ""Q. 931"") (default is ""String""). Choosing other values than ""String"" disables the Text Chat.","Select the mode for sending DTMFs. The values can be 0 (for "" share""), 1 (for ""Tone""), 2 (for ""s""), or 3 (for ""Q. 931"") (default is ""DOMAIN""). Select other values than "" क़ादिर"" disables the Text Chat.",79.63,74.83
+45,hi-en,"यदि सही पर सेट किया गया है, चीज़ फुल स्क्रीन मोड में शुरू होगा.","If set to true, Cheese will start up in fullscreen mode.","If set to true, Cheese will start up in fullscreen mode.",100.0,100.0
+46,hi-en,मेलबाक्स खुलने पर स्वत संदेश को दिखाएँ,Finding duplicate messages in source mailbox failed,Automatically show messages when mailbox is opened,7.81,32.34
+47,hi-en,अगला अपठित,Next unread,Next Unseen,50.0,22.1
+48,hi-en,पूर्ण स्क्रीन छोड़ें,Leave fullscreen mode,Leave fullscreen mode,100.0,100.0
+49,hi-en,दक्षिण यूरोपीय,South European,South European,100.0,100.0
+50,hi-en,से. नहीं नियम के लिए यह फ़ाइल क़िस्म.,"Cannot compile ""% s"": No compile rule defined for this file type.","Cannot compile ""%s"": No compile rule defined for this file type.",100.0,100.0
+51,hi-en,संबंधित कार्रवाई के लिए hotkey संयोजन.,Hotkey combination for related action.,The hotkey match for the related action.,22.09,49.45
+52,hi-en,चुनें यदि आप केवल छवि फाइलों में खोजना चाहते हैं,Select if you want to search among image files only,Select if you want to search among image files only,100.0,100.0
+53,hi-en,अज्ञात सूट,Unknown suit,Unknown suite,50.0,97.61
+54,hi-en,अवैध विकल्प स्ट्रिंग निर्दिष्ट,Invalid option string specified,Invalid option string specified,100.0,100.0
+55,hi-en,ढूंढें के लिए से. अंत और एट उपर नहीं नया पाया.,"Search for ""% s"" reached the end and was continued at the top but no new match was found.","Search for ""%s"" reached the end and was continued at the top but no new match was found.",100.0,100.0
+56,hi-en,"उपपिक्सेल एंटीएलियासिंग का प्रकार; (कोई नहीं, rgb, bgr, vrgb, vbgr)","The type of subpixel antialiasing (none, rgb, bgr, vrgb, vbgr)","The type of sub-aliasing (none, rgb, bgr, vrgb, vbgr)",74.87,79.61
+57,hi-en,अतिरिक्त लाइब्रेरीः,Additional libraries:,Additional libraries:,100.0,100.0
+58,hi-en,एक खाली फाउण्डेशन जगह,an empty foundation place,An empty bound place,19.0,39.34
+59,hi-en,ड्राफ्टबाक्स चिन्हित करें,Mark as D _ raftbox,_ Mark as Draftbox,27.53,70.64
+60,hi-en,गनोम-आधारित अनुप्रयोगों मे बग रपट दें,Report a bug in GNOME - based applications,Report a bug in GNOME-based applications,38.5,100.0
+61,hi-en,CD/DVD सर्जक,CD / DVD Creator,CD/DVD Creator,100.0,100.0
+62,hi-en,संग्राहक जो इस डेटा को निर्मित किया है,The container that created this data,The container that created this data,100.0,100.0
+63,hi-en,प्रत्येक स्तंभ के लिए अधिकतम चौड़ाई,Maximum width for each column,Maximum width for each column,100.0,100.0
+64,hi-en,एक बटन गतिशील मोड,One Button Dynamic Mode,One Button Dynamic Mode,100.0,100.0
+65,hi-en,सभी खुली फाइलों को बंद करें,Please fill field:% s,Close all files,0.0,22.6
+66,hi-en,मिटाएँ सभी इंच यह,Delete all stashes in this repository,Delete all stashes in this repository,100.0,100.0
+67,hi-en,इस समय चुने गए एक्सेसेबेल से काम लेने के लिए अंतर्क्रियात्मक कन्सोल,Interactive console for manipulating currently selected accessible,Interactive interfaces to work with the currently selected access profile,9.29,55.39
+68,hi-en,ब्रैसेरो-डिस्क कॉपी कर रहा है (% i%% संपन्न),Brasero - Copying Disc (% i%% Done),Brasero - Copying Disc (%I%% Done),70.17,86.32
+69,hi-en,कोई भी पत्र डालने का संदूक छाँटा नहीं गया है,No mailbox selected.,No mailbox selected.,100.0,100.0
+70,hi-en,छोटि की फ़ाइल मे जोडे (_ t):,Add Watch...,Add Watch...,100.0,100.0
+71,hi-en,प्रत्यक्ष विधि,Direct Mode,Direct Mode,100.0,100.0
+72,hi-en,एक खाली खाँचा,an empty slot,An empty slot,55.03,87.72
+73,hi-en,रेपोसिटरी स्थितिः,Repository Status:,Repository position:,34.67,52.54
+74,hi-en,~ a को एक ईंट का दहला पर ले जाएँ,Move ~ a onto the ten of diamonds.,Move ~ a onto the ten of diamonds.,100.0,100.0
+75,hi-en,फ़ॉन्ट पाइंट्स,Font points,Font points,100.0,100.0
+76,hi-en,नहीं चेतावनी,Do not show that warning again,Do not show that warning again,100.0,100.0
+77,hi-en,संरचना एटलस प्रबंधन को डीबग करें,Debug texture atlas management,Debug texture atlas management,100.0,100.0
+78,hi-en,बूलियन पैरामीटर,Boolean parameters,Boolean parameters,100.0,100.0
+79,hi-en,घर के दश्य पर जाएं,Show the log of a file / directory,Go to the home folder,5.86,13.5
+80,hi-en,क्या मुख्य विंडो के तल का स्थितिबार को दिखाई पड़ना चाहिए.,Whether the status bar at the bottom of main window should be visible.,Whether the status bar at the bottom of main window should be visible.,100.0,100.0
+81,hi-en,बग रिपोर्ट बनाते समय एक त्रुटि हुई थी,There was an error creating the bug report,There was an error creating the bug report,100.0,100.0
+82,hi-en,संदेशों का स्टेटस,Status messages,Status of messages,34.67,72.98
+83,hi-en,बीजशब्द प्रयुक्त के लिए खोज रहा है का संबंधित को प्रकार द्वारा a एकल स्थान.,Keywords are used for better searching of the snippets. They should be relevant to the snippet content. Type them separated by a single space.,Keywords are used for better searching of the snippets. They should be relevant to the snippet content. Type them separated by a single space.,100.0,100.0
+84,hi-en,हुकुम का छक्का,six of spades,Six of spades,55.03,87.72
+85,hi-en,बदलें स्थानीय कॉपी करें को a या इंच,Switch your local copy to a branch or tag in the repository,Switch your local copy to a branch or tag in the repository,100.0,100.0
+86,hi-en,खराब गेटवे,Bad gateway,Bad gateway,100.0,100.0
+87,hi-en,मेन्यू मद,menu item,Menu item,50.0,79.7
+88,hi-en,इस संदेश को उपयोग करने के लिए आयडेंटिटी सेट करें,Searching% s for partial messages,Set the value for this message,8.12,27.96
+89,hi-en,पोर्ट सुनें,Listen port,Listen port,100.0,100.0
+90,hi-en,आपको इस ड्राइव को प्रयोग के लिए जरूरी अनुमति नहीं है,You do not have the required permissions to use this drive,You do not have the required permissions to use this drive,100.0,100.0
+91,hi-en,Cogl वस्तु,Cogl Material,Cogl Material,100.0,100.0
+92,hi-en,लंबा स्थिति संपर्क करें,Contact long status,Contact long status,100.0,100.0
+93,hi-en,स्तंभों की संख्या जिसमें विजेट स्पैन करना चाहिए,The number of columns the widget should span,The number of columns the widget should span,100.0,100.0
+94,hi-en,ट्रैक 6 सेकेंड से कम है,The track is shorter than 6 seconds,The track is shorter than 6 seconds,100.0,100.0
+95,hi-en,निरपेक्ष स्थिति,Absolute position,Absolute Position,50.0,72.0
+96,hi-en,अतिरिक्त वातावरण चरः,Additional environment variables:,Additional environment variables:,100.0,100.0
+97,hi-en,पता पुस्तिका विंडो के स्क्रीन की स्थिति,Position on the screen of the address book window,Position on the screen of the address book window,100.0,100.0
+98,hi-en,नक़ल फ़ाइल/फ़ोल्डर,Copy Files / Folders...,Copy Files/ Folders,47.24,85.66
+99,hi-en,"""% s"" लिंक को दिखाने में बग बड्डी असमर्थ था","Bug Buddy was unable to view the link ""% s""","Bug Buddy was unable to view the link ""%s""",100.0,100.0
+100,hi-en,रंग चयनक,color chooser,Color chooser,50.0,89.11

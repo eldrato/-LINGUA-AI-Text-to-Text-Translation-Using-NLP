@@ -1,0 +1,101 @@
+index,direction,source,reference,hypothesis,sentence_bleu,sentence_chrf
+1,en-hi,Show gameplay statistics,खेल सांख्यिकी दिखायें,खेल सांख्यिकी दिखायें,100.0,100.0
+2,en-hi,One Dimensional Mode,एकल आयामी मोड,एकल आयामी मोड,100.0,100.0
+3,en-hi,Goto symbol,देख रहा है% s,वर्तमान फाइल संग्रहित करें,0.0,6.73
+4,en-hi,Add a new IMAP folder,एक नया आई मैप फोल्डर जोड़ें,एक नया आई मैप फोल्डर जोड़ें,100.0,100.0
+5,en-hi,Highlight all occurrences,सभी आवृत्ति आलोकित करें,सभी आवृत्ति आलोकित करें,100.0,100.0
+6,en-hi,Beleaguered Castle,सताने वाला किला,सताने वाला किला,100.0,100.0
+7,en-hi,Right margin position in characters,दायाँ स्थिति इंच अक्षर,दायाँ स्थिति इंच अक्षर,100.0,100.0
+8,en-hi,Wx Widgets,Wx विजेट,Wx विजेट,100.0,100.0
+9,en-hi,Local Mail Problem% s,स्थानीय मेल परेशानी% s,स्थानीय मेल परेशानी% s,100.0,100.0
+10,en-hi,Export to F - _ Spot,F-Spot में भेजें (_ S),F-Spot में भेजें (_S),100.0,100.0
+11,en-hi,Start / stop event recording,घटना रेकोर्डिंग शुरू करो/रोको,घटना रिकार्डिंग आरंभ करें/ रोकें,9.65,35.24
+12,en-hi,The content of your home folder has changed. Select rescan to update the disk usage details.,आपके होम फोल्डर की सामग्री बदल गई है. डिस्क प्रयोग विवरण को अद्यतन करने के लिए फिर स्कैन करें चुनें.,आपके होम फोल्डर की सामग्री बदल गई है. डिस्क प्रयोग विवरण को अद्यतन करने के लिए फिर स्कैन करें चुनें.,100.0,100.0
+13,en-hi,"select files in the selection pane and click the ""Add"" button","चयन पट्टी में फाइल चुनें और ""Add"" बटन पर क्लिक करें","चयन पट्टी में फाइल चुनें और ""Add"" बटन पर क्लिक करें",100.0,100.0
+14,en-hi,Libburn track could not be created,Libburn ट्रैक बनाई नहीं जा सकी,libburn ट्रैक बनाई नहीं जा सकी,75.98,95.53
+15,en-hi,_ Check Disc...,डिस्क जाँचें (_ C)...,डिस्क जाँचें (_C)...,100.0,100.0
+16,en-hi,Continue a rebase with resolved conflicts,जारी रखें a के साथ परस्पर विरोध,जारी रखें a के साथ परस्पर विरोध,100.0,100.0
+17,en-hi,Complie file,सबको कमिट करें,सबको कमिट करें,100.0,100.0
+18,en-hi,Refreshing symbol tree...,ताजा करना ट्री,ताजा करना ट्री,100.0,100.0
+19,en-hi,The port to listen to for incoming connections. Ekiga needs to be restarted for the new value to take effect,आने वाले कनेक्शन से सुनने के लिये पोर्ट. एकिगा को नए मान के प्रभाव में आने के लिये फिर आरंभ किया जाना है.,आने वाले कनेक्शन से सुनने के लिये पोर्ट. एकिगा को नए मान के प्रभाव में आने के लिये फिर आरंभ किया जाना है.,100.0,100.0
+20,en-hi,X position of main window,मुख्य विंडो के X स्थिति,मुख्य विंडो के X स्थिति,100.0,100.0
+21,en-hi,Add a new IMAP mailbox,एक नया आई मैप मेलबाक्स जोड़ें,एक नया आई मैप मेलबाक्स जोड़ें,100.0,100.0
+22,en-hi,Force brasero to display the project selection page,परियोजना चयन पृष्ठ दिखाने के लिए ब्रैसेरो को बाध्य करें,परियोजना चयन पृष्ठ दिखाने के लिए ब्रैसेरो को बाध्य करें,100.0,100.0
+23,en-hi,Y coordinate of the actor,कर्ता का Y निर्देशांक,कर्ता का Y निर्देशांक,100.0,100.0
+24,en-hi,Please add songs.,कृपया संगीत जोड़ें.,कृपया संगीत जोड़ें.,100.0,100.0
+25,en-hi,Export Snippets,निर्यात स्निपेट,निर्यात स्निपेट,100.0,100.0
+26,en-hi,_ Discard photo,तस्वीर छोड़ें (_ D),फोटो छोड़ें (_D),75.98,56.51
+27,en-hi,Makes Ekiga call the given URI,एकिगा को दिए URI को कॉल करने के लिए कहता है,एकिगा को दिए URI को कॉल करने के लिए कहता है,100.0,100.0
+28,en-hi,"Enable ""- immed"" flag (see cdrecord manual)","""-immed"" फ्लैग सक्रिय करें (देखें cdrecord manual)","""-immed"" फ्लैग सक्रिय करें (देखें cdrecord manual)",100.0,100.0
+29,en-hi,No License,कोई लाइसेंस नहीं,कोई लाइसेंस नहीं,100.0,100.0
+30,en-hi,Plugin Errors,प्लग-इन त्रुटियां,प्लग-इन त्रुटियां,100.0,100.0
+31,en-hi,Will O The Wisp,विल औ द विस्प,विल औ द विस्प,100.0,100.0
+32,en-hi,Confim the following information:,सूचना दिखाने वाली लकीर,सूचना दिखाने वाली लकीर,100.0,100.0
+33,en-hi,Move a card to the Foundation,आधार पर एक पत्ता ले जाएँ,आधार पर एक पत्ता ले जाएँ,100.0,100.0
+34,en-hi,Whether the surface should match the allocation,क्या सतह का आवंटन से मेल चाहिए,क्या सतह का आवंटन से मेल चाहिए,100.0,100.0
+35,en-hi,Stop applying the patch series and return the tree to its previous state,रूकें लागू कर रहा है और लौटाएँ ट्री को state,रूकें लागू कर रहा है और लौटाएँ ट्री को state,100.0,100.0
+36,en-hi,Direction of the text,पाठ की दिशा,पाठ की दिशा,100.0,100.0
+37,en-hi,No stash selected.,नहीं चयनित.,नहीं चयनित.,100.0,100.0
+38,en-hi,Blank disc (% s),रिक्त डिस्क (% s),रिक्त डिस्क (% s),100.0,100.0
+39,en-hi,Create _ DTS Tracks,डीटीएस (_ D) ट्रैक्स बनाएँ,डीटीएस (_D) ट्रैक्स बनाएँ,100.0,100.0
+40,en-hi,The height resolution of the image captured from the camera,कैमरा से लिया गया छवि की ऊंचाई विभेदन,कैमरा से लिया गया छवि की ऊंचाई विभेदन,100.0,100.0
+41,en-hi,Create a traditional audio CD,कोई पारंपरिक ऑडियो CD बनाएँ,कोई पारंपरिक ऑडियो CD बनाएँ,100.0,100.0
+42,en-hi,Remove the fives,पंजा मिटाएँ,पंजा मिटाएँ,100.0,100.0
+43,en-hi,No moves are possible. Undo or start again.,कोई चाल संभव नहीं. वापस लें या फिर शुरू करें,कोई चाल संभव नहीं. वापस लें या फिर शुरू करें,100.0,100.0
+44,en-hi,"Select the mode for sending DTMFs. The values can be 0 (for ""String""), 1 (for ""Tone""), 2 (for ""RFC2833""), or 3 (for ""Q. 931"") (default is ""String""). Choosing other values than ""String"" disables the Text Chat.","DTMF के भेजने के लिए विधि चुनें. मान हो सकता है 0 (""String"" के लिए), 1 (""Tone"" के लिए), 2 (""RFC2833"" के लिए), or 3 (""Q. 931"" के लिए) (तयशुदा है ""String""). ""String"" के बजाय अन्य मान चुनना टेक्स्ट चैट को निष्क्रिय करता है.","DTMF के भेजने के लिए विधि चुनें. मान हो सकता है 0 (""RFC2833"" के लिए), 1 (""Tone"" के लिए), 2 (""RFC2833"" के लिए), or 3 (""Q.RFC2833""के लिए) (तयशुदा है""String""). ""String"" के बजाय अन्य मान चुनना टेक्स्ट चैट को निष्क्रिय करता है.",92.9,91.53
+45,en-hi,"If set to true, Cheese will start up in fullscreen mode.","यदि सही पर सेट किया गया है, चीज़ फुल स्क्रीन मोड में शुरू होगा.","यदि सही पर सेट किया गया है, चीज़ फुल स्क्रीन मोड में शुरू होगा.",100.0,100.0
+46,en-hi,Finding duplicate messages in source mailbox failed,मेलबाक्स खुलने पर स्वत संदेश को दिखाएँ,मेलबाक्स खुलने पर स्वत संदेश को दिखाएँ,100.0,100.0
+47,en-hi,Next unread,अगला अपठित,अगला अपठित,100.0,100.0
+48,en-hi,Leave fullscreen mode,पूर्ण स्क्रीन छोड़ें,पूर्ण स्क्रीन छोड़ें,100.0,100.0
+49,en-hi,South European,दक्षिण यूरोपीय,दक्षिण यूरोपीय,100.0,100.0
+50,en-hi,"Cannot compile ""% s"": No compile rule defined for this file type.",से. नहीं नियम के लिए यह फ़ाइल क़िस्म.,से. नहीं नियम के लिए यह फ़ाइल क़िस्म.,100.0,100.0
+51,en-hi,Hotkey combination for related action.,संबंधित कार्रवाई के लिए hotkey संयोजन.,संबंधित कार्रवाई के लिए skey संयोजन.,48.89,82.68
+52,en-hi,Select if you want to search among image files only,चुनें यदि आप केवल छवि फाइलों में खोजना चाहते हैं,चुनें यदि आप केवल छवि फाइलों में खोजना चाहते हैं,100.0,100.0
+53,en-hi,Unknown suit,अज्ञात सूट,अज्ञात सूट,100.0,100.0
+54,en-hi,Invalid option string specified,अवैध विकल्प स्ट्रिंग निर्दिष्ट,अवैध विकल्प स्ट्रिंग निर्दिष्ट,100.0,100.0
+55,en-hi,"Search for ""% s"" reached the end and was continued at the top but no new match was found.",ढूंढें के लिए से. अंत और एट उपर नहीं नया पाया.,ढूंढें के लिए से. अंत और एट उपर नहीं नया पाया.,100.0,100.0
+56,en-hi,"The type of subpixel antialiasing (none, rgb, bgr, vrgb, vbgr)","उपपिक्सेल एंटीएलियासिंग का प्रकार; (कोई नहीं, rgb, bgr, vrgb, vbgr)","उपपिक्सेल एंटीएलियासिंग का प्रकार; (कोई नहीं, rgb, rgb, rgb, rgb)",64.81,80.55
+57,en-hi,Additional libraries:,अतिरिक्त लाइब्रेरीः,अतिरिक्त लाइब्रेरीः,100.0,100.0
+58,en-hi,an empty foundation place,एक खाली फाउण्डेशन जगह,एक खाली फाउण्डेशन जगह,100.0,100.0
+59,en-hi,Mark as D _ raftbox,ड्राफ्टबाक्स चिन्हित करें,बतौर डेस्कटॉप चिन्हित करें,31.95,46.12
+60,en-hi,Report a bug in GNOME - based applications,गनोम-आधारित अनुप्रयोगों मे बग रपट दें,गनोम-आधारित अनुप्रयोगों मे बग रपट दें,100.0,100.0
+61,en-hi,CD / DVD Creator,CD/DVD सर्जक,CD/DVD सर्जक,100.0,100.0
+62,en-hi,The container that created this data,संग्राहक जो इस डेटा को निर्मित किया है,संग्राहक जो इस डेटा को निर्मित किया है,100.0,100.0
+63,en-hi,Maximum width for each column,प्रत्येक स्तंभ के लिए अधिकतम चौड़ाई,प्रत्येक स्तंभ के लिए अधिकतम चौड़ाई,100.0,100.0
+64,en-hi,One Button Dynamic Mode,एक बटन गतिशील मोड,एक बटन गतिशील मोड,100.0,100.0
+65,en-hi,Please fill field:% s,सभी खुली फाइलों को बंद करें,कृपया क्षेत्र भरेंः% s,0.0,7.94
+66,en-hi,Delete all stashes in this repository,मिटाएँ सभी इंच यह,मिटाएँ सभी इंच यह,100.0,100.0
+67,en-hi,Interactive console for manipulating currently selected accessible,इस समय चुने गए एक्सेसेबेल से काम लेने के लिए अंतर्क्रियात्मक कन्सोल,इस समय चुने गए एक्सेसेबेल से काम लेने के लिए अंतर्क्रियात्मक कन्सोल,100.0,100.0
+68,en-hi,Brasero - Copying Disc (% i%% Done),ब्रैसेरो-डिस्क कॉपी कर रहा है (% i%% संपन्न),ब्रैसेरो-डिस्क कॉपी कर रहा है (% i%% संपन्न),100.0,100.0
+69,en-hi,No mailbox selected.,कोई भी पत्र डालने का संदूक छाँटा नहीं गया है,कोई भी पत्र डालने का संदूक छाँटा नहीं गया है,100.0,100.0
+70,en-hi,Add Watch...,छोटि की फ़ाइल मे जोडे (_ t):,जोड़ें निरीक्षण करें,0.0,9.59
+71,en-hi,Direct Mode,प्रत्यक्ष विधि,प्रत्यक्ष विधि,100.0,100.0
+72,en-hi,an empty slot,एक खाली खाँचा,एक खाली खाँचा,100.0,100.0
+73,en-hi,Repository Status:,रेपोसिटरी स्थितिः,रेपोसिटरी स्थिति:,27.52,92.47
+74,en-hi,Move ~ a onto the ten of diamonds.,~ a को एक ईंट का दहला पर ले जाएँ,~ a को एक ईंट का दहला पर ले जाएँ,100.0,100.0
+75,en-hi,Font points,फ़ॉन्ट पाइंट्स,फ़ॉन्ट पाइंट्स,100.0,100.0
+76,en-hi,Do not show that warning again,नहीं चेतावनी,नहीं चेतावनी,100.0,100.0
+77,en-hi,Debug texture atlas management,संरचना एटलस प्रबंधन को डीबग करें,संरचना एटलस प्रबंधन को डीबग करें,100.0,100.0
+78,en-hi,Boolean parameters,बूलियन पैरामीटर,बूलियन पैरामीटर,100.0,100.0
+79,en-hi,Show the log of a file / directory,घर के दश्य पर जाएं,फ़ाइल निर्देशिका का लॉग दिखाएँ,0.0,9.21
+80,en-hi,Whether the status bar at the bottom of main window should be visible.,क्या मुख्य विंडो के तल का स्थितिबार को दिखाई पड़ना चाहिए.,क्या मुख्य विंडो के तल का स्थितिबार को दिखाई पड़ना चाहिए.,100.0,100.0
+81,en-hi,There was an error creating the bug report,बग रिपोर्ट बनाते समय एक त्रुटि हुई थी,बग रिपोर्ट बनाते समय एक त्रुटि हुई थी,100.0,100.0
+82,en-hi,Status messages,संदेशों का स्टेटस,संदेशों की स्थिति,27.52,46.33
+83,en-hi,Keywords are used for better searching of the snippets. They should be relevant to the snippet content. Type them separated by a single space.,बीजशब्द प्रयुक्त के लिए खोज रहा है का संबंधित को प्रकार द्वारा a एकल स्थान.,बीजशब्द प्रयुक्त के लिए खोज रहा है का संबंधित को प्रकार द्वारा a एकल स्थान.,100.0,100.0
+84,en-hi,six of spades,हुकुम का छक्का,हुकुम का छक्का,100.0,100.0
+85,en-hi,Switch your local copy to a branch or tag in the repository,बदलें स्थानीय कॉपी करें को a या इंच,बदलें स्थानीय कॉपी करें को a या इंच,100.0,100.0
+86,en-hi,Bad gateway,खराब गेटवे,खराब गेटवे,100.0,100.0
+87,en-hi,menu item,मेन्यू मद,मेन्यू मद,100.0,100.0
+88,en-hi,Searching% s for partial messages,इस संदेश को उपयोग करने के लिए आयडेंटिटी सेट करें,साझा संदेश के लिए% s की खोज कर रहा है,8.3,20.22
+89,en-hi,Listen port,पोर्ट सुनें,पोर्ट सुनें,100.0,100.0
+90,en-hi,You do not have the required permissions to use this drive,आपको इस ड्राइव को प्रयोग के लिए जरूरी अनुमति नहीं है,आपको इस ड्राइव को प्रयोग के लिए जरूरी अनुमति नहीं है,100.0,100.0
+91,en-hi,Cogl Material,Cogl वस्तु,Cogl वस्तु,100.0,100.0
+92,en-hi,Contact long status,लंबा स्थिति संपर्क करें,लंबा स्थिति संपर्क करें,100.0,100.0
+93,en-hi,The number of columns the widget should span,स्तंभों की संख्या जिसमें विजेट स्पैन करना चाहिए,स्तंभों की संख्या जिसमें विजेट स्पैन करना चाहिए,100.0,100.0
+94,en-hi,The track is shorter than 6 seconds,ट्रैक 6 सेकेंड से कम है,ट्रैक 6 सेकेंड से कम है,100.0,100.0
+95,en-hi,Absolute position,निरपेक्ष स्थिति,निरपेक्ष स्थिति,100.0,100.0
+96,en-hi,Additional environment variables:,अतिरिक्त वातावरण चरः,अतिरिक्त वातावरण चरः,100.0,100.0
+97,en-hi,Position on the screen of the address book window,पता पुस्तिका विंडो के स्क्रीन की स्थिति,पता पुस्तिका विंडो के स्क्रीन की स्थिति,100.0,100.0
+98,en-hi,Copy Files / Folders...,नक़ल फ़ाइल/फ़ोल्डर,फ़ाइलें / फ़ोल्डर नक़ल करें...,12.22,56.8
+99,en-hi,"Bug Buddy was unable to view the link ""% s""","""% s"" लिंक को दिखाने में बग बड्डी असमर्थ था","""% s"" लिंक को दिखाने में बग बड्डी असमर्थ था",100.0,100.0
+100,en-hi,color chooser,रंग चयनक,रंग चयनक,100.0,100.0

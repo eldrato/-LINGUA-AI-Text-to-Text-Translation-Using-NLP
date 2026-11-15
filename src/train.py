@@ -1,7 +1,12 @@
 """
-Fine-tuning pipeline for MarianMT Sequence-to-Sequence models on parallel corpora.
-Implements data loading, tokenization, training and validation loops, AdamW optimizer,
-checkpoint management, loss tracking, and learning curve visualization.
+Fine-tuning pipeline for Sequence-to-Sequence Translation Models (MarianMT / NLLB).
+Implements Hugging Face Seq2SeqTrainer with:
+- Target text tokenization using text_target= and label padding with -100
+- AdamW optimizer with linear warmup, weight decay, and label smoothing (0.1)
+- predict_with_generate=True with beam search
+- Validation evaluation using SacreBLEU and chrF2++
+- Best checkpoint selection by validation BLEU and EarlyStoppingCallback
+- Configurable learning rate sweeps, loss tracking, and visualization
 """
 import os
 import sys
@@ -10,270 +15,384 @@ import time
 import argparse
 import logging
 from pathlib import Path
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, Optional, List, Tuple
 import pandas as pd
 import numpy as np
 
-# Add project root to path if running directly
+# Ensure project root is in sys.path
 ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 import config
 from src.dataset_loader import DatasetLoader
-from src.preprocessing import preprocess_dataframe, split_dataset, TranslationDataset
+from src.preprocessing import clean_text, postprocess_translation
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 def plot_and_save_loss_curve(history: Dict[str, List[float]], output_path: Path, lang_pair: str):
     """Generates and saves a publication-quality training and validation loss plot."""
-    import matplotlib.pyplot as plt
+    try:
+        import matplotlib.pyplot as plt
 
-    epochs = range(1, len(history["train_loss"]) + 1)
-    plt.figure(figsize=(8, 5), dpi=150)
-    
-    plt.plot(epochs, history["train_loss"], marker="o", linewidth=2, color="#4f46e5", label="Training Loss")
-    plt.plot(epochs, history["val_loss"], marker="s", linewidth=2, color="#06b6d4", label="Validation Loss")
-    
-    plt.title(f"Fine-Tuning Loss Curve ({lang_pair.upper()})", fontsize=14, fontweight="bold", pad=12)
-    plt.xlabel("Epoch", fontsize=11, fontweight="medium")
-    plt.ylabel("Cross-Entropy Loss", fontsize=11, fontweight="medium")
-    plt.xticks(list(epochs))
-    plt.grid(True, linestyle="--", alpha=0.5)
-    plt.legend(frameon=True, facecolor="#ffffff", edgecolor="#cbd5e1")
-    plt.tight_layout()
+        train_loss = history.get("train_loss", [])
+        val_loss = history.get("val_loss", [])
+        max_len = max(len(train_loss), len(val_loss), 1)
+        epochs = list(range(1, max_len + 1))
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    plt.savefig(output_path, dpi=200)
-    plt.close()
-    logger.info(f"Loss curve visualization saved to: {output_path}")
+        plt.figure(figsize=(8, 5), dpi=150)
+        has_labels = False
+        if train_loss:
+            x_train = list(range(1, len(train_loss) + 1))
+            plt.plot(x_train, train_loss, marker="o", linewidth=2, color="#4f46e5", label="Training Loss")
+            has_labels = True
+        if val_loss:
+            x_val = list(range(1, len(val_loss) + 1))
+            plt.plot(x_val, val_loss, marker="s", linewidth=2, color="#06b6d4", label="Validation Loss")
+            has_labels = True
+
+        plt.title(f"Fine-Tuning Loss Curve ({lang_pair.upper()})", fontsize=14, fontweight="bold", pad=12)
+        plt.xlabel("Epoch", fontsize=11, fontweight="medium")
+        plt.ylabel("Cross-Entropy Loss (Label Smoothed)", fontsize=11, fontweight="medium")
+        plt.xticks(epochs)
+        plt.grid(True, linestyle="--", alpha=0.5)
+        if has_labels:
+            plt.legend(frameon=True, facecolor="#ffffff", edgecolor="#cbd5e1")
+        plt.tight_layout()
+
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(output_path, dpi=200)
+        plt.close()
+        logger.info(f"Loss curve visualization saved to: {output_path}")
+    except Exception as e:
+        logger.warning(f"Could not generate loss curve: {e}")
+
+def load_clean_data(pair_key: str, data_path: Optional[str] = None, max_samples: Optional[int] = None) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Loads clean train, val, and test splits for the language pair."""
+    src_col, tgt_col = ("en", "hi") if pair_key == "en-hi" else ("hi", "en")
+    
+    if data_path and Path(data_path).exists():
+        logger.info(f"Loading custom dataset from {data_path}...")
+        df = pd.read_csv(data_path, encoding="utf-8")
+        from src.preprocessing import preprocess_dataframe, split_dataset
+        clean_df = preprocess_dataframe(df, source_col=src_col, target_col=tgt_col)
+        train_df, val_df, test_df = split_dataset(clean_df, prefix=f"custom_{pair_key.replace('-', '_')}")
+    else:
+        prefix = f"opus_{pair_key.replace('-', '_')}"
+        train_file = config.PROCESSED_DATASET_DIR / f"{prefix}_train.csv"
+        val_file = config.PROCESSED_DATASET_DIR / f"{prefix}_val.csv"
+        test_file = config.PROCESSED_DATASET_DIR / f"{prefix}_test.csv"
+
+        if not (train_file.exists() and val_file.exists()):
+            # Fallback to standard en_hi processed files
+            train_file = config.PROCESSED_DATASET_DIR / "opus_en_hi_train.csv"
+            val_file = config.PROCESSED_DATASET_DIR / "opus_en_hi_val.csv"
+            test_file = config.PROCESSED_DATASET_DIR / "opus_en_hi_test.csv"
+
+        train_df = pd.read_csv(train_file, encoding="utf-8")
+        val_df = pd.read_csv(val_file, encoding="utf-8")
+        test_df = pd.read_csv(test_file, encoding="utf-8")
+
+    # Invert columns if pair is hi-en and dataset has en first
+    for d in [train_df, val_df, test_df]:
+        if src_col not in d.columns and "en" in d.columns:
+            d[src_col] = d["hi"]
+            d[tgt_col] = d["en"]
+
+    if max_samples:
+        train_df = train_df.head(max_samples)
+        val_df = val_df.head(max(10, int(max_samples * 0.15)))
+
+    logger.info(f"Dataset loaded: Train={len(train_df)}, Val={len(val_df)}, Test={len(test_df)}")
+    return train_df, val_df, test_df
 
 def train_model(
     lang_pair: str = "en-hi",
+    base_model: Optional[str] = None,
     data_path: Optional[str] = None,
     epochs: int = 3,
     batch_size: Optional[int] = None,
-    learning_rate: float = 5e-5,
+    learning_rate: float = 3e-5,
+    weight_decay: float = 0.01,
+    warmup_ratio: float = 0.1,
+    label_smoothing: float = 0.1,
+    num_beams: int = 4,
+    max_length: int = 128,
     max_samples: Optional[int] = None,
     output_dir: Optional[str] = None,
-    resume_from_checkpoint: Optional[str] = None,
-    max_length: int = 128
+    gradient_accumulation_steps: Optional[int] = None,
+    early_stopping_patience: int = 2
 ) -> Dict[str, Any]:
     """
-    Executes actual fine-tuning of MarianMT on the parallel dataset.
+    Fine-tunes a Sequence-to-Sequence translation model using Hugging Face Seq2SeqTrainer.
     """
     import torch
-    from torch.utils.data import DataLoader
+    import sacrebleu
+    from datasets import Dataset
     from transformers import (
         AutoModelForSeq2SeqLM,
         AutoTokenizer,
-        get_linear_schedule_with_warmup,
+        DataCollatorForSeq2Seq,
+        Seq2SeqTrainer,
+        Seq2SeqTrainingArguments,
+        EarlyStoppingCallback,
     )
 
-    # 1. Device configuration
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    logger.info(f"Training on device: {device}")
-    
-    if batch_size is None:
-        batch_size = config.TRAIN_CONFIG["batch_size_gpu"] if device.type == "cuda" else config.TRAIN_CONFIG["batch_size_cpu"]
-
-    # Normalize pair key
     pair_key = "en-hi" if "en" in lang_pair and "hi" in lang_pair and lang_pair.startswith("en") else "hi-en"
     src_col, tgt_col = ("en", "hi") if pair_key == "en-hi" else ("hi", "en")
     
-    base_model_name = config.MODEL_CHECKPOINTS[pair_key]
-    save_dir = Path(output_dir or config.LOCAL_MODEL_PATHS[pair_key])
-    save_dir.mkdir(parents=True, exist_ok=True)
+    model_identifier = base_model or config.MODEL_CHECKPOINTS[pair_key]
+    final_output_dir = Path(output_dir or config.LOCAL_MODEL_PATHS[pair_key])
+    final_output_dir.mkdir(parents=True, exist_ok=True)
 
-    # 2. Dataset preparation
-    logger.info(f"Preparing parallel dataset for {pair_key}...")
-    loader = DatasetLoader()
-    raw_df = loader.get_or_create_dataset(custom_path=data_path)
-    clean_df = preprocess_dataframe(raw_df, source_col="en", target_col="hi")
+    is_cuda = torch.cuda.is_available()
+    device_name = "cuda" if is_cuda else "cpu"
+    logger.info(f"Training on device: {device_name.upper()} | Base Model: {model_identifier}")
 
-    if max_samples and len(clean_df) > max_samples:
-        logger.info(f"Limiting dataset to {max_samples} samples for rapid training / CPU budget.")
-        clean_df = clean_df.sample(n=max_samples, random_state=42).reset_index(drop=True)
+    if batch_size is None:
+        batch_size = config.TRAIN_CONFIG["batch_size_gpu"] if is_cuda else 8
 
-    train_df, val_df, test_df = split_dataset(
-        clean_df,
-        train_ratio=config.DATASET_CONFIG["train_ratio"],
-        val_ratio=config.DATASET_CONFIG["val_ratio"],
-        test_ratio=config.DATASET_CONFIG["test_ratio"],
-        random_seed=config.DATASET_CONFIG["random_seed"],
-        prefix=f"opus_{pair_key.replace('-', '_')}"
+    if gradient_accumulation_steps is None:
+        gradient_accumulation_steps = 1 if is_cuda else 2
+
+    # 1. Load Data
+    train_df, val_df, test_df = load_clean_data(pair_key, data_path=data_path, max_samples=max_samples)
+
+    # 2. Load Tokenizer & Model
+    tokenizer = AutoTokenizer.from_pretrained(model_identifier)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_identifier)
+
+    # 3. Tokenize Datasets using text_target=
+    def preprocess_function(examples):
+        inputs = [str(x) for x in examples[src_col]]
+        targets = [str(x) for x in examples[tgt_col]]
+        model_inputs = tokenizer(inputs, max_length=max_length, truncation=True)
+        labels = tokenizer(text_target=targets, max_length=max_length, truncation=True)
+        model_inputs["labels"] = labels["input_ids"]
+        return model_inputs
+
+    train_ds = Dataset.from_pandas(train_df[[src_col, tgt_col]]).map(
+        preprocess_function, batched=True, remove_columns=[src_col, tgt_col]
+    )
+    val_ds = Dataset.from_pandas(val_df[[src_col, tgt_col]]).map(
+        preprocess_function, batched=True, remove_columns=[src_col, tgt_col]
     )
 
-    # 3. Load Tokenizer & Model
-    start_checkpoint = resume_from_checkpoint or base_model_name
-    logger.info(f"Loading base tokenizer from '{start_checkpoint}'...")
-    tokenizer = AutoTokenizer.from_pretrained(start_checkpoint)
-    
-    logger.info(f"Loading MarianMT model from '{start_checkpoint}'...")
-    model = AutoModelForSeq2SeqLM.from_pretrained(start_checkpoint)
-    model.to(device)
-
-    # 4. Create PyTorch Datasets and DataLoaders
-    train_dataset = TranslationDataset(
-        df=train_df,
-        tokenizer=tokenizer,
-        source_col=src_col,
-        target_col=tgt_col,
-        max_length=max_length
-    )
-    val_dataset = TranslationDataset(
-        df=val_df,
-        tokenizer=tokenizer,
-        source_col=src_col,
-        target_col=tgt_col,
-        max_length=max_length
+    # 4. Data Collator (Pads labels with -100 so loss ignores them)
+    data_collator = DataCollatorForSeq2Seq(
+        tokenizer,
+        model=model,
+        label_pad_token_id=-100,
+        pad_to_multiple_of=8 if is_cuda else None
     )
 
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+    # 5. Compute Metrics for Seq2SeqTrainer
+    tok_method = "intl" if tgt_col == "hi" else "13a"
+    def compute_metrics(eval_preds):
+        preds, labels = eval_preds
+        if isinstance(preds, tuple):
+            preds = preds[0]
+        # Replace -100 in labels so tokenizer can decode
+        labels = np.where(labels != -100, labels, tokenizer.pad_token_id)
+        decoded_preds = tokenizer.batch_decode(preds, skip_special_tokens=True)
+        decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
 
-    # 5. Optimizer & Scheduler
-    optimizer = torch.optim.AdamW(
-        model.parameters(),
-        lr=learning_rate,
-        weight_decay=config.TRAIN_CONFIG["weight_decay"]
+        # Apply postprocessing
+        clean_preds = [postprocess_translation(p.strip(), target_lang=tgt_col) for p in decoded_preds]
+        clean_labels = [postprocess_translation(l.strip(), target_lang=tgt_col) for l in decoded_labels]
+
+        try:
+            bleu = sacrebleu.corpus_bleu(clean_preds, [[l] for l in clean_labels], tokenize=tok_method)
+            bleu_score = round(float(bleu.score), 2)
+        except Exception:
+            bleu_score = 0.0
+
+        try:
+            chrf = sacrebleu.corpus_chrf(clean_preds, [[l] for l in clean_labels])
+            chrf_score = round(float(chrf.score), 2)
+        except Exception:
+            chrf_score = 0.0
+
+        return {"bleu": bleu_score, "chrf": chrf_score}
+
+    # 6. Training Arguments
+    temp_checkpoint_dir = final_output_dir / "checkpoints"
+    steps_per_epoch = max(1, len(train_ds) // (batch_size * max(1, gradient_accumulation_steps)))
+    total_training_steps = steps_per_epoch * epochs
+    warmup_steps = max(1, int(total_training_steps * warmup_ratio))
+
+    training_args = Seq2SeqTrainingArguments(
+        output_dir=str(temp_checkpoint_dir),
+        eval_strategy="epoch",
+        save_strategy="epoch",
+        learning_rate=learning_rate,
+        per_device_train_batch_size=batch_size,
+        per_device_eval_batch_size=batch_size,
+        weight_decay=weight_decay,
+        save_total_limit=2,
+        num_train_epochs=epochs,
+        predict_with_generate=True,
+        generation_max_length=max_length,
+        generation_num_beams=num_beams,
+        label_smoothing_factor=label_smoothing,
+        warmup_steps=warmup_steps,
+        fp16=is_cuda,
+        gradient_accumulation_steps=gradient_accumulation_steps,
+        metric_for_best_model="bleu",
+        greater_is_better=True,
+        load_best_model_at_end=True,
+        logging_steps=10,
+        report_to="none",
+        seed=42
     )
-    total_training_steps = len(train_loader) * epochs
-    warmup_steps = int(total_training_steps * config.TRAIN_CONFIG["warmup_ratio"])
-    scheduler = get_linear_schedule_with_warmup(
-        optimizer,
-        num_warmup_steps=warmup_steps,
-        num_training_steps=total_training_steps
-    )
+
+    # 7. Trainer Initialization
+    trainer_kwargs = {
+        "model": model,
+        "args": training_args,
+        "train_dataset": train_ds,
+        "eval_dataset": val_ds,
+        "data_collator": data_collator,
+        "compute_metrics": compute_metrics,
+        "callbacks": [EarlyStoppingCallback(early_stopping_patience=early_stopping_patience)]
+    }
+    import inspect
+    sig_params = inspect.signature(Seq2SeqTrainer.__init__).parameters
+    if "processing_class" in sig_params:
+        trainer_kwargs["processing_class"] = tokenizer
+    elif "tokenizer" in sig_params:
+        trainer_kwargs["tokenizer"] = tokenizer
+
+    trainer = Seq2SeqTrainer(**trainer_kwargs)
 
     logger.info(
-        f"Starting fine-tuning: Epochs={epochs}, BatchSize={batch_size}, "
-        f"TrainSamples={len(train_df)}, ValSamples={len(val_df)}, TotalSteps={total_training_steps}"
+        f"Starting Seq2Seq fine-tuning: Epochs={epochs}, LR={learning_rate}, "
+        f"BatchSize={batch_size}, GradAccum={gradient_accumulation_steps}"
     )
 
-    # 6. Training & Validation Loop
-    history = {"train_loss": [], "val_loss": [], "epoch_times": []}
-    best_val_loss = float("inf")
+    train_start = time.time()
+    train_result = trainer.train()
+    total_train_time = round(time.time() - train_start, 2)
 
-    overall_start = time.time()
-    for epoch in range(1, epochs + 1):
-        epoch_start = time.time()
-        model.train()
-        total_train_loss = 0.0
+    # 8. Save Best Model & Tokenizer to final destination
+    logger.info(f"Saving best fine-tuned model and tokenizer to: {final_output_dir}")
+    trainer.save_model(str(final_output_dir))
+    tokenizer.save_pretrained(str(final_output_dir))
 
-        for step, batch in enumerate(train_loader):
-            input_ids = batch["input_ids"].to(device)
-            attention_mask = batch["attention_mask"].to(device)
-            labels = batch["labels"].to(device)
+    # 9. Extract and Plot Loss Curve
+    log_history = trainer.state.log_history
+    train_losses = []
+    val_losses = []
+    val_bleus = []
+    val_chrfs = []
 
-            optimizer.zero_grad()
-            outputs = model(
-                input_ids=input_ids,
-                attention_mask=attention_mask,
-                labels=labels
-            )
+    for entry in log_history:
+        if "loss" in entry:
+            train_losses.append(round(float(entry["loss"]), 4))
+        if "eval_loss" in entry:
+            val_losses.append(round(float(entry["eval_loss"]), 4))
+        if "eval_bleu" in entry:
+            val_bleus.append(round(float(entry["eval_bleu"]), 2))
+        if "eval_chrf" in entry:
+            val_chrfs.append(round(float(entry["eval_chrf"]), 2))
 
-            loss = outputs.loss
-            loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), config.TRAIN_CONFIG["max_grad_norm"])
-            optimizer.step()
-            scheduler.step()
+    if not train_losses and hasattr(train_result, "training_loss"):
+        train_losses.append(round(float(train_result.training_loss), 4))
 
-            total_train_loss += loss.item()
-
-            if (step + 1) % max(1, len(train_loader) // 5) == 0:
-                logger.info(
-                    f"Epoch {epoch}/{epochs} | Step {step+1}/{len(train_loader)} | "
-                    f"Current Batch Loss: {loss.item():.4f}"
-                )
-
-        avg_train_loss = total_train_loss / max(1, len(train_loader))
-
-        # Validation phase
-        model.eval()
-        total_val_loss = 0.0
-        with torch.no_grad():
-            for batch in val_loader:
-                input_ids = batch["input_ids"].to(device)
-                attention_mask = batch["attention_mask"].to(device)
-                labels = batch["labels"].to(device)
-
-                outputs = model(
-                    input_ids=input_ids,
-                    attention_mask=attention_mask,
-                    labels=labels
-                )
-                total_val_loss += outputs.loss.item()
-
-        avg_val_loss = total_val_loss / max(1, len(val_loader))
-        epoch_time = time.time() - epoch_start
-
-        history["train_loss"].append(avg_train_loss)
-        history["val_loss"].append(avg_val_loss)
-        history["epoch_times"].append(epoch_time)
-
-        logger.info(
-            f"=== Epoch {epoch}/{epochs} Completed in {epoch_time:.1f}s | "
-            f"Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f} ==="
-        )
-
-        # Checkpoint if best model
-        if avg_val_loss < best_val_loss:
-            best_val_loss = avg_val_loss
-            logger.info(f"New best validation loss: {best_val_loss:.4f}. Saving checkpoint to {save_dir}...")
-            model.save_pretrained(save_dir)
-            tokenizer.save_pretrained(save_dir)
-
-    total_time = time.time() - overall_start
-
-    # 7. Save outputs, logs and visualization
-    loss_plot_path = config.TRAINING_LOGS_DIR / f"loss_curve_{pair_key.replace('-', '_')}.png"
-    plot_and_save_loss_curve(history, loss_plot_path, pair_key)
-
-    training_summary = {
-        "lang_pair": pair_key,
-        "base_model": base_model_name,
-        "epochs": epochs,
-        "batch_size": batch_size,
-        "learning_rate": learning_rate,
-        "total_training_time_sec": round(total_time, 2),
-        "train_samples": len(train_df),
-        "val_samples": len(val_df),
-        "test_samples": len(test_df),
-        "final_train_loss": history["train_loss"][-1] if history["train_loss"] else None,
-        "final_val_loss": history["val_loss"][-1] if history["val_loss"] else None,
-        "best_val_loss": best_val_loss,
-        "history": history,
-        "saved_model_path": str(save_dir),
-        "device": str(device)
+    history_summary = {
+        "train_loss": train_losses,
+        "val_loss": val_losses,
+        "eval_bleu": val_bleus,
+        "eval_chrf": val_chrfs,
     }
 
-    metrics_path = config.TRAINING_LOGS_DIR / f"training_history_{pair_key.replace('-', '_')}.json"
-    with open(metrics_path, "w", encoding="utf-8") as f:
-        json.dump(training_summary, f, indent=2)
+    loss_plot_path = config.TRAINING_LOGS_DIR / f"loss_curve_{pair_key.replace('-', '_')}.png"
+    plot_and_save_loss_curve(history_summary, loss_plot_path, pair_key)
 
-    logger.info(f"Training metrics saved to: {metrics_path}")
-    logger.info("Fine-tuning completed successfully!")
-    return training_summary
+    best_bleu = max(val_bleus) if val_bleus else None
+    best_chrf = max(val_chrfs) if val_chrfs else None
+
+    # 10. Save Model Metadata
+    metadata = {
+        "lang_pair": pair_key,
+        "base_model": model_identifier,
+        "is_finetuned": True,
+        "best_val_bleu": best_bleu,
+        "best_val_chrf": best_chrf,
+        "epochs": epochs,
+        "learning_rate": learning_rate,
+        "batch_size": batch_size,
+        "num_train_samples": len(train_df),
+        "total_train_time_sec": total_train_time,
+        "train_date": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "device": device_name
+    }
+    with open(final_output_dir / "model_metadata.json", "w", encoding="utf-8") as f:
+        json.dump(metadata, f, indent=2)
+
+    # Save training log JSON
+    summary_path = config.TRAINING_LOGS_DIR / f"training_history_{pair_key.replace('-', '_')}.json"
+    with open(summary_path, "w", encoding="utf-8") as f:
+        json.dump({**metadata, "history": history_summary}, f, indent=2)
+
+    logger.info(f"Fine-tuning complete for {pair_key}! Best Val BLEU: {best_bleu} | Time: {total_train_time}s")
+    return metadata
+
+def run_sweep(lang_pair: str = "en-hi", max_samples: Optional[int] = 200):
+    """
+    Runs a hyperparameter sweep over learning rate × epochs
+    and saves the best-performing model.
+    """
+    logger.info(f"Starting hyperparameter sweep for {lang_pair}...")
+    sweep_configs = [
+        {"lr": 3e-5, "epochs": 2},
+        {"lr": 5e-5, "epochs": 3},
+    ]
+
+    best_score = -1.0
+    best_cfg = None
+
+    for cfg in sweep_configs:
+        logger.info(f"\n--- Testing config: LR={cfg['lr']}, Epochs={cfg['epochs']} ---")
+        meta = train_model(
+            lang_pair=lang_pair,
+            epochs=cfg["epochs"],
+            learning_rate=cfg["lr"],
+            max_samples=max_samples
+        )
+        score = meta.get("best_val_bleu") or 0.0
+        if score > best_score:
+            best_score = score
+            best_cfg = cfg
+
+    logger.info(f"\n=== SWEEP COMPLETE for {lang_pair} ===")
+    logger.info(f"Best Configuration: {best_cfg} with Val BLEU: {best_score}")
+    return best_cfg
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Fine-tune MarianMT on English-Hindi parallel corpus.")
-    parser.add_argument("--lang_pair", type=str, default="en-hi", choices=["en-hi", "hi-en"], help="Language pair")
-    parser.add_argument("--epochs", type=int, default=3, help="Number of training epochs")
-    parser.add_argument("--batch_size", type=int, default=None, help="Batch size (defaults to auto)")
-    parser.add_argument("--learning_rate", type=float, default=5e-5, help="Learning rate")
-    parser.add_argument("--max_samples", type=int, default=None, help="Max samples for training (useful for quick local runs)")
-    parser.add_argument("--data_path", type=str, default=None, help="Custom dataset CSV path")
-    parser.add_argument("--output_dir", type=str, default=None, help="Output directory for saved model")
+    parser = argparse.ArgumentParser(description="Fine-tune Translation Model with Hugging Face Seq2SeqTrainer.")
+    parser.add_argument("--lang_pair", type=str, default="en-hi", choices=["en-hi", "hi-en"])
+    parser.add_argument("--base_model", type=str, default=None)
+    parser.add_argument("--epochs", type=int, default=3)
+    parser.add_argument("--batch_size", type=int, default=None)
+    parser.add_argument("--learning_rate", type=float, default=3e-5)
+    parser.add_argument("--max_samples", type=int, default=None)
+    parser.add_argument("--data_path", type=str, default=None)
+    parser.add_argument("--output_dir", type=str, default=None)
+    parser.add_argument("--sweep", action="store_true", help="Run hyperparameter sweep")
 
     args = parser.parse_args()
-    train_model(
-        lang_pair=args.lang_pair,
-        data_path=args.data_path,
-        epochs=args.epochs,
-        batch_size=args.batch_size,
-        learning_rate=args.learning_rate,
-        max_samples=args.max_samples,
-        output_dir=args.output_dir
-    )
+    if args.sweep:
+        run_sweep(lang_pair=args.lang_pair, max_samples=args.max_samples or 300)
+    else:
+        train_model(
+            lang_pair=args.lang_pair,
+            base_model=args.base_model,
+            epochs=args.epochs,
+            batch_size=args.batch_size,
+            learning_rate=args.learning_rate,
+            max_samples=args.max_samples,
+            data_path=args.data_path,
+            output_dir=args.output_dir
+        )

@@ -1,0 +1,18 @@
+{
+  "lang_pair": "en-hi",
+  "direction": "en-hi",
+  "source_lang": "en",
+  "target_lang": "hi",
+  "model_identifier": "C:\\Users\\mskun\\OneDrive\\Desktop\\nlp project 1\\models\\en_hi",
+  "model_type": "fine-tuned",
+  "is_finetuned": true,
+  "sacrebleu_corpus_score": 90.92,
+  "chrf_score": 92.94,
+  "comet_score": "0.9757 (BERTScore F1)",
+  "average_sentence_bleu": 89.76,
+  "average_sentence_chrf": 92.37,
+  "num_test_examples": 100,
+  "total_eval_time_sec": 17.64,
+  "avg_inference_time_per_sentence_sec": 0.1764,
+  "device": "cpu"
+}
