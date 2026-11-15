@@ -1,0 +1,19 @@
+{
+  "lang_pair": "hi-en",
+  "source_lang": "hi",
+  "target_lang": "en",
+  "model_identifier": "Helsinki-NLP/opus-mt-hi-en",
+  "is_finetuned": false,
+  "sacrebleu_corpus_score": 88.94,
+  "average_sentence_bleu": 70.5,
+  "sacrebleu_signature": "BLEU = 88.94 86.7/90.0/91.7/100.0 (BP = 0.967 ratio = 0.968 hyp_len = 30 ref_len = 31)",
+  "tokenizer_method": "13a",
+  "num_test_examples": 10,
+  "num_train_examples": null,
+  "num_val_examples": null,
+  "final_train_loss": null,
+  "final_val_loss": null,
+  "total_eval_time_sec": 0.88,
+  "avg_inference_time_per_sentence_sec": 0.0883,
+  "device": "cpu"
+}

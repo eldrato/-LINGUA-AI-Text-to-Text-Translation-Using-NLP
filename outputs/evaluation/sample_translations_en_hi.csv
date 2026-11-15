@@ -1,0 +1,11 @@
+index,source,reference,prediction,sentence_bleu
+1,Justify,समान रुप से दाएँ-बाएँ,समान रुप से दाएँ-बाएँ,100.0
+2,Center,केंद्रित,केंद्रित,100.0
+3,Deal another round,एक दौर और चलें,एक दौर और चलें,100.0
+4,_ Import Tree,आयात ट्री,आयात ट्री,100.0
+5,Pressing tab indents,टैब हाशिया दबा रहा है,टैब हाशिया दबा रहा है,100.0
+6,Generic C + + Class,Generic C + + Class,जेनेरिक C + + वर्ग,39.76
+7,Trace matrices,मेट्रिसेस ट्रेस करें,मेट्रिसेस ट्रेस करें,100.0
+8,_ Export snippets …,निर्यात,निर्यात,100.0
+9,Advanced Settings,उन्नत विन्यास,विस्तृत विन्यास,50.0
+10,Your project has not been saved.,आपकी परियोजना सहेजी गई है.,आपकी परियोजना सहेजी गई है.,100.0

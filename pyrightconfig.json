@@ -1,0 +1,9 @@
+{
+  "include": ["."],
+  "extraPaths": [
+    ".",
+    "C:/Users/mskun/AppData/Roaming/Python/Python315/site-packages"
+  ],
+  "reportMissingImports": "none",
+  "reportMissingTypeStubs": false
+}

@@ -1,0 +1,19 @@
+{
+  "lang_pair": "en-hi",
+  "source_lang": "en",
+  "target_lang": "hi",
+  "model_identifier": "C:\\Users\\mskun\\OneDrive\\Desktop\\nlp project 1\\models\\en_hi",
+  "is_finetuned": true,
+  "sacrebleu_corpus_score": 87.3,
+  "average_sentence_bleu": 88.98,
+  "sacrebleu_signature": "BLEU = 87.30 91.4/88.0/88.2/81.8 (BP = 1.000 ratio = 1.000 hyp_len = 35 ref_len = 35)",
+  "tokenizer_method": "intl",
+  "num_test_examples": 10,
+  "num_train_examples": 12,
+  "num_val_examples": 2,
+  "final_train_loss": 0.3166770276923974,
+  "final_val_loss": 0.22262762486934662,
+  "total_eval_time_sec": 0.81,
+  "avg_inference_time_per_sentence_sec": 0.0814,
+  "device": "cpu"
+}

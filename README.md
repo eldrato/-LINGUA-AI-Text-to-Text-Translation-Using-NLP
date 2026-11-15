@@ -1,4 +1,4 @@
-## LINGUA AI: End-to-End Neural Machine Translation System
+# LINGUA AI: End-to-End Neural Machine Translation System
 
 [![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-EE4C2C.svg)](https://pytorch.org/)

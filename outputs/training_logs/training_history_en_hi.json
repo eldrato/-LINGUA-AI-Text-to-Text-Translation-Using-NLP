@@ -1,0 +1,30 @@
+{
+  "lang_pair": "en-hi",
+  "base_model": "Helsinki-NLP/opus-mt-en-hi",
+  "epochs": 2,
+  "batch_size": 2,
+  "learning_rate": 5e-05,
+  "total_training_time_sec": 10.43,
+  "train_samples": 12,
+  "val_samples": 2,
+  "test_samples": 2,
+  "final_train_loss": 0.3166770276923974,
+  "final_val_loss": 0.22262762486934662,
+  "best_val_loss": 0.22262762486934662,
+  "history": {
+    "train_loss": [
+      0.6173920904596647,
+      0.3166770276923974
+    ],
+    "val_loss": [
+      0.2269894927740097,
+      0.22262762486934662
+    ],
+    "epoch_times": [
+      4.876376628875732,
+      4.721254825592041
+    ]
+  },
+  "saved_model_path": "C:\\Users\\mskun\\OneDrive\\Desktop\\nlp project 1\\models\\en_hi",
+  "device": "cpu"
+}

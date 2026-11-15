@@ -1,0 +1,14 @@
+{
+    "python.defaultInterpreterPath": "C:\\Python315\\python.exe",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}",
+        "C:\\Users\\mskun\\AppData\\Roaming\\Python\\Python315\\site-packages"
+    ],
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}",
+        "C:\\Users\\mskun\\AppData\\Roaming\\Python\\Python315\\site-packages"
+    ],
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none"
+    }
+}

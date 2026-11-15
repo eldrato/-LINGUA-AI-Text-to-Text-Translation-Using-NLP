@@ -1,0 +1,35 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Large model weights and checkpoints (do not store large model binaries in git)
+models/en_hi/*.bin
+models/en_hi/*.safetensors
+models/en_hi/checkpoint-*
+models/hi_en/*.bin
+models/hi_en/*.safetensors
+models/hi_en/checkpoint-*
+*.pt
+*.pth
+
+# Datasets raw downloads
+dataset/raw/*.tar.gz
+dataset/raw/*.zip
+dataset/raw/*.gz
+
+# Streamlit
+.streamlit/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
